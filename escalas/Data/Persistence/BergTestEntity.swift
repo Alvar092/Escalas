@@ -12,13 +12,15 @@ import SwiftData
 final class BergTestEntity {
     @Attribute(.unique) var id: UUID
     var date: Date
-    var patient: PatientEntity?
+    var patient: PatientEntity
     var itemsData: Data
     
-    init(id: UUID, date: Date, patient: PatientEntity? = nil, itemsData: Data) {
+    init(id: UUID, date: Date, patient: PatientEntity, itemsData: Data) {
         self.id = id
         self.date = date
         self.patient = patient
         self.itemsData = itemsData
     }
 }
+
+

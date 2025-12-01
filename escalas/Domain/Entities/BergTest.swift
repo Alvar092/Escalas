@@ -9,7 +9,7 @@ import Foundation
 struct BergTest {
     let id: UUID
     var date: Date
-    var patient: Patient
+    var patientID: UUID
     var items: [BergItem]
     
     var totalScore: Int {
@@ -17,14 +17,14 @@ struct BergTest {
     }
 }
 
-struct BergItem {
+struct BergItem: Codable {
     let id: UUID
     let itemType: BergItemType
     var score: Int
     var timeRecorded: TimeInterval?
 }
 
-enum BergItemType: Int, CaseIterable {
+enum BergItemType: Int, CaseIterable, Codable {
     case sittingToStanding = 0
     case standingUnsupported = 1
     case sittingWithBackUnsupported = 2
@@ -57,3 +57,6 @@ enum BergItemType: Int, CaseIterable {
         }
     }
 }
+
+
+
