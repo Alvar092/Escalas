@@ -9,16 +9,8 @@ import Foundation
 import SwiftData
 
 extension BergTest {
-    func toEntity(context: ModelContext) throws -> BergTestEntity {
+    func toEntity(patientEntity: PatientEntity) throws -> BergTestEntity {
         let itemsData = try JSONEncoder().encode(self.items)
-        
-        // Look for patient
-        let descriptor = FetchDescriptor<PatientEntity>(
-            predicate: #Predicate { $0.id == self.patientID }
-        )
-        guard let patientEntity = try context.fetch(descriptor).first else {
-            throw NSError(domain: "Patient not found", code: 404)
-        }
         
         return BergTestEntity(
             id: self.id,

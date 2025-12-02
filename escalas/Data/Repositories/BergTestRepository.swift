@@ -4,7 +4,7 @@
 //
 //  Created by Álvaro Entrena Casas on 1/12/25.
 //
-
+import Foundation
 import SwiftData
 
 final class BergTestRepository: BergTestRepositoryProtocol {
@@ -15,24 +15,62 @@ final class BergTestRepository: BergTestRepositoryProtocol {
         self.modelContext = modelContext
     }
     
+    // Saves a new Beg test in database
+    // 
     func save(_ test: BergTest) async throws {
-        let entity = try test.toEntity(context: modelContext)
+        let patientID = test.patientID
+        
+        let descriptor = FetchDescriptor<PatientEntity>(
+            predicate: #Predicate { $0.id == patientID }
+        )
+        
+        guard let patientEntity = try modelContext.fetch(descriptor).first else {
+            throw NSError(domain: "Patient not found", code: 404)
+        }
+        
+        let entity = try test.toEntity(patientEntity: patientEntity)
+        modelContext.insert(entity)
+        try modelContext.save()
     }
     
     func getAll() async throws -> [BergTest] {
-        <#code#>
+        let descriptor = FetchDescriptor<BergTestEntity>(
+            sortBy: [SortDescriptor(\.date, order: .reverse)]
+        )
+        let entities = try modelContext.fetch(descriptor)
+        return try entities.map { try $0.toDomain()}
     }
     
     func getByPatient(_ patientID: UUID) async throws -> [BergTest] {
-        <#code#>
+        let descriptor = FetchDescriptor<BergTestEntity>(
+            predicate: #Predicate { $0.patient.id == patientID },
+            sortBy: [SortDescriptor(\.date, order: .reverse)]
+        )
+        let entities = try modelContext.fetch(descriptor)
+        return try entities.map { try $0.toDomain() }
     }
     
-    func getByID(_ id: UUID) async throws {
-        <#code#>
+    func getByID(_ id: UUID) async throws -> BergTest? {
+        let descriptor = FetchDescriptor<BergTestEntity>(
+            predicate: #Predicate { $0.id == id }
+        )
+        guard let entity = try modelContext.fetch(descriptor).first else {
+            return nil
+        }
+        return try entity.toDomain()
     }
     
     func update(_ test: BergTest) async throws {
-        <#code#>
+        let id = test.id
+        
+        let descriptor = FetchDescriptor<BergTestEntity>(
+            predicate: #Predicate { $0.id == id }
+        )
+        if let entity = try modelContext.fetch(descriptor).first {
+            entity.date = test.date
+            entity.itemsData = try JSONEncoder().encode(test.items)
+            try modelContext.save()
+        }
     }
     
     

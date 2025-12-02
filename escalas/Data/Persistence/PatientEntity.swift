@@ -12,17 +12,15 @@ import SwiftData
 final class PatientEntity {
     @Attribute(.unique) var id: UUID
     var name: String
-    var dateOfBirth: Date?
-    var createdAt: Date
+    var dateOfBirth: Date
 
     @Relationship(deleteRule: .cascade, inverse: \BergTestEntity.patient)
     var tests: [BergTestEntity]?
     
-    init(id: UUID, name: String, dateOfBirth: Date? = nil, createdAt: Date, tests: [BergTestEntity]? = nil) {
+    init(id: UUID, name: String, dateOfBirth: Date, tests: [BergTestEntity]? = nil) {
         self.id = id
         self.name = name
         self.dateOfBirth = dateOfBirth
-        self.createdAt = createdAt
         self.tests = tests
     }
 }
