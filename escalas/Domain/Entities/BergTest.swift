@@ -20,8 +20,12 @@ struct BergTest {
 struct BergItem: Codable {
     let id: UUID
     let itemType: BergItemType
-    var score: Int
+    var score: Int = 0
     var timeRecorded: TimeInterval?
+    
+    mutating func setScore(_ value: Int) {
+        score = max(0, min(4, value))
+    }
 }
 
 enum BergItemType: Int, CaseIterable, Codable {

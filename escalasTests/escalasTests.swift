@@ -13,83 +13,248 @@ import Foundation
 struct escalasTests {
     @Suite("Data Testing") struct DataTests{
         @Suite("Repositories", .serialized) struct RepositoriesTest {
-            
-            var container: ModelContainer
-            var context: ModelContext
-            var sut: PatientRespository
-            
-            init() throws {
-                // for: Que modelos guardar
-                // configurations: como guardarlo, isStoredInMemoryOnly lo deja en RAM, se borra al acabar el test
-                container = try ModelContainer(for: PatientEntity.self, BergTestEntity.self,
-                                               configurations: ModelConfiguration(isStoredInMemoryOnly: true)
-                )
+            struct TestHelper {
+                static func createInMemoryContainer() throws -> (ModelContainer, ModelContext) {
+                    let container = try ModelContainer(
+                        for: PatientEntity.self, BergTestEntity.self,
+                        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+                    )
+                    let context = ModelContext(container)
+                    return (container, context)
+                }
                 
-                context = ModelContext(container)
-                
-                sut = PatientRespository(modelContext: context)
+                static func createOnePatient(name: String = "Perico Palotes", dateOfBirth: Date = Date()) -> Patient {
+                    return Patient(id: UUID(), name: name, dateOfBirth: dateOfBirth)
+                }
+
             }
             
-            func createOnePatient(name: String = "Perico Palotes", dateOfBirth: Date = Date()) -> Patient {
-                return Patient(id: UUID(), name: name, dateOfBirth: dateOfBirth)
+            @Suite("PatientsRepository") struct PatientRespositoryTest {
+                
+                var container: ModelContainer
+                var context: ModelContext
+                var sut: PatientRespository
+                
+                init() throws {
+                    (container, context) = try TestHelper.createInMemoryContainer()
+                    sut = PatientRespository(modelContext: context)
+                }
+                
+                @Test("SavePatient")
+                func savePatientTest() async throws {
+                    
+                    // GIVEN
+                    let patient = TestHelper.createOnePatient()
+                    
+                    // WHEN
+                    try await sut.save(patient)
+                    
+                    // THEN
+                    let descriptor = FetchDescriptor<PatientEntity>()
+                    let entities = try context.fetch(descriptor)
+                    
+                    #expect(entities.count == 1)
+                    #expect(entities.first?.name == "Perico Palotes")
+                }
+                
+                @Test("GetAllPatients")
+                func getAllPatientsTest() async throws {
+                    // GIVEN
+                    let oldPatient = Patient(
+                        id: UUID(),
+                        name: "Paciente Viejo",
+                        dateOfBirth: Calendar.current.date(byAdding: .year, value: -80, to: Date())!
+                    )
+                    let youngPatient = Patient(
+                        id: UUID(),
+                        name: "Paciente Joven",
+                        dateOfBirth: Calendar.current.date(byAdding: .year, value: -30, to: Date())!
+                    )
+                    
+                    // WHEN
+                    try await sut.save(oldPatient)
+                    try await sut.save(youngPatient)
+                    
+                    let patients = try await sut.getAll()
+                    
+                    // THEN
+                    #expect(patients.count == 2)
+                    #expect(patients.first?.name == "Paciente Joven")
+                    #expect(patients.last?.name == "Paciente Viejo")
+                }
+                
+                @Test("GetPatientByID")
+                func getPatientByIDTest() async throws {
+                    // GIVEN
+                    let patient = TestHelper.createOnePatient()
+                    
+                    // WHEN
+                    try await sut.save(patient)
+                    
+                    let result = try await sut.getByID(patient.id)
+                    #expect(patient.name == result?.name)
+                    #expect(patient.dateOfBirth == result?.dateOfBirth)
+                }
+                
+                @Test("DeletePatient")
+                func deletePatientTest() async throws {
+                    // GIVEN
+                    let patient = TestHelper.createOnePatient()
+                    
+                    // WHEN
+                    try await sut.save(patient)
+                    try await sut.delete(patient.id)
+                    let patients = try await sut.getAll()
+                    
+                    // THEN
+                    #expect(patients.isEmpty == true)
+                }
+                
+                @Test("UpdatePatient")
+                @MainActor
+                func updatePatientTest() async throws {
+                    // GIVEN
+                    var patient = TestHelper.createOnePatient()
+                    try await sut.save(patient)
+                    
+                    // WHEN
+                    patient.name = "Pedro Macias"
+                    try await sut.update(patient)
+                    
+                    // THEN
+                    let patients = try await sut.getAll()
+                    #expect(patients.first?.name == "Pedro Macias")
+                }
             }
-            
-            @Test("SavePatient")
-            func savePatientTest() async throws {
+            @Suite("BergTestRepository") struct BergTestRepositoryTest {
                 
-                // GIVEN
-                let patient = createOnePatient()
+                var container: ModelContainer
+                var context: ModelContext
+                var patientRepository: PatientRespository
+                var sut: BergTestRepository
                 
-                // WHEN
-                try await sut.save(patient)
+                init() throws {
+                    (container, context) = try TestHelper.createInMemoryContainer()
+                    patientRepository = PatientRespository(modelContext: context)
+                    sut = BergTestRepository(modelContext: context)
+                }
                 
-                // THEN
-                let descriptor = FetchDescriptor<PatientEntity>()
-                let entities = try context.fetch(descriptor)
+                func createEmptyItems() -> [BergItem] {
+                    return BergItemType.allCases.map { itemType in
+                        BergItem(
+                            id: UUID(),
+                            itemType: itemType,
+                            score: 0,
+                            timeRecorded: nil
+                        )
+                    }
+                }
                 
-                #expect(entities.count == 1)
-                #expect(entities.first?.name == "Perico Palotes")
-            }
-            
-            @Test("GetAllPatients")
-            func getAllPatientsTest() async throws {
-                // GIVEN
-                let oldPatient = Patient(
-                       id: UUID(),
-                       name: "Paciente Viejo",
-                       dateOfBirth: Calendar.current.date(byAdding: .year, value: -80, to: Date())!
-                   )
-                   let youngPatient = Patient(
-                       id: UUID(),
-                       name: "Paciente Joven",
-                       dateOfBirth: Calendar.current.date(byAdding: .year, value: -30, to: Date())!
-                   )
+                func createOneBergTest(date: Date = Date(), patientID: UUID) -> BergTest {
+                    let items = createEmptyItems()
+                    return BergTest(
+                        id: UUID(),
+                        date: date,
+                        patientID: patientID,
+                        items: items)
+                }
                 
-                // WHEN
-                try await sut.save(oldPatient)
-                try await sut.save(youngPatient)
+                @Test("SaveBerg")
+                func saveBergTest() async throws{
+                    // GIVEN
+                    let patient = TestHelper.createOnePatient()
+                    let patientID = await patient.id
+                    let test = createOneBergTest(patientID: patientID)
+                    try await patientRepository.save(patient)
+                   
+                    // WHEN
+                    try await sut.save(test)
+                    
+                    // THEN
+                    let descriptor = FetchDescriptor<BergTestEntity>()
+                    let entities = try context.fetch(descriptor)
+                    #expect(entities.count == 1)
+                }
                 
-                let patients = try await sut.getAll()
+                @Test("GetAllBergs")
+                func getAllBergTest() async throws {
+                    // GIVEN
+                    let patient = TestHelper.createOnePatient()
+                    let patientID = await patient.id
+                    let test1 = createOneBergTest(patientID: patientID)
+                    let test2 = createOneBergTest(patientID: patientID)
+                    try await patientRepository.save(patient)
+                    
+                    // WHEN
+                    try await sut.save(test1)
+                    try await sut.save(test2)
+                    
+                    
+                    // THEN
+                    let allTests = try await sut.getAll()
+                    #expect(allTests.count == 2)
+                }
                 
-                // THEN
-                #expect(patients.count == 2)
-                #expect(patients.first?.name == "Paciente Joven")
-                #expect(patients.last?.name == "Paciente Viejo")
-            }
-            
-            @Test("GetPatientByID")
-            func getPatientByID() async throws {
-                // GIVEN
-                let patient = createOnePatient()
+                @Test("GetBergByPatient")
+                func getBergByPatientTest() async throws {
+                    // GIVEN
+                    let patient = TestHelper.createOnePatient()
+                    let patientID = await patient.id
+                    let test = createOneBergTest(patientID: patientID)
+                    
+                    // WHEN
+                    try await patientRepository.save(patient)
+                    try await sut.save(test)
+                    
+                    // THEN
+                    let result = try await sut.getByPatient(patientID)
+                    #expect(result.count == 1)
+                }
                 
-                // WHEN
-                try await sut.save(patient)
+                @Test("GetBergByID")
+                func getBergByIDTest() async throws {
+                    // GIVEN
+                    let patient = TestHelper.createOnePatient()
+                    let patientID = await patient.id
+                    let test = createOneBergTest(patientID: patientID)
+                    let testID = await test.id
+                    // WHEN
+                    try await patientRepository.save(patient)
+                    try await sut.save(test)
+
+                    // THEN
+                    let result = try await sut.getByID(testID)
+                    #expect(result?.patientID == patientID)
+                    #expect(result?.totalScore == test.totalScore)
+                }
                 
-                let result = try await sut.getByID(patient.id)
-                #expect(patient.name == result?.name)
-                #expect(patient.dateOfBirth == result?.dateOfBirth)
+                @Test("UpdateBerg")
+                @MainActor
+                func updateBergTest() async throws {
+                    // GIVEN
+                    let patient = TestHelper.createOnePatient()
+                    let patientID = patient.id
+                    var test = createOneBergTest(patientID: patientID)
+                    
+                    try await patientRepository.save(patient)
+                    // WHEN
+                    test.items[0].score = 3
+                    try await sut.save(test)
+                    
+                    // THEN
+                    let result = try await sut.getByPatient(patientID)
+                    let item = result.first?.items.first
+                    #expect(item?.score == 3)
+
+                }
             }
         }
     }
-
 }
+
+
+// GIVEN
+
+// WHEN
+
+// THEN
