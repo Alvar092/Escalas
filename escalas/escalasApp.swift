@@ -12,21 +12,23 @@ import SwiftData
 struct escalasApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            PatientEntity.self,
+            BergTestEntity.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        let configuration = ModelConfiguration(schema: schema)
 
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            return try ModelContainer(for: schema, configurations: [configuration])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.repositories, Repositories(modelContext: ModelContext(sharedModelContainer)))
         }
         .modelContainer(sharedModelContainer)
-    }
-}
+    }}
