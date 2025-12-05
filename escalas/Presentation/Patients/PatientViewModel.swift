@@ -6,30 +6,32 @@
 //
 
 import Foundation
+import Combine
  
+// Init VM empty and configure after recive environment in view 
 
 @Observable
 final class PatientViewModel {
-    // Publishers
-    var patients = [Patient]()
+
+    var patients: [Patient] = []
     
-    @ObservationIgnored
-    private var useCase: PatientUseCaseProtocol
+    private var getPatientsUseCase: GetPatientUseCaseProtocol
+    private var createPatientUseCase: CreatePatientUseCaseProtocol
     
-    init(useCase: PatientUseCaseProtocol) {
-        self.useCase = useCase
-        
-        Task {
-            await self.getPatients()
-        }
+    init(getPatientsUseCase: GetPatientUseCaseProtocol,
+         createPatientUseCase: CreatePatientUseCaseProtocol
+    ) {
+        self.getPatientsUseCase = getPatientsUseCase
+        self.createPatientUseCase = createPatientUseCase
+    }
+  
+    @MainActor
+    func loadPatients() async throws {
+        patients = try await getPatientsUseCase.getPatients()
     }
     
-    @MainActor
-    func getPatients() async {
-        do {
-            patients = try await useCase.getPatients()
-        } catch {
-            print("Error loading patients: \(error)")
-        }
+    func createPatient(newName: String, dateOfBirth: Date) async throws {
+        let newPatient = Patient(id: UUID(), name: newName, dateOfBirth: dateOfBirth)
+        try await createPatientUseCase.savePatient(patient: newPatient)
     }
 }

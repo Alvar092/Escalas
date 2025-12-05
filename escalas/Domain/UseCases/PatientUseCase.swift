@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol PatientUseCaseProtocol {
+protocol GetPatientUseCaseProtocol {
     var patientRepository: PatientRepositoryProtocol {get set}
     
     func getPatients() async throws-> [Patient]
 }
 
-final class PatientUseCase: PatientUseCaseProtocol {
+final class GetPatientUseCase: GetPatientUseCaseProtocol {
     var patientRepository: PatientRepositoryProtocol
     
     init(patientRepository: PatientRepositoryProtocol) {
@@ -24,3 +24,5 @@ final class PatientUseCase: PatientUseCaseProtocol {
         try await patientRepository.getAll()
     }
 }
+
+
