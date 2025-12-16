@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct BergTest {
+struct BergTest: ClinicalTestProtocol {
     let id: UUID
     var date: Date
     var patientID: UUID

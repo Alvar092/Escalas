@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		67256CFA2EE0BC5B00D568EF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256CF92EE0BC5B00D568EF /* HomeView.swift */; };
 		67256CFE2EE0C21400D568EF /* ScaleMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256CFD2EE0C21400D568EF /* ScaleMenuView.swift */; };
-		67256D002EE0CB4F00D568EF /* PatientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256CFF2EE0CB4F00D568EF /* PatientView.swift */; };
+		67256D002EE0CB4F00D568EF /* PatientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256CFF2EE0CB4F00D568EF /* PatientsView.swift */; };
 		67256D092EE1908700D568EF /* BergTestFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D082EE1908700D568EF /* BergTestFormView.swift */; };
-		67256D0B2EE1916B00D568EF /* PatientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D0A2EE1916400D568EF /* PatientViewModel.swift */; };
+		67256D0B2EE1916B00D568EF /* PatientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D0A2EE1916400D568EF /* PatientsViewModel.swift */; };
 		67256D532EE1A08300D568EF /* Environment+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D522EE1A07D00D568EF /* Environment+Repositories.swift */; };
 		674EF2F92EDDC3D6000CF54C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 674EF2F42EDDC3D6000CF54C /* Assets.xcassets */; };
 		674EF2FA2EDDC3D6000CF54C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF2F52EDDC3D6000CF54C /* ContentView.swift */; };
@@ -31,6 +31,12 @@
 		674EF3A92EDF1AE3000CF54C /* PatientRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3A82EDF1AE3000CF54C /* PatientRespository.swift */; };
 		674EF3AB2EDF4CE7000CF54C /* PatientMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3AA2EDF4CE7000CF54C /* PatientMapper.swift */; };
 		674EF3B22EDF6A73000CF54C /* escalasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3B02EDF6A73000CF54C /* escalasTests.swift */; };
+		67CB90462EF1C8570067952C /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB90452EF1C8570067952C /* PatientDetailView.swift */; };
+		67CB90492EF1CA3D0067952C /* PatientHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB90482EF1CA3D0067952C /* PatientHistory.swift */; };
+		67CB908D2EF1CFAD0067952C /* ClinicalTestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB908C2EF1CFA70067952C /* ClinicalTestProtocol.swift */; };
+		67CB908F2EF1D1E80067952C /* GetPatientTestsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB908E2EF1D1E80067952C /* GetPatientTestsUseCase.swift */; };
+		67CB90912EF1DB530067952C /* PatientDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB90902EF1DB4D0067952C /* PatientDetailViewModel.swift */; };
+		67CB90D52EF1F3A30067952C /* Models+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB90D42EF1F3A30067952C /* Models+Mock.swift */; };
 		67E221822EE3009600079E52 /* CreatePatientUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E221812EE3009600079E52 /* CreatePatientUseCase.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,9 +60,9 @@
 /* Begin PBXFileReference section */
 		67256CF92EE0BC5B00D568EF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		67256CFD2EE0C21400D568EF /* ScaleMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMenuView.swift; sourceTree = "<group>"; };
-		67256CFF2EE0CB4F00D568EF /* PatientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientView.swift; sourceTree = "<group>"; };
+		67256CFF2EE0CB4F00D568EF /* PatientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsView.swift; sourceTree = "<group>"; };
 		67256D082EE1908700D568EF /* BergTestFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergTestFormView.swift; sourceTree = "<group>"; };
-		67256D0A2EE1916400D568EF /* PatientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientViewModel.swift; sourceTree = "<group>"; };
+		67256D0A2EE1916400D568EF /* PatientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewModel.swift; sourceTree = "<group>"; };
 		67256D522EE1A07D00D568EF /* Environment+Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Repositories.swift"; sourceTree = "<group>"; };
 		674EF2C72EDCB64D000CF54C /* escalas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = escalas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		674EF2D62EDCB64F000CF54C /* escalasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = escalasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +85,12 @@
 		674EF3A82EDF1AE3000CF54C /* PatientRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRespository.swift; sourceTree = "<group>"; };
 		674EF3AA2EDF4CE7000CF54C /* PatientMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientMapper.swift; sourceTree = "<group>"; };
 		674EF3B02EDF6A73000CF54C /* escalasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = escalasTests.swift; sourceTree = "<group>"; };
+		67CB90452EF1C8570067952C /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
+		67CB90482EF1CA3D0067952C /* PatientHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHistory.swift; sourceTree = "<group>"; };
+		67CB908C2EF1CFA70067952C /* ClinicalTestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalTestProtocol.swift; sourceTree = "<group>"; };
+		67CB908E2EF1D1E80067952C /* GetPatientTestsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPatientTestsUseCase.swift; sourceTree = "<group>"; };
+		67CB90902EF1DB4D0067952C /* PatientDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailViewModel.swift; sourceTree = "<group>"; };
+		67CB90D42EF1F3A30067952C /* Models+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models+Mock.swift"; sourceTree = "<group>"; };
 		67E221812EE3009600079E52 /* CreatePatientUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePatientUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,8 +146,10 @@
 		67256D012EE0CB5A00D568EF /* Patients */ = {
 			isa = PBXGroup;
 			children = (
-				67256D0A2EE1916400D568EF /* PatientViewModel.swift */,
-				67256CFF2EE0CB4F00D568EF /* PatientView.swift */,
+				67CB90902EF1DB4D0067952C /* PatientDetailViewModel.swift */,
+				67256D0A2EE1916400D568EF /* PatientsViewModel.swift */,
+				67256CFF2EE0CB4F00D568EF /* PatientsView.swift */,
+				67CB90452EF1C8570067952C /* PatientDetailView.swift */,
 			);
 			path = Patients;
 			sourceTree = "<group>";
@@ -227,6 +241,8 @@
 			children = (
 				674EF3462EDDC4C5000CF54C /* BergTest.swift */,
 				674EF3422EDDC45F000CF54C /* Patient.swift */,
+				67CB90482EF1CA3D0067952C /* PatientHistory.swift */,
+				67CB90D42EF1F3A30067952C /* Models+Mock.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -234,10 +250,9 @@
 		674EF38B2EDDF4C5000CF54C /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				67CB90472EF1C8E90067952C /* Patients */,
 				674EF3902EDDF4E6000CF54C /* GeneratePDFUseCase.swift */,
-				674EF38E2EDDF4DB000CF54C /* PatientUseCase.swift */,
 				674EF38C2EDDF4CC000CF54C /* SaveBergTestUseCase.swift */,
-				67E221812EE3009600079E52 /* CreatePatientUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -245,6 +260,7 @@
 		674EF3922EDDF4FA000CF54C /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				67CB908C2EF1CFA70067952C /* ClinicalTestProtocol.swift */,
 				674EF3932EDDF50E000CF54C /* PatientRepositoryProtocol.swift */,
 				674EF3952EDDF518000CF54C /* BergTestRespositoryProtocol.swift */,
 			);
@@ -284,6 +300,16 @@
 				674EF3B02EDF6A73000CF54C /* escalasTests.swift */,
 			);
 			path = escalasTests;
+			sourceTree = "<group>";
+		};
+		67CB90472EF1C8E90067952C /* Patients */ = {
+			isa = PBXGroup;
+			children = (
+				674EF38E2EDDF4DB000CF54C /* PatientUseCase.swift */,
+				67E221812EE3009600079E52 /* CreatePatientUseCase.swift */,
+				67CB908E2EF1D1E80067952C /* GetPatientTestsUseCase.swift */,
+			);
+			path = Patients;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,7 +455,9 @@
 				67256D532EE1A08300D568EF /* Environment+Repositories.swift in Sources */,
 				674EF39E2EDE0B2C000CF54C /* BergTestRepository.swift in Sources */,
 				674EF2FA2EDDC3D6000CF54C /* ContentView.swift in Sources */,
-				67256D002EE0CB4F00D568EF /* PatientView.swift in Sources */,
+				67256D002EE0CB4F00D568EF /* PatientsView.swift in Sources */,
+				67CB90462EF1C8570067952C /* PatientDetailView.swift in Sources */,
+				67CB908D2EF1CFAD0067952C /* ClinicalTestProtocol.swift in Sources */,
 				67256D092EE1908700D568EF /* BergTestFormView.swift in Sources */,
 				67E221822EE3009600079E52 /* CreatePatientUseCase.swift in Sources */,
 				674EF3992EDE02A3000CF54C /* PatientEntity.swift in Sources */,
@@ -438,15 +466,19 @@
 				674EF38F2EDDF4E2000CF54C /* PatientUseCase.swift in Sources */,
 				674EF3A72EDE1892000CF54C /* BergTestMapper.swift in Sources */,
 				674EF3432EDDC466000CF54C /* Patient.swift in Sources */,
+				67CB90912EF1DB530067952C /* PatientDetailViewModel.swift in Sources */,
+				67CB908F2EF1D1E80067952C /* GetPatientTestsUseCase.swift in Sources */,
+				67CB90D52EF1F3A30067952C /* Models+Mock.swift in Sources */,
 				67256CFE2EE0C21400D568EF /* ScaleMenuView.swift in Sources */,
 				674EF3AB2EDF4CE7000CF54C /* PatientMapper.swift in Sources */,
 				674EF2FB2EDDC3D6000CF54C /* escalasApp.swift in Sources */,
 				674EF3472EDDC4C7000CF54C /* BergTest.swift in Sources */,
 				674EF38D2EDDF4D7000CF54C /* SaveBergTestUseCase.swift in Sources */,
 				674EF3A92EDF1AE3000CF54C /* PatientRespository.swift in Sources */,
-				67256D0B2EE1916B00D568EF /* PatientViewModel.swift in Sources */,
+				67256D0B2EE1916B00D568EF /* PatientsViewModel.swift in Sources */,
 				674EF3962EDDF518000CF54C /* BergTestRespositoryProtocol.swift in Sources */,
 				674EF3942EDDF50E000CF54C /* PatientRepositoryProtocol.swift in Sources */,
+				67CB90492EF1CA3D0067952C /* PatientHistory.swift in Sources */,
 				674EF2FC2EDDC3D6000CF54C /* Item.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

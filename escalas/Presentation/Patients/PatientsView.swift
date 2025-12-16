@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PatientView: View {
+struct PatientsView: View {
     @Environment(\.repositories) private var repositories
     
     @State var viewModel: PatientViewModel?
@@ -85,5 +85,5 @@ struct PatientView: View {
     }
 
 #Preview {
-    PatientView()
+    PatientsView()
 }

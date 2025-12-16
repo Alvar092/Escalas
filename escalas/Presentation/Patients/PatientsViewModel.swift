@@ -18,6 +18,7 @@ final class PatientViewModel {
     private var getPatientsUseCase: GetPatientUseCaseProtocol
     private var createPatientUseCase: CreatePatientUseCaseProtocol
     
+    
     init(getPatientsUseCase: GetPatientUseCaseProtocol,
          createPatientUseCase: CreatePatientUseCaseProtocol
     ) {

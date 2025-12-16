@@ -10,4 +10,16 @@ struct Patient {
     var id: UUID
     var name: String
     var dateOfBirth: Date
+    
+    var age: Int {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        return calendar.dateComponents(
+            [.year],
+            from: dateOfBirth,
+            to: now
+        ).year ?? 0
+    }
 }
+

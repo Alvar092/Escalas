@@ -76,3 +76,57 @@ final class PatientRespository: PatientRepositoryProtocol {
         }
     }
 }
+
+
+
+
+
+
+
+// ------- MOCK -------
+
+final class MockPatientRepository: PatientRepositoryProtocol {
+
+    private var patients: [Patient]
+
+    init(initialPatients: [Patient] = []) {
+        self.patients = initialPatients
+    }
+
+    func save(_ patient: Patient) async throws {
+        if let index = patients.firstIndex(where: { $0.id == patient.id }) {
+            patients[index] = patient
+        } else {
+            patients.append(patient)
+        }
+    }
+
+    func getAll() async throws -> [Patient] {
+        patients
+    }
+
+    func getByID(_ id: UUID) async throws -> Patient? {
+        patients.first { $0.id == id }
+    }
+
+    func delete(_ id: UUID) async throws {
+        guard let index = patients.firstIndex(where: { $0.id == id }) else {
+            throw MockRepositoryError.notFound
+        }
+        patients.remove(at: index)
+    }
+
+    func update(_ patient: Patient) async throws {
+        guard let index = patients.firstIndex(where: { $0.id == patient.id }) else {
+            throw MockRepositoryError.notFound
+        }
+        patients[index] = patient
+    }
+}
+
+enum MockRepositoryError: Error {
+    case notFound
+}
+
+// Mocks para previews y tests
+let mockRepo = MockPatientRepository(initialPatients: [Patient.patient1, Patient.patient2,Patient.patient3])
