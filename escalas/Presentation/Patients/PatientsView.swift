@@ -62,10 +62,15 @@ struct PatientsView: View {
                         DatePicker("Fecha de nacimiento",
                                    selection: $newDate,
                                    displayedComponents: .date)
+                    
                         
                         Button("Crear paciente") {
                             Task {
                                 try? await viewModel.createPatient(newName: newName, dateOfBirth: newDate)
+                                try await viewModel.loadPatients()
+                                isAdding = false
+                                newName = ""
+                                newDate = Date()
                             }
                         }
                         .buttonStyle(.borderedProminent)

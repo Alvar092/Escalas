@@ -27,7 +27,7 @@ struct escalasApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .environment(\.repositories, Repositories(modelContext: ModelContext(sharedModelContainer)))
         }
         .modelContainer(sharedModelContainer)
