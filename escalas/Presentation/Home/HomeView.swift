@@ -62,7 +62,11 @@ struct HomeView: View {
                 } // VStack Padre
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button(action: {}) {
+                        Menu {
+                            NavigationLink("Pacientes") {
+                                PatientsView()
+                            }
+                        } label: {
                             Image(systemName: "line.3.horizontal")
                                 .imageScale(.large)
                         }

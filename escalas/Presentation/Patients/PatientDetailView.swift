@@ -55,7 +55,6 @@ struct PatientDetailView: View {
                         .bold()
                 }
             }
-            
         } // VStack
         .navigationTitle("Paciente")
         .navigationBarTitleDisplayMode(.inline)
