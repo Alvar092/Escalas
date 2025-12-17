@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol GetPatientTestsUseCase {
+protocol GetPatientTestsUseCaseProtocol {
     
     func getPatientHistory(patientID: UUID) async throws -> PatientHistory
 }
 
-final class GetPatientTests: GetPatientTestsUseCase {
+final class GetPatientTestsUseCase: GetPatientTestsUseCaseProtocol {
     
     private let patientRepository: PatientRepositoryProtocol
     private let bergTestRepository: BergTestRepositoryProtocol
@@ -40,7 +40,7 @@ enum PatientHistoryError: Error {
 }
 
 
-final class MockGetPatientTestsUseCase: GetPatientTestsUseCase {
+final class MockGetPatientTestsUseCase: GetPatientTestsUseCaseProtocol {
     
     func getPatientHistory(patientID: UUID) async throws -> PatientHistory {
         // Devuelve un historial mock ya creado

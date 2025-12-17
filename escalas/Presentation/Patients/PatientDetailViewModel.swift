@@ -12,9 +12,9 @@ final class PatientDetailViewModel {
     var patient: Patient
     private(set) var history: PatientHistory
     
-    private var getTestsUseCase: GetPatientTestsUseCase
+    private var getTestsUseCase: GetPatientTestsUseCaseProtocol
     
-    init(patient: Patient, history: PatientHistory, getTestsUseCase: GetPatientTestsUseCase) {
+    init(patient: Patient, history: PatientHistory, getTestsUseCase: GetPatientTestsUseCaseProtocol) {
         self.patient = patient
         self.history = history
         self.getTestsUseCase = getTestsUseCase

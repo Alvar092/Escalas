@@ -12,7 +12,7 @@ import Foundation
 
 struct escalasTests {
     @Suite("Data Testing") struct DataTests{
-        @Suite("Repositories", .serialized) struct RepositoriesTest {
+        @Suite("Repositories", .serialized) struct RepositoriesTests {
             struct TestHelper {
                 static func createInMemoryContainer() throws -> (ModelContainer, ModelContext) {
                     let container = try ModelContainer(
@@ -247,6 +247,61 @@ struct escalasTests {
                     #expect(item?.score == 3)
 
                 }
+            }
+        }
+    }
+    
+    @Suite("Domaing Testing") struct UseCasesTest {
+        @Suite("UseCases") struct UseCasesTests {
+            @Test("getPatients")
+            @MainActor
+            func getPatientsTest() async throws {
+                // GIVEN
+                let repo = mockRepo
+                let useCase = GetPatientUseCase(patientRepository: repo)
+               
+                // WHEN
+                let result = try await useCase.getPatients()
+                
+                // THEN
+                #expect(result.count == 3)
+            }
+            
+            @Test("createPatient")
+            @MainActor
+            func createPatientTest() async throws {
+                // GIVEN
+                let repo = MockPatientRepository()
+                let useCase = CreatePatientUseCase(patientRepository: repo)
+                let patient = Patient.patient1
+                
+                // WHEN
+                try await useCase.savePatient(patient: patient)
+                // THEN
+                #expect(repo.patients.count == 1)
+                #expect(repo.patients.first?.id == patient.id)
+            }
+            
+            @Test("getPatientTests")
+            @MainActor
+            func getPatientHistoryTest() async throws {
+                // GIVEN
+                let patient = Patient.patient1
+                let patientsRepo = mockRepo
+                
+                let bergTest = BergTest.patient1
+                let bergRepo = mockBergRepo
+                
+                let useCase = GetPatientTestsUseCase(patientRepository: patientsRepo, bergTestRepository: bergRepo)
+                
+                // WHEN
+                let history = try await useCase.getPatientHistory(patientID: patient.id)
+
+                // THEN
+                #expect(history.patient.id == patient.id)
+                #expect(history.bergTests.count == 1)
+                #expect(history.bergTests.first?.id == bergTest.id)
+
             }
         }
     }

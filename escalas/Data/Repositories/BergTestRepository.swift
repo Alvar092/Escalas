@@ -72,9 +72,43 @@ final class BergTestRepository: BergTestRepositoryProtocol {
             try modelContext.save()
         }
     }
-    
-    
 }
+
+final class MockBergTestRepository: BergTestRepositoryProtocol {
+
+    private(set) var bergTests: [BergTest]
+
+    init(initialTests: [BergTest] = []) {
+        self.bergTests = initialTests
+    }
+
+    func save(_ test: BergTest) async throws {
+        bergTests.append(test)
+    }
+
+    func getAll() async throws -> [BergTest] {
+        bergTests.sorted { $0.date > $1.date }
+    }
+
+    func getByPatient(_ patientID: UUID) async throws -> [BergTest] {
+        bergTests
+            .filter { $0.patientID == patientID }
+            .sorted { $0.date > $1.date }
+    }
+
+    func getByID(_ id: UUID) async throws -> BergTest? {
+        bergTests.first { $0.id == id }
+    }
+
+    func update(_ test: BergTest) async throws {
+        guard let index = bergTests.firstIndex(where: { $0.id == test.id }) else {
+            return
+        }
+        bergTests[index] = test
+    }
+}
+
+let mockBergRepo = MockBergTestRepository(initialTests: [BergTest.patient1, BergTest.patient2, BergTest.patient3])
 
 
 

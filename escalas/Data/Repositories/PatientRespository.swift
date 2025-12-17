@@ -87,7 +87,7 @@ final class PatientRespository: PatientRepositoryProtocol {
 
 final class MockPatientRepository: PatientRepositoryProtocol {
 
-    private var patients: [Patient]
+    private(set) var patients: [Patient]
 
     init(initialPatients: [Patient] = []) {
         self.patients = initialPatients
