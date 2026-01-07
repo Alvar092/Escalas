@@ -38,6 +38,17 @@ struct PatientsView: View {
                 }
             }
             .navigationTitle("Pacientes")
+            .navigationDestination(for: Patient.self) { patient in
+                PatientDetailView(viewModel: PatientDetailViewModel(
+                    patient: patient,
+                    history: PatientHistory(patient: patient, bergTests: []),
+                    getTestsUseCase: GetPatientTestsUseCase(
+                        patientRepository: repositories.patientRepository, bergTestRepository: repositories.bergTestRepository
+                    )
+                )
+                )
+            }
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -87,28 +98,41 @@ struct PatientsView: View {
                     .buttonStyle(.borderedProminent)
                 }
             } // isAdding
+            
             ForEach(viewModel.patients, id: \.id) { patient in
-                Button(action: {
-                    handlePatientTap(patient)
-                }) {
-                    VStack(alignment: .leading) {
-                        Text(patient.name)
-                            .font(.headline)
-                        Text("Nacimiento: \(patient.dateOfBirth.formatted(date: .abbreviated, time: .omitted))")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                if mode == .select {
+                    Button(action: {
+                        handlePatientTap(patient)
+                    }) {
+                        patientRow(patient: patient)
+                    }
+                    .buttonStyle(.plain)
+                } else {
+                    NavigationLink(value: patient) {
+                        patientRow(patient: patient)
                     }
                 }
-                .buttonStyle(.plain)
             }
         } // List
     }
+    
+    @ViewBuilder
+    private func patientRow(patient: Patient) -> some View {
+        VStack(alignment: .leading) {
+            Text(patient.name)
+                .font(.headline)
+            Text("Nacimiento: \(patient.dateOfBirth.formatted(date: .abbreviated, time: .omitted))")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+    }
+    
     private func handlePatientTap(_ patient: Patient) {
         if mode == .select {
             onPatientSelected?(patient)
             dismiss()
         } else {
-            // NAVEGAR AL DETALLE DEL PACIENTE
+            
         }
     }
 }
@@ -117,3 +141,7 @@ struct PatientsView: View {
     @Previewable @State var selectedPatient: Patient? = nil
     PatientsView(mode: .browse)
 }
+
+/*
+
+*/
