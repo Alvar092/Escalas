@@ -15,6 +15,10 @@ enum TestType: String, Codable {
         case .berg: return 56
         }
     }
+    
+    var displayName: String {
+        self.rawValue
+    }
 }
 
 protocol ClinicalTestProtocol {
@@ -23,6 +27,12 @@ protocol ClinicalTestProtocol {
     var patientID: UUID {get}
     var totalScore: Int {get}
     var testType: TestType {get}
+}
+
+extension ClinicalTestProtocol {
+    var name: String {
+        testType.displayName
+    }
 }
 
 extension BergTest {

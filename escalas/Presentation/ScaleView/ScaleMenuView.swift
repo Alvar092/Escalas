@@ -9,66 +9,109 @@ import SwiftUI
 
 struct ScaleMenuView: View {
     
-    @State private var selectedPatient: String?
+    struct ScaleInfoView: View {
+        var body: some View {
+            Text("Información de la escala")
+                .font(.title)
+        }
+    }
+    
+    struct ScaleExecutionView: View {
+        var body: some View {
+            Text("Realización de la prueba")
+                .font(.title)
+        }
+    }
+    
+    @State private var selectedPatient: Patient?
+    @State private var showingPatientSelection = false
+    let testType: TestType
+    
     
     var body: some View {
         NavigationStack {
-            VStack{
+            VStack {
+                Spacer()
                 VStack (alignment: .center, spacing: 24) {
-                    Text("Nombre de la escala")
+                    Text(testType.displayName)
                         .font(.title.bold())
+                        .padding()
+                    
                     Spacer()
+                    
                     VStack(alignment: .center, spacing: 12){
-                        Button(action: {
-                            // Acción para seleccionar paciente
-                        }) {
+                        Button {
+                            showingPatientSelection = true
+                        } label: {
                             HStack {
-                                // Una simple casilla visual (puedes personalizarla)
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(Color.gray, lineWidth: 1)
-                                    .frame(width: 24, height: 24)
-                                    .overlay(
-                                        // Si hay paciente, muestra un icono o iniciales
-                                        Group {
-                                            if let patient = selectedPatient {
-                                                Text(String(patient.prefix(2)))
-                                                    .font(.caption)
-                                                    .foregroundColor(.accentColor)
-                                            }
-                                        }
-                                    )
-                                Text(selectedPatient ?? "Seleccionar paciente")
-                                    .foregroundStyle(.primary)
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(selectedPatient != nil ? Color.accentColor.opacity(0.2): Color.gray.opacity(0.1))
+                                        .frame(width: 32, height: 32)
+                                    if let patient = selectedPatient {
+                                        Text(String(patient.name.prefix(2).uppercased()))
+                                            .font(.caption.bold())
+                                            .foregroundColor(.accentColor)
+                                    } else {
+                                        Image(systemName: "person.fill")
+                                            .font(.title)
+                                            .foregroundStyle(.white)
+                                    }
+                                }
+                                
+                                Text(selectedPatient?.name ?? "Seleccionar paciente")
+                                    .foregroundStyle(selectedPatient != nil ? .primary: .primary)
+                                
+                                
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
                             }
                             .frame(maxWidth: .infinity)
-                            .padding()
+                            .padding(20)
                             .background(Color.accentColor.gradient)
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
-                        Button(action: {/* Seleccionar paciente */}) {
-                            Text("Info")
+                        
+                        NavigationLink {
+                            ScaleInfoView()
+                        } label: {
+                            Text("Información de la prueba")
                                 .frame(maxWidth: .infinity)
-                                .padding()
+                                .padding(32)
                                 .background(Color.accentColor.gradient)
                                 .foregroundStyle(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 12,style: .continuous))
                         }
-                        Button(action: {/* Seleccionar paciente */}) {
+                        
+                        NavigationLink {
+                            ScaleExecutionView()
+                        } label: {
                             Text("Comenzar prueba")
                                 .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.accentColor.gradient)
+                                .padding(48)
+                                .background(
+                                    selectedPatient != nil ?
+                                    Color.accentColor.gradient: Color.gray.gradient
+                                )
                                 .foregroundStyle(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 12,style: .continuous))
                         }
+                        .disabled(selectedPatient == nil)
                     } // VStack
+                    .padding(4.0)
                 } // VStack nombre escala
-            } // VStack general 
+            } // VStack general
         } // Nav Stack
+        .sheet(isPresented: $showingPatientSelection) {
+            PatientsView(mode:.select) { patient in
+                selectedPatient = patient
+            }
+        }
     }
 }
 
 #Preview {
-    ScaleMenuView()
+    ScaleMenuView(testType: .berg)
 }

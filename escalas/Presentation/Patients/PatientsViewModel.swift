@@ -15,6 +15,7 @@ final class PatientViewModel {
 
     var patients: [Patient] = []
     
+    @ObservationIgnored
     private var getPatientsUseCase: GetPatientUseCaseProtocol
     private var createPatientUseCase: CreatePatientUseCaseProtocol
     

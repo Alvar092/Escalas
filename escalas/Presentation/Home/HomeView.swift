@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     var body: some View {
         NavigationStack {
             VStack(alignment: .center, spacing: 32) {
@@ -29,42 +30,45 @@ struct HomeView: View {
                             .foregroundStyle(.white)
                             .frame(width: 32, height: 32)
                     } // ZStack
-                } // VStack 1
+                } // VStack Bienvenida
                 VStack(alignment: .center, spacing: 20) {
                     Text("Elige una escala para comenzar")
                         .font(.headline)
                     VStack(spacing: 12) {
-                        Button(action: { /* goToBerg */ }) {
-                            Text("Berg Test")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.accentColor.gradient)
-                                .foregroundStyle(.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        NavigationLink("Berg Test") {
+                            ScaleMenuView(testType: .berg)
                         }
-                        Button(action: { /* goToTuG */ }) {
-                            Text("Time Up & Go")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.accentColor.gradient)
-                                .foregroundStyle(.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.accentColor.gradient)
+                        .foregroundStyle(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        
+                        
+                        NavigationLink("Time Up & Go") {
+                            /* goToTUG */
                         }
-                        Button(action: { /* goTo10MWT */ }) {
-                            Text("10 Metres Walking Test")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.accentColor.gradient)
-                                .foregroundStyle(.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.accentColor.gradient)
+                        .foregroundStyle(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        
+                        NavigationLink("10 Metres Walking Test") {
+                            /* GoTo10MWT */
                         }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.accentColor.gradient)
+                        .foregroundStyle(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     } //VStack Escalas
                 } // VStack Padre
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Menu {
                             NavigationLink("Pacientes") {
-                                PatientsView()
+                                PatientsView(mode: .browse)
                             }
                         } label: {
                             Image(systemName: "line.3.horizontal")

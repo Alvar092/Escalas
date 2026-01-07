@@ -31,6 +31,8 @@
 		674EF3A92EDF1AE3000CF54C /* PatientRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3A82EDF1AE3000CF54C /* PatientRespository.swift */; };
 		674EF3AB2EDF4CE7000CF54C /* PatientMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3AA2EDF4CE7000CF54C /* PatientMapper.swift */; };
 		674EF3B22EDF6A73000CF54C /* escalasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3B02EDF6A73000CF54C /* escalasTests.swift */; };
+		678A224A2EF40A2F004A6F41 /* BergTestInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A22492EF40A2F004A6F41 /* BergTestInfoView.swift */; };
+		678A224F2EF45FA0004A6F41 /* ScaleMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */; };
 		67CB90462EF1C8570067952C /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB90452EF1C8570067952C /* PatientDetailView.swift */; };
 		67CB90492EF1CA3D0067952C /* PatientHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB90482EF1CA3D0067952C /* PatientHistory.swift */; };
 		67CB908D2EF1CFAD0067952C /* ClinicalTestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB908C2EF1CFA70067952C /* ClinicalTestProtocol.swift */; };
@@ -85,6 +87,8 @@
 		674EF3A82EDF1AE3000CF54C /* PatientRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRespository.swift; sourceTree = "<group>"; };
 		674EF3AA2EDF4CE7000CF54C /* PatientMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientMapper.swift; sourceTree = "<group>"; };
 		674EF3B02EDF6A73000CF54C /* escalasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = escalasTests.swift; sourceTree = "<group>"; };
+		678A22492EF40A2F004A6F41 /* BergTestInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergTestInfoView.swift; sourceTree = "<group>"; };
+		678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMenuViewModel.swift; sourceTree = "<group>"; };
 		67CB90452EF1C8570067952C /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
 		67CB90482EF1CA3D0067952C /* PatientHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHistory.swift; sourceTree = "<group>"; };
 		67CB908C2EF1CFA70067952C /* ClinicalTestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalTestProtocol.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				67256CFD2EE0C21400D568EF /* ScaleMenuView.swift */,
+				678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */,
 			);
 			path = ScaleView;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				67256D082EE1908700D568EF /* BergTestFormView.swift */,
+				678A22492EF40A2F004A6F41 /* BergTestInfoView.swift */,
 			);
 			path = BergTestView;
 			sourceTree = "<group>";
@@ -239,9 +245,9 @@
 		674EF38A2EDDC4EA000CF54C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				674EF3462EDDC4C5000CF54C /* BergTest.swift */,
-				674EF3422EDDC45F000CF54C /* Patient.swift */,
-				67CB90482EF1CA3D0067952C /* PatientHistory.swift */,
+				678A224D2EF41431004A6F41 /* Patient */,
+				678A224C2EF41420004A6F41 /* ScalesExecutions */,
+				678A224B2EF41412004A6F41 /* ScalesDefinitions */,
 				67CB90D42EF1F3A30067952C /* Models+Mock.swift */,
 			);
 			path = Entities;
@@ -300,6 +306,30 @@
 				674EF3B02EDF6A73000CF54C /* escalasTests.swift */,
 			);
 			path = escalasTests;
+			sourceTree = "<group>";
+		};
+		678A224B2EF41412004A6F41 /* ScalesDefinitions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ScalesDefinitions;
+			sourceTree = "<group>";
+		};
+		678A224C2EF41420004A6F41 /* ScalesExecutions */ = {
+			isa = PBXGroup;
+			children = (
+				674EF3462EDDC4C5000CF54C /* BergTest.swift */,
+			);
+			path = ScalesExecutions;
+			sourceTree = "<group>";
+		};
+		678A224D2EF41431004A6F41 /* Patient */ = {
+			isa = PBXGroup;
+			children = (
+				674EF3422EDDC45F000CF54C /* Patient.swift */,
+				67CB90482EF1CA3D0067952C /* PatientHistory.swift */,
+			);
+			path = Patient;
 			sourceTree = "<group>";
 		};
 		67CB90472EF1C8E90067952C /* Patients */ = {
@@ -473,11 +503,13 @@
 				674EF3AB2EDF4CE7000CF54C /* PatientMapper.swift in Sources */,
 				674EF2FB2EDDC3D6000CF54C /* escalasApp.swift in Sources */,
 				674EF3472EDDC4C7000CF54C /* BergTest.swift in Sources */,
+				678A224A2EF40A2F004A6F41 /* BergTestInfoView.swift in Sources */,
 				674EF38D2EDDF4D7000CF54C /* SaveBergTestUseCase.swift in Sources */,
 				674EF3A92EDF1AE3000CF54C /* PatientRespository.swift in Sources */,
 				67256D0B2EE1916B00D568EF /* PatientsViewModel.swift in Sources */,
 				674EF3962EDDF518000CF54C /* BergTestRespositoryProtocol.swift in Sources */,
 				674EF3942EDDF50E000CF54C /* PatientRepositoryProtocol.swift in Sources */,
+				678A224F2EF45FA0004A6F41 /* ScaleMenuViewModel.swift in Sources */,
 				67CB90492EF1CA3D0067952C /* PatientHistory.swift in Sources */,
 				674EF2FC2EDDC3D6000CF54C /* Item.swift in Sources */,
 			);
@@ -658,6 +690,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aentrena.escalas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -690,6 +726,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aentrena.escalas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
