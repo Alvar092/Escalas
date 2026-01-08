@@ -105,8 +105,10 @@ struct ScaleMenuView: View {
             } // VStack general
         } // Nav Stack
         .sheet(isPresented: $showingPatientSelection) {
-            PatientsView(mode:.select) { patient in
-                selectedPatient = patient
+            NavigationStack {
+                PatientsView(mode:.select) { patient in
+                    selectedPatient = patient
+                }
             }
         }
     }

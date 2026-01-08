@@ -29,33 +29,28 @@ struct PatientsView: View {
     
     
     var body: some View {
-        NavigationStack {
-            Group {
-                if let viewModel {
-                    patientList(viewModel: viewModel)
-                } else {
-                    ProgressView("Cargando pacientes...")
+        Group {
+            if let viewModel {
+                patientList(viewModel: viewModel)
+            } else {
+                ProgressView("Cargando pacientes...")
+            }
+        }
+        .navigationTitle(mode == .select ? "Seleccionar paciente" : "Pacientes")
+        .toolbar {
+            if mode == .select {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancelar") {
+                        dismiss()
+                    }
                 }
             }
-            .navigationTitle("Pacientes")
-            .navigationDestination(for: Patient.self) { patient in
-                PatientDetailView(viewModel: PatientDetailViewModel(
-                    patient: patient,
-                    history: PatientHistory(patient: patient, bergTests: []),
-                    getTestsUseCase: GetPatientTestsUseCase(
-                        patientRepository: repositories.patientRepository, bergTestRepository: repositories.bergTestRepository
-                    )
-                )
-                )
-            }
             
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        withAnimation { isAdding.toggle() }
-                    } label: {
-                        Label("Añadir", systemImage: isAdding ? "xmark": "plus")
-                    }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    withAnimation { isAdding.toggle() }
+                } label: {
+                    Label("Añadir", systemImage: isAdding ? "xmark": "plus")
                 }
             }
         }
@@ -108,7 +103,17 @@ struct PatientsView: View {
                     }
                     .buttonStyle(.plain)
                 } else {
-                    NavigationLink(value: patient) {
+                    NavigationLink{
+                        PatientDetailView(
+                            viewModel: PatientDetailViewModel(
+                                patient: patient,
+                                history: PatientHistory(patient: patient, bergTests: []),
+                                getTestsUseCase: GetPatientTestsUseCase(
+                                    patientRepository: repositories.patientRepository, bergTestRepository: repositories.bergTestRepository
+                                )
+                            )
+                        )
+                    } label: {
                         patientRow(patient: patient)
                     }
                 }
@@ -141,7 +146,3 @@ struct PatientsView: View {
     @Previewable @State var selectedPatient: Patient? = nil
     PatientsView(mode: .browse)
 }
-
-/*
-
-*/

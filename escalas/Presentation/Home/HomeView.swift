@@ -5,10 +5,17 @@
 //  Created by Álvaro Entrena Casas on 3/12/25.
 //
 
+enum HomeRoute: Hashable {
+    case patients
+}
+
 import SwiftUI
 
 struct HomeView: View {
     
+    
+    @Environment(\.repositories) private var repositories
+   
     var body: some View {
         NavigationStack {
             VStack(alignment: .center, spacing: 32) {
@@ -63,13 +70,14 @@ struct HomeView: View {
                         .foregroundStyle(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     } //VStack Escalas
-                } // VStack Padre
+                } // VStack Elige escalas
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Menu {
                             NavigationLink("Pacientes") {
                                 PatientsView(mode: .browse)
                             }
+                            
                         } label: {
                             Image(systemName: "line.3.horizontal")
                                 .imageScale(.large)
