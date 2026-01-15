@@ -31,7 +31,7 @@
 		674EF3A92EDF1AE3000CF54C /* PatientRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3A82EDF1AE3000CF54C /* PatientRespository.swift */; };
 		674EF3AB2EDF4CE7000CF54C /* PatientMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3AA2EDF4CE7000CF54C /* PatientMapper.swift */; };
 		674EF3B22EDF6A73000CF54C /* escalasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3B02EDF6A73000CF54C /* escalasTests.swift */; };
-		678A224A2EF40A2F004A6F41 /* BergTestInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A22492EF40A2F004A6F41 /* BergTestInfoView.swift */; };
+		678A224A2EF40A2F004A6F41 /* ScaleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A22492EF40A2F004A6F41 /* ScaleInfoView.swift */; };
 		678A224F2EF45FA0004A6F41 /* ScaleMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */; };
 		67CB90462EF1C8570067952C /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB90452EF1C8570067952C /* PatientDetailView.swift */; };
 		67CB90492EF1CA3D0067952C /* PatientHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CB90482EF1CA3D0067952C /* PatientHistory.swift */; };
@@ -91,7 +91,7 @@
 		674EF3A82EDF1AE3000CF54C /* PatientRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRespository.swift; sourceTree = "<group>"; };
 		674EF3AA2EDF4CE7000CF54C /* PatientMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientMapper.swift; sourceTree = "<group>"; };
 		674EF3B02EDF6A73000CF54C /* escalasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = escalasTests.swift; sourceTree = "<group>"; };
-		678A22492EF40A2F004A6F41 /* BergTestInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergTestInfoView.swift; sourceTree = "<group>"; };
+		678A22492EF40A2F004A6F41 /* ScaleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleInfoView.swift; sourceTree = "<group>"; };
 		678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMenuViewModel.swift; sourceTree = "<group>"; };
 		67CB90452EF1C8570067952C /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
 		67CB90482EF1CA3D0067952C /* PatientHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHistory.swift; sourceTree = "<group>"; };
@@ -150,6 +150,7 @@
 		67256CFC2EE0C20400D568EF /* ScaleView */ = {
 			isa = PBXGroup;
 			children = (
+				678A22492EF40A2F004A6F41 /* ScaleInfoView.swift */,
 				67256CFD2EE0C21400D568EF /* ScaleMenuView.swift */,
 				678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */,
 			);
@@ -178,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				67256D082EE1908700D568EF /* BergTestFormView.swift */,
-				678A22492EF40A2F004A6F41 /* BergTestInfoView.swift */,
 			);
 			path = BergTestView;
 			sourceTree = "<group>";
@@ -518,7 +518,7 @@
 				674EF3AB2EDF4CE7000CF54C /* PatientMapper.swift in Sources */,
 				674EF2FB2EDDC3D6000CF54C /* escalasApp.swift in Sources */,
 				674EF3472EDDC4C7000CF54C /* BergTest.swift in Sources */,
-				678A224A2EF40A2F004A6F41 /* BergTestInfoView.swift in Sources */,
+				678A224A2EF40A2F004A6F41 /* ScaleInfoView.swift in Sources */,
 				674EF38D2EDDF4D7000CF54C /* SaveBergTestUseCase.swift in Sources */,
 				67D827F42F16ACCE0037BB35 /* BergTestInfo.swift in Sources */,
 				674EF3A92EDF1AE3000CF54C /* PatientRespository.swift in Sources */,

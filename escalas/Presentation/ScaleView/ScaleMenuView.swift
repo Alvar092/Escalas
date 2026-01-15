@@ -9,12 +9,6 @@ import SwiftUI
 
 struct ScaleMenuView: View {
     
-    struct ScaleInfoView: View {
-        var body: some View {
-            Text("Información de la escala")
-                .font(.title)
-        }
-    }
     
     struct ScaleExecutionView: View {
         var body: some View {
@@ -75,7 +69,7 @@ struct ScaleMenuView: View {
                         }
                         
                         NavigationLink {
-                            ScaleInfoView()
+                            ScaleInfoView(info: testType.clinicalInfo)
                         } label: {
                             Text("Información de la prueba")
                                 .frame(maxWidth: .infinity)
