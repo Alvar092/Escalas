@@ -17,17 +17,21 @@ struct ScaleMenuView: View {
         }
     }
     
-    @State private var selectedPatient: Patient?
-    @State private var showingPatientSelection = false
-    let testType: TestType
     
+    @State private var viewModel: ScaleMenuViewModel
+    
+    init(testType: TestType) {
+        self.viewModel = ScaleMenuViewModel(testType: testType)
+    }
+    
+
     
     var body: some View {
         NavigationStack {
             VStack {
                 Spacer()
                 VStack (alignment: .center, spacing: 24) {
-                    Text(testType.displayName)
+                    Text(viewModel.testType.displayName)
                         .font(.title.bold())
                         .padding()
                     
@@ -35,15 +39,15 @@ struct ScaleMenuView: View {
                     
                     VStack(alignment: .center, spacing: 12){
                         Button {
-                            showingPatientSelection = true
+                            viewModel.showPatientSelection()
                         } label: {
                             HStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)
-                                        .fill(selectedPatient != nil ? Color.accentColor.opacity(0.2): Color.gray.opacity(0.1))
+                                        .fill(viewModel.hasSelectedPatient ? Color.accentColor.opacity(0.2): Color.gray.opacity(0.1))
                                         .frame(width: 32, height: 32)
-                                    if let patient = selectedPatient {
-                                        Text(String(patient.name.prefix(2).uppercased()))
+                                    if let initials = viewModel.patientName {
+                                        Text(initials)
                                             .font(.caption.bold())
                                             .foregroundColor(.accentColor)
                                     } else {
@@ -53,8 +57,8 @@ struct ScaleMenuView: View {
                                     }
                                 }
                                 
-                                Text(selectedPatient?.name ?? "Seleccionar paciente")
-                                    .foregroundStyle(selectedPatient != nil ? .primary: .primary)
+                                Text(viewModel.patientDisplayName)
+                                    .foregroundStyle(.primary)
                                 
                                 
                                 Image(systemName: "chevron.right")
@@ -69,7 +73,7 @@ struct ScaleMenuView: View {
                         }
                         
                         NavigationLink {
-                            ScaleInfoView(info: testType.clinicalInfo)
+                            ScaleInfoView(info: viewModel.testType.clinicalInfo)
                         } label: {
                             Text("Información de la prueba")
                                 .frame(maxWidth: .infinity)
@@ -86,22 +90,22 @@ struct ScaleMenuView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding(48)
                                 .background(
-                                    selectedPatient != nil ?
+                                    viewModel.isStartButtonEnabled ?
                                     Color.accentColor.gradient: Color.gray.gradient
                                 )
                                 .foregroundStyle(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 12,style: .continuous))
                         }
-                        .disabled(selectedPatient == nil)
+                        .disabled(!viewModel.isStartButtonEnabled)
                     } // VStack
                     .padding(4.0)
                 } // VStack nombre escala
             } // VStack general
         } // Nav Stack
-        .sheet(isPresented: $showingPatientSelection) {
+        .sheet(isPresented: $viewModel.showingPatientSelection) {
             NavigationStack {
                 PatientsView(mode:.select) { patient in
-                    selectedPatient = patient
+                    viewModel.selectPatient(patient)
                 }
             }
         }

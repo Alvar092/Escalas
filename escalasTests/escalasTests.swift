@@ -248,10 +248,10 @@ struct escalasTests {
 
                 }
             }
-        }
-    }
+        }//Repos
+    } // Data
     
-    @Suite("Domaing Testing") struct UseCasesTest {
+    @Suite("Domaing Testing") struct DomainTest {
         @Suite("UseCases") struct UseCasesTests {
             @Test("getPatients")
             @MainActor
@@ -303,6 +303,48 @@ struct escalasTests {
                 #expect(history.bergTests.first?.id == bergTest.id)
 
             }
+        }//UseCases
+    }//Domain
+    
+    @Suite("Presentation Testing") struct PresentationTest{
+        @Suite("ScaleViewModel") struct ScaleViewModelTests {
+            
+            @Test("InitVM")
+            @MainActor
+            func initialization() async throws {
+                let vm = ScaleMenuViewModel(testType: .berg)
+                
+                #expect(vm.testType == .berg)
+                #expect(vm.selectedPatient == nil)
+                #expect(vm.showingPatientSelection == false)
+                #expect(vm.isStartButtonEnabled == false)
+            }
+            
+            @Test("SelectPatient")
+            @MainActor
+            func selectPatient() async throws {
+                let vm = ScaleMenuViewModel(testType: .berg)
+                let patient = Patient.patient1
+                
+                vm.selectPatient(patient)
+                
+                #expect(vm.selectedPatient?.name == patient.name)
+                #expect(vm.isStartButtonEnabled == true)
+                #expect(vm.showingPatientSelection == false)
+            }
+            
+            @Test("DisplayName")
+            @MainActor
+            func patientDisplayName() async throws {
+                let vm = ScaleMenuViewModel(testType: .berg)
+                let patient = Patient.patient1
+                
+                #expect(vm.patientDisplayName == "Seleccionar paciente")
+                
+                vm.selectPatient(patient)
+                #expect(vm.patientDisplayName == patient.name)
+            }
+            
         }
     }
 }
