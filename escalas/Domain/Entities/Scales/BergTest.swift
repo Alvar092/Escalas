@@ -27,7 +27,7 @@ struct BergItem: Codable {
         score = max(0, min(4, value))
     }
 }
-
+ 
 enum BergItemType: Int, CaseIterable, Codable {
     case sittingToStanding = 0
     case standingUnsupported = 1
