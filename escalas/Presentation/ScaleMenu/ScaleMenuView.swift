@@ -9,15 +9,6 @@ import SwiftUI
 
 struct ScaleMenuView: View {
     
-    
-    struct ScaleExecutionView: View {
-        var body: some View {
-            Text("Realización de la prueba")
-                .font(.title)
-        }
-    }
-    
-    
     @State private var viewModel: ScaleMenuViewModel
     
     init(testType: TestType) {
@@ -84,7 +75,10 @@ struct ScaleMenuView: View {
                         }
                         
                         NavigationLink {
-                            ScaleExecutionView()
+                            switch viewModel.testType {
+                            case .berg:
+                                BergTestView(viewModel: BergTestViewModel()
+                            }
                         } label: {
                             Text("Comenzar prueba")
                                 .frame(maxWidth: .infinity)

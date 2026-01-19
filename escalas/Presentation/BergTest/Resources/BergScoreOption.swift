@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct BergScoreOption {
+struct BergScoreOption: Identifiable {
+    var id: Int { score }
     let score: Int
     let description: String
 }

@@ -63,3 +63,27 @@ extension BergTest {
         ]
     )
 }
+
+extension BergItem {
+
+    static let mockItems: [BergItem] = [
+        BergItem(
+            id: UUID(),
+            itemType: .sittingToStanding,
+            score: 0,
+            timeRecorded: nil
+        ),
+        BergItem(
+            id: UUID(),
+            itemType: .standingToSitting,
+            score: 0,
+            timeRecorded: nil
+        ),
+        BergItem(
+            id: UUID(),
+            itemType: .sittingWithBackUnsupported,
+            score: 0,
+            timeRecorded: nil
+        )
+    ]
+}

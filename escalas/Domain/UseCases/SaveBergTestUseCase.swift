@@ -8,4 +8,14 @@
 
 import Foundation
 
+protocol SaveBergTestUseCaseProtocol {
+    func saveBerg(patientID: UUID, test: BergTest)
+}
 
+final class SaveBergTestUseCase: SaveBergTestUseCaseProtocol {
+    func saveBerg(patientID: UUID, test: BergTest) {
+        <#code#>
+    }
+    
+    
+}
