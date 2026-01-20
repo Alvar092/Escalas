@@ -10,9 +10,11 @@ import SwiftUI
 struct ScaleMenuView: View {
     
     @State private var viewModel: ScaleMenuViewModel
+    let testType: TestType
     
-    init(testType: TestType) {
-        self.viewModel = ScaleMenuViewModel(testType: testType)
+    init(testType: TestType, createTestUseCase: CreateTestUseCaseProtocol = CreateTestUseCase()) {
+        self.testType = testType
+        self.viewModel = ScaleMenuViewModel(testType: testType, createTestUseCase: createTestUseCase)
     }
     
 
@@ -75,9 +77,13 @@ struct ScaleMenuView: View {
                         }
                         
                         NavigationLink {
-                            switch viewModel.testType {
-                            case .berg:
-                                BergTestView(viewModel: BergTestViewModel()
+                            if let test = viewModel.createdTest {
+                                switch viewModel.testType {
+                                case .berg:
+                                    if let bergTest = test as? BergTest {
+                                        BergTestView(viewModel: BergTestViewModel(test: bergTest))
+                                    }
+                                }
                             }
                         } label: {
                             Text("Comenzar prueba")

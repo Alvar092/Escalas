@@ -15,16 +15,12 @@ struct BergTestView: View {
     var body: some View {
         VStack(spacing: 24) {
             
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
+            VStack(alignment:.center, spacing: 8) {
+                HStack(alignment: .center) {
                     Text(viewModel.currentItemDefinition.title)
                         .font(.title2)
                         .bold()
-                    
-                    Spacer()
-                    
-                    Text(viewModel.progress)
-                        .font(.headline)
+                   
                 }
                 
                 Text(viewModel.currentItemDefinition.description)
@@ -38,43 +34,59 @@ struct BergTestView: View {
             VStack {
                 ForEach(viewModel.scoreOptions) { option in
                     Button {
-                        
+                        viewModel.selectScore(option.score)
                     } label: {
                         HStack{
                             Text(option.description)
-                                .foregroundStyle(.primary)
+                                .foregroundStyle(.black.opacity(0.8))
                             
                             Spacer()
-                            
-                            if viewModel.currentItemScore == option.score {
-                                Image(systemName: "checkmark.circle.fill")
-                            }
                         }
                         .padding(16)
-                        .background(RoundedRectangle(cornerRadius: 8)
-                            .stroke(viewModel.currentItemScore == option.score ? Color.blue : Color.gray))
+                        
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(
+                                    viewModel.isOptionSelected(option)
+                                    ? Color.blue.opacity(0.2) : Color.clear
+                                )
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(
+                                    viewModel.isOptionSelected(option)
+                                    ? Color.blue
+                                    : Color.blue.opacity(0.7)
+                                )
+                            )
                     }
                 }
             } //VStack Opciones respuestas
             
             Spacer()
+            
             HStack {
                 Button{
-                    // Back()
+                    viewModel.backItem()
                 } label: {
                     Text("Atras")
                 }
+                
+                Spacer()
+                
+                Text(viewModel.progress)
+                    .font(.headline)
+                
                 Spacer()
                 
                 Button(viewModel.isLastItem ? "Finalizar" : "Siguiente") {
                     if viewModel.isLastItem {
                         // End()
                     } else {
-                        // Next()
+                        viewModel.nextItem()
                     }
                 }
             }
-         
         }//VStack padre
         .padding()
     }
@@ -82,5 +94,5 @@ struct BergTestView: View {
 
 
 #Preview {
-    BergTestView(viewModel: BergTestViewModel(items: BergItem.mockItems, currentItemIndex: 0))
+    BergTestView(viewModel: BergTestViewModel(test: BergTest.patient1))
 }

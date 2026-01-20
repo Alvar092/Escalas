@@ -70,7 +70,22 @@ enum BergItemCatalog {
             ],
             needsTimer: false
         ),
-
+        
+        // MARK: - Item 5
+        .transfers: BergItemDefinition(
+            type: .transfers,
+            title: "Transferencias",
+            description: "Se colocan dos sillas formando aproximadamente 90 grados para realizar una transferencia en pivote (una con reposabrazos y otra sin ellos, o una cama y una silla con reposabrazos). El paciente debe realizar la transferencia en ambas direcciones, desde una superficie sin reposabrazos a otra con reposabrazos y viceversa.",
+            scoringOptions: [
+                .init(score: 4, description: "4. Realiza la transferencia de forma segura con uso mínimo de las manos."),
+                .init(score: 3, description: "3. Realiza la transferencia de forma segura con necesidad clara de usar las manos."),
+                .init(score: 2, description: "2. Realiza la transferencia con indicaciones verbales y/o supervisión."),
+                .init(score: 1, description: "1. Necesita la ayuda de una persona."),
+                .init(score: 0, description: "0. Necesita la ayuda de dos personas o supervisión constante por seguridad.")
+            ],
+            needsTimer: false
+        ),
+        
         // MARK: - Item 6
         .standingUnsupportedWithEyesClosed: BergItemDefinition(
             type: .standingUnsupportedWithEyesClosed,

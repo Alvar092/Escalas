@@ -13,18 +13,18 @@ struct BergTest: ClinicalTestProtocol {
     var items: [BergItem]
     
     var totalScore: Int {
-        items.reduce(0) {$0 + $1.score}
+        items.compactMap { $0.score }.reduce(0,+)
     }
 }
 
 struct BergItem: Codable {
     let id: UUID
     let itemType: BergItemType
-    var score: Int = 0
+    var score: Int? = nil 
     var timeRecorded: TimeInterval?
     
-    mutating func setScore(_ value: Int) {
-        score = max(0, min(4, value))
+    mutating func setScore(_ value: Int?) {
+        score = value.map {max(0,min(4,$0)) }
     }
 }
  

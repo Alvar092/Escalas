@@ -48,6 +48,7 @@
 		67D827F22F16AC6A0037BB35 /* ClinicalTestInfoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D827F12F16AC640037BB35 /* ClinicalTestInfoProtocol.swift */; };
 		67D827F42F16ACCE0037BB35 /* BergTestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D827F32F16ACCE0037BB35 /* BergTestInfo.swift */; };
 		67E221822EE3009600079E52 /* CreatePatientUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E221812EE3009600079E52 /* CreatePatientUseCase.swift */; };
+		67FA9E002F1F9BD000DF5B3D /* CreateTestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FA9DFF2F1F9BD000DF5B3D /* CreateTestUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		67D827F12F16AC640037BB35 /* ClinicalTestInfoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalTestInfoProtocol.swift; sourceTree = "<group>"; };
 		67D827F32F16ACCE0037BB35 /* BergTestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergTestInfo.swift; sourceTree = "<group>"; };
 		67E221812EE3009600079E52 /* CreatePatientUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePatientUseCase.swift; sourceTree = "<group>"; };
+		67FA9DFF2F1F9BD000DF5B3D /* CreateTestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTestUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -266,9 +268,9 @@
 		674EF38B2EDDF4C5000CF54C /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				67FA9DFE2F1F9BBB00DF5B3D /* BergTest */,
 				67CB90472EF1C8E90067952C /* Patients */,
 				674EF3902EDDF4E6000CF54C /* GeneratePDFUseCase.swift */,
-				674EF38C2EDDF4CC000CF54C /* SaveBergTestUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -364,6 +366,15 @@
 				67CB908E2EF1D1E80067952C /* GetPatientTestsUseCase.swift */,
 			);
 			path = Patients;
+			sourceTree = "<group>";
+		};
+		67FA9DFE2F1F9BBB00DF5B3D /* BergTest */ = {
+			isa = PBXGroup;
+			children = (
+				674EF38C2EDDF4CC000CF54C /* SaveBergTestUseCase.swift */,
+				67FA9DFF2F1F9BD000DF5B3D /* CreateTestUseCase.swift */,
+			);
+			path = BergTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,6 +527,7 @@
 				67CB908D2EF1CFAD0067952C /* ClinicalTestProtocol.swift in Sources */,
 				67256D092EE1908700D568EF /* BergTestView.swift in Sources */,
 				67E221822EE3009600079E52 /* CreatePatientUseCase.swift in Sources */,
+				67FA9E002F1F9BD000DF5B3D /* CreateTestUseCase.swift in Sources */,
 				674EF3992EDE02A3000CF54C /* PatientEntity.swift in Sources */,
 				674EF3912EDDF4EC000CF54C /* GeneratePDFUseCase.swift in Sources */,
 				67256CFA2EE0BC5B00D568EF /* HomeView.swift in Sources */,

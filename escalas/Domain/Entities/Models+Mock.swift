@@ -34,11 +34,7 @@ extension BergTest {
         id: UUID(),
         date: Calendar.current.date(byAdding: .day, value: -10, to: .now)!,
         patientID: UUID(uuidString: "00000000-0000-0000-0000-000000000001") ?? UUID(),
-        items: [
-            BergItem(id: UUID(), itemType: .sittingToStanding, score: 4),
-            BergItem(id: UUID(), itemType: .standingUnsupported, score: 3),
-            BergItem(id: UUID(), itemType: .sittingWithBackUnsupported, score: 2)
-        ]
+        items: BergItem.mockItems
     )
     
     static let patient2 = BergTest(

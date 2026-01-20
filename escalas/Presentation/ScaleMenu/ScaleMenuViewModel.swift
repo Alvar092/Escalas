@@ -11,12 +11,19 @@ import Observation
 @Observable
 final class ScaleMenuViewModel {
     
+    
     var selectedPatient: Patient?
     var showingPatientSelection = false
     let testType: TestType
+    var createdTest: ClinicalTestProtocol?
     
-    init(testType: TestType) {
+    
+    @ObservationIgnored
+    private let createTestUseCase: CreateTestUseCaseProtocol
+    
+    init(testType: TestType, createTestUseCase: CreateTestUseCaseProtocol = CreateTestUseCase()) {
         self.testType = testType
+        self.createTestUseCase = createTestUseCase
     }
     
     var isStartButtonEnabled: Bool {
@@ -39,6 +46,10 @@ final class ScaleMenuViewModel {
     func selectPatient(_ patient: Patient) {
         selectedPatient = patient
         showingPatientSelection = false
+        
+        Task {
+            await createTestForSelectedPatient()
+        }
     }
     
     func showPatientSelection() {
@@ -49,5 +60,13 @@ final class ScaleMenuViewModel {
         showingPatientSelection = false
     }
     
+    //MARK: Create test
+    @MainActor
+    private func createTestForSelectedPatient() async {
+        guard let patient = selectedPatient else { return }
     
+        let test: ClinicalTestProtocol =  createTestUseCase.createTest(type: testType, patientID: patient.id)
+        createdTest = test
+    }
+
 }
