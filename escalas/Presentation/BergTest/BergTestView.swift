@@ -11,11 +11,13 @@ struct BergTestView: View {
     
     @State var viewModel: BergTestViewModel
     
-    
     var body: some View {
         VStack(spacing: 24) {
             
             VStack(alignment:.center, spacing: 8) {
+                Text(viewModel.progress)
+                    .font(.headline)
+                
                 HStack(alignment: .center) {
                     Text(viewModel.currentItemDefinition.title)
                         .font(.title2)
@@ -26,10 +28,27 @@ struct BergTestView: View {
                 Text(viewModel.currentItemDefinition.description)
             } //VStack Pregunta y marcador
             
-            HStack {
-                Text("Total:\(viewModel.totalScore)/56")
-                    .font(.headline)
-            } //HStack Marcador
+            if viewModel.currentItemDefinition.needsTimer {
+                VStack {
+                    Text(viewModel.formattedTime)
+                        .font(.system(size: 48, weight: .bold, design: .monospaced))
+                }
+                
+                HStack {
+                    Button(viewModel.isTimerRunning ? "Pausar" : "Iniciar"){
+                        if viewModel.isTimerRunning {
+                            viewModel.stopTimer()
+                        } else {
+                            viewModel.startTimer()
+                        }
+                    }
+                    
+                    Button("Reset") {
+                        viewModel.resetTimer()
+                    }
+                }
+            }
+            
             Spacer()
             VStack {
                 ForEach(viewModel.scoreOptions) { option in
@@ -74,9 +93,10 @@ struct BergTestView: View {
                 
                 Spacer()
                 
-                Text(viewModel.progress)
-                    .font(.headline)
-                
+                VStack{
+                    Text("Puntuación\ntotal: \(viewModel.totalScore)/56")
+                        .font(.headline)
+                }
                 Spacer()
                 
                 Button(viewModel.isLastItem ? "Finalizar" : "Siguiente") {
@@ -87,6 +107,7 @@ struct BergTestView: View {
                     }
                 }
             }
+            .padding()
         }//VStack padre
         .padding()
     }
@@ -94,5 +115,9 @@ struct BergTestView: View {
 
 
 #Preview {
-    BergTestView(viewModel: BergTestViewModel(test: BergTest.patient1))
+    let mockRepository = MockBergTestRepository()
+    
+    BergTestView(viewModel: BergTestViewModel(
+        useCase: SaveBergTestUseCase(repository: mockRepository),
+        test: BergTest.patient1))
 }

@@ -10,8 +10,22 @@ import Foundation
 @Observable
 final class BergTestViewModel {
     
+    @ObservationIgnored
+    private var useCase: SaveBergTestUseCaseProtocol
+    
     let test: BergTest
     var items: [BergItem]
+    
+    private var timer: Timer?
+    var isTimerRunning = false
+    var elapsedTime: TimeInterval = 0
+    
+    var formattedTime: String {
+        let minutes = Int(elapsedTime) / 60
+        let seconds = Int(elapsedTime) % 60
+        let miliseconds = Int((elapsedTime.truncatingRemainder(dividingBy: 1)) * 10)
+        return String(format: "%02d:%02d.%01d", minutes,seconds,miliseconds)
+    }
     
     // Indice de pregunta
     var currentItemIndex: Int = 0
@@ -24,7 +38,11 @@ final class BergTestViewModel {
         items[currentItemIndex]
     }
     
-    init(test: BergTest) {
+    // Estado del test
+    var isCompleted = false 
+    
+    init(useCase: SaveBergTestUseCaseProtocol,test: BergTest) {
+        self.useCase = useCase
         self.test = test
         self.items = test.items
     }
@@ -70,6 +88,29 @@ final class BergTestViewModel {
         currentItemIndex == items.count - 1
     }
     
+    func startTimer() {
+        guard !isTimerRunning else { return }
+        isTimerRunning = true
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            self?.elapsedTime += 0.1
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+        isTimerRunning = false
+        
+        // Guardar el tiempo en el item
+        items[currentItemIndex].timeRecorded = elapsedTime
+    }
+    
+    func resetTimer() {
+        stopTimer()
+        elapsedTime = 0
+    }
+    
     // Actualiza la UI para indicar que respuesta se ha seleccionado
     func selectScore(_ score: Int) {
         selectedScore = score
@@ -82,15 +123,36 @@ final class BergTestViewModel {
     }
     
     func backItem() {
+        
+        if isTimerRunning {
+            stopTimer()
+        }
+        
         if currentItemIndex > 0 {
             currentItemIndex -= 1
             selectedScore = items[currentItemIndex].score
+            
+            // Obtener el tiempo guardado en el item
+            elapsedTime = items[currentItemIndex].timeRecorded ?? 0
         }
     }
     
     func nextItem() {
+        
+        if isTimerRunning {
+            stopTimer()
+        }
+        
         guard currentItemIndex < items.count - 1 else {return}
         currentItemIndex += 1
         selectedScore = items[currentItemIndex].score
+        
+        // Obtener el tiempo guardado en el item
+        elapsedTime = items[currentItemIndex].timeRecorded ?? 0
+    }
+    
+    // Finalizar test
+    func finishTest() {
+        isCompleted = true
     }
 }

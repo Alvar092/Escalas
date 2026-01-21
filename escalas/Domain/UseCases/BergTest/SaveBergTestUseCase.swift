@@ -26,3 +26,18 @@ final class SaveBergTestUseCase: SaveBergTestUseCaseProtocol {
         try await repository.save(test)
     }    
 }
+
+
+final class MockSaveBergTestUseCase: SaveBergTestUseCaseProtocol {
+    var repository: any BergTestRepositoryProtocol
+    
+    init(repository: any BergTestRepositoryProtocol) {
+        self.repository = repository
+    }
+    
+    func saveBerg(test: BergTest) async throws {
+        try await repository.save(test)
+    }    
+    
+    
+}

@@ -80,6 +80,11 @@ extension BergItem {
             itemType: .sittingWithBackUnsupported,
             score: 0,
             timeRecorded: nil
+        ),
+        BergItem(id: UUID(),
+                 itemType: .standingUnsupported,
+                 score: 0,
+                 timeRecorded: nil
         )
     ]
 }

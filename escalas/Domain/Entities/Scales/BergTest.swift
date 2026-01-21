@@ -44,22 +44,22 @@ enum BergItemType: Int, CaseIterable, Codable {
     case StandingUnsupportedOneFootInFront = 12
     case StandingOnOneLeg = 13
     
-    var needsTimer: Bool {
-        switch self {
-        case
-                .standingUnsupported,
-                .sittingWithBackUnsupported,
-                .standingUnsupportedWithEyesClosed,
-                .standingUnsupportedWithFeetTogether,
-                .turn360Degrees,
-                .PlacingAlternatesFootOnStepOrStoolWhileStandingUnsupported,
-                .StandingUnsupportedOneFootInFront,
-                .StandingOnOneLeg:
-            return true
-        default:
-            return false
-        }
-    }
+//    var needsTimer: Bool {
+//        switch self {
+//        case
+//                .standingUnsupported,
+//                .sittingWithBackUnsupported,
+//                .standingUnsupportedWithEyesClosed,
+//                .standingUnsupportedWithFeetTogether,
+//                .turn360Degrees,
+//                .PlacingAlternatesFootOnStepOrStoolWhileStandingUnsupported,
+//                .StandingUnsupportedOneFootInFront,
+//                .StandingOnOneLeg:
+//            return true
+//        default:
+//            return false
+//        }
+//    }
 }
 
 

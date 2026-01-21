@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ScaleMenuView: View {
     
+    @Environment(\.repositories) private var repositories
+    
     @State private var viewModel: ScaleMenuViewModel
     let testType: TestType
     
@@ -81,7 +83,7 @@ struct ScaleMenuView: View {
                                 switch viewModel.testType {
                                 case .berg:
                                     if let bergTest = test as? BergTest {
-                                        BergTestView(viewModel: BergTestViewModel(test: bergTest))
+                                        BergTestView(viewModel: BergTestViewModel(useCase: SaveBergTestUseCase(repository: repositories.bergTestRepository), test: bergTest))
                                     }
                                 }
                             }
