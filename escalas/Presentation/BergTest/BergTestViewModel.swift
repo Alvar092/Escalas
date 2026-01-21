@@ -104,6 +104,9 @@ final class BergTestViewModel {
         
         // Guardar el tiempo en el item
         items[currentItemIndex].timeRecorded = elapsedTime
+        items[currentItemIndex].timeScoring()
+        
+        selectedScore = items[currentItemIndex].score
     }
     
     func resetTimer() {

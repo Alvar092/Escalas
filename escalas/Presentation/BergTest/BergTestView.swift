@@ -34,7 +34,7 @@ struct BergTestView: View {
                         .font(.system(size: 48, weight: .bold, design: .monospaced))
                 }
                 
-                HStack {
+                HStack(spacing: 32) {
                     Button(viewModel.isTimerRunning ? "Pausar" : "Iniciar"){
                         if viewModel.isTimerRunning {
                             viewModel.stopTimer()
@@ -47,7 +47,8 @@ struct BergTestView: View {
                         viewModel.resetTimer()
                     }
                 }
-            }
+                
+            } // Cronómetro
             
             Spacer()
             VStack {
