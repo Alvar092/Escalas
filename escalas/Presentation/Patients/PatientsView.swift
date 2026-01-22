@@ -55,7 +55,7 @@ struct PatientsView: View {
             }
         }
         .task {
-            let getUseCase = GetPatientUseCase(patientRepository: repositories.patientRepository)
+            let getUseCase = GetPatientsUseCase(patientRepository: repositories.patientRepository)
             let createUseCase = CreatePatientUseCase(patientRepository: repositories.patientRepository)
             
             let vm = PatientViewModel(

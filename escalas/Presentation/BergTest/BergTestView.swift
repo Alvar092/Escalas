@@ -9,7 +9,9 @@ import SwiftUI
 
 struct BergTestView: View {
     
+    @Environment(\.repositories) private var repositories
     @State var viewModel: BergTestViewModel
+    
     
     var body: some View {
         VStack(spacing: 24) {
@@ -102,7 +104,9 @@ struct BergTestView: View {
                 
                 Button(viewModel.isLastItem ? "Finalizar" : "Siguiente") {
                     if viewModel.isLastItem {
-                        // End()
+                        Task {
+                            try? await viewModel.finishTest()
+                        }
                     } else {
                         viewModel.nextItem()
                     }
@@ -111,6 +115,9 @@ struct BergTestView: View {
             .padding()
         }//VStack padre
         .padding()
+        .navigationDestination(isPresented: $viewModel.navigateToResultView) {
+            ScaleResultView(viewModel: ScaleResultViewModel(test: viewModel.test, useCase: GetPatientByIdUseCase(patientsRepository: repositories.patientRepository)))
+        }
     }
 }
 

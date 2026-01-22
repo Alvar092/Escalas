@@ -26,6 +26,7 @@ protocol ClinicalTestProtocol {
     var date: Date {get}
     var patientID: UUID {get}
     var totalScore: Int {get}
+    var maxScore: Int? {get}
     var testType: TestType {get}
 }
 

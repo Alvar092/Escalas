@@ -64,7 +64,7 @@ extension BergItem {
 
     static let mockItems: [BergItem] = [
         BergItem(
-            id: UUID(),
+            id: UUID(uuidString: "00000000-0000-0000-0000-000000000001") ?? UUID(),
             itemType: .sittingToStanding,
             score: 0,
             timeRecorded: nil

@@ -7,10 +7,12 @@
 import Foundation
 
 struct BergTest: ClinicalTestProtocol {
+   
     let id: UUID
     var date: Date
     var patientID: UUID
     var items: [BergItem]
+    var maxScore: Int? = 56
     
     var totalScore: Int {
         items.compactMap { $0.score }.reduce(0,+)

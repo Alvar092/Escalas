@@ -13,7 +13,7 @@ final class BergTestViewModel {
     @ObservationIgnored
     private var useCase: SaveBergTestUseCaseProtocol
     
-    let test: BergTest
+    var test: BergTest
     var items: [BergItem]
     
     private var timer: Timer?
@@ -39,7 +39,8 @@ final class BergTestViewModel {
     }
     
     // Estado del test
-    var isCompleted = false 
+    var isCompleted = false
+    var navigateToResultView = false
     
     init(useCase: SaveBergTestUseCaseProtocol,test: BergTest) {
         self.useCase = useCase
@@ -155,7 +156,10 @@ final class BergTestViewModel {
     }
     
     // Finalizar test
-    func finishTest() {
+    func finishTest() async throws {
+        test.items = items
+        try await useCase.saveBerg(test: test)
         isCompleted = true
+        navigateToResultView = true
     }
 }

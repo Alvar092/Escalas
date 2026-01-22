@@ -16,11 +16,11 @@ final class PatientViewModel {
     var patients: [Patient] = []
     
     @ObservationIgnored
-    private var getPatientsUseCase: GetPatientUseCaseProtocol
+    private var getPatientsUseCase: GetPatientsUseCaseProtocol
     private var createPatientUseCase: CreatePatientUseCaseProtocol
     
     
-    init(getPatientsUseCase: GetPatientUseCaseProtocol,
+    init(getPatientsUseCase: GetPatientsUseCaseProtocol,
          createPatientUseCase: CreatePatientUseCaseProtocol
     ) {
         self.getPatientsUseCase = getPatientsUseCase

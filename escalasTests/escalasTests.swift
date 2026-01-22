@@ -26,7 +26,7 @@ struct escalasTests {
                 static func createOnePatient(name: String = "Perico Palotes", dateOfBirth: Date = Date()) -> Patient {
                     return Patient(id: UUID(), name: name, dateOfBirth: dateOfBirth)
                 }
-
+                
             }
             
             @Suite("PatientsRepository") struct PatientRespositoryTest {
@@ -166,7 +166,7 @@ struct escalasTests {
                     let patientID = await patient.id
                     let test = createOneBergTest(patientID: patientID)
                     try await patientRepository.save(patient)
-                   
+                    
                     // WHEN
                     try await sut.save(test)
                     
@@ -221,7 +221,7 @@ struct escalasTests {
                     // WHEN
                     try await patientRepository.save(patient)
                     try await sut.save(test)
-
+                    
                     // THEN
                     let result = try await sut.getByID(testID)
                     #expect(result?.patientID == patientID)
@@ -245,7 +245,7 @@ struct escalasTests {
                     let result = try await sut.getByPatient(patientID)
                     let item = result.first?.items.first
                     #expect(item?.score == 3)
-
+                    
                 }
             }
         }//Repos
@@ -258,8 +258,8 @@ struct escalasTests {
             func getPatientsTest() async throws {
                 // GIVEN
                 let repo = mockRepo
-                let useCase = GetPatientUseCase(patientRepository: repo)
-               
+                let useCase = GetPatientsUseCase(patientRepository: repo)
+                
                 // WHEN
                 let result = try await useCase.getPatients()
                 
@@ -296,18 +296,18 @@ struct escalasTests {
                 
                 // WHEN
                 let history = try await useCase.getPatientHistory(patientID: patient.id)
-
+                
                 // THEN
                 #expect(history.patient.id == patient.id)
                 #expect(history.bergTests.count == 1)
                 #expect(history.bergTests.first?.id == bergTest.id)
-
+                
             }
         }//UseCases
     }//Domain
     
     @Suite("Presentation Testing") struct PresentationTest{
-        @Suite("ScaleViewModel") struct ScaleViewModelTests {
+        @Suite("ScaleMenuViewModel") struct ScaleMenuViewModelTests {
             
             @Test("InitVM")
             @MainActor
@@ -344,7 +344,35 @@ struct escalasTests {
                 vm.selectPatient(patient)
                 #expect(vm.patientDisplayName == patient.name)
             }
+        }
+        @Suite("ScaleResultViewModel") struct ScaleResultViewModelTests {
+            @Test("InitVM")
+            @MainActor
+            func initialization() async throws {
+                let vm = ScaleResultViewModel(test: BergTest.patient1,
+                                              useCase: GetPatientByIdUseCase(
+                                                patientsRepository: MockPatientRepository()
+                                              )
+                )
+                
+                #expect(vm.test.testType == .berg)
+                #expect(vm.patient == nil)
+            }
             
+            @Test("GetPatient")
+            @MainActor
+            func getPatient() async throws {
+                let repo = MockPatientRepository(initialPatients: [Patient.patient1])
+                let vm = ScaleResultViewModel(test: BergTest.patient1,
+                                              useCase: GetPatientByIdUseCase(
+                                                patientsRepository: repo
+                                              )
+                )
+                
+                try await vm.getPatient()
+                
+                #expect(vm.patient == Patient.patient1)
+            }
         }
     }
 }
