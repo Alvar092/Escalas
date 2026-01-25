@@ -60,17 +60,16 @@ struct BergTestView: View {
                     } label: {
                         HStack{
                             Text(option.description)
-                                .foregroundStyle(.black.opacity(0.8))
+                                .foregroundStyle(.primary)
                             
                             Spacer()
                         }
                         .padding(16)
                         
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
+                        .background(                            RoundedRectangle(cornerRadius: 8)
                                 .fill(
                                     viewModel.isOptionSelected(option)
-                                    ? Color.blue.opacity(0.2) : Color.clear
+                                    ? Color.accentColor.opacity(0.2) : Color.clear
                                 )
                         )
                         .overlay(
