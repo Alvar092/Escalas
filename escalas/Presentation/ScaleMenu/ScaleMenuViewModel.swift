@@ -31,7 +31,11 @@ final class ScaleMenuViewModel {
     }
     
     var patientDisplayName: String {
-        selectedPatient?.name ?? "Seleccionar paciente"
+        if let patient = selectedPatient {
+            return "Paciente: \(patient.name)"
+        } else {
+            return "Seleccionar paciente"
+        }
     }
     
     var patientName: String? {

@@ -11,6 +11,13 @@ import Observation
 @Observable
 final class ScaleResultViewModel {
     
+    var showShare = false
+    var pdfURL: URL?
+    var showError = false
+    var errorText = ""
+    
+    private let pdfGenerator = PDFGenerator()
+    
     var test: any ClinicalTestProtocol
     private(set) var patient: Patient?
     
@@ -27,4 +34,61 @@ final class ScaleResultViewModel {
             patient = user
         }
     }
+    
+    func exportPDF() {
+        guard let patient = patient else {
+            errorText = "Debe cargar los datos del paciente"
+            showError = true
+            return
+        }
+        
+        let itemsPDF = prepareItemsForPDF()
+        
+        let pdfData = pdfGenerator.generatePDF(
+            test: test,
+            patient: patient,
+            items: itemsPDF
+        )
+        
+        let tempURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("test_\(patient.name)_\(Date().timeIntervalSince1970).pdf")
+        
+        do {
+            try pdfData.write(to: tempURL)
+            self.pdfURL = tempURL
+            self.showShare = true
+        } catch {
+            self.errorText = "No se pudo generar el PDF: \(error.localizedDescription)"
+            self.showError = true
+        }
+        
+    }
+    
+    private func prepareItemsForPDF() -> [BergItemPDF] {
+            // Verificar si es BergTest
+            guard let bergTest = test as? BergTest else {
+                return []
+            }
+            
+            // Obtener las definiciones de los items de Berg
+            let definitions = BergItemCatalog.allDefinitions()
+            
+            // Combinar items con sus definiciones
+            var itemsPDF: [BergItemPDF] = []
+            
+            for (index, item) in bergTest.items.enumerated() {
+                // Buscar la definición correspondiente
+                if let definition = definitions.first(where: { $0.type == item.itemType }) {
+                    let itemPDF = BergItemPDF(
+                        number: index + 1,
+                        definition: definition,
+                        item: item,
+                        test: bergTest
+                    )
+                    itemsPDF.append(itemPDF)
+                }
+            }
+            
+            return itemsPDF
+        }
 }

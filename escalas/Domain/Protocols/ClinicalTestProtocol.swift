@@ -24,6 +24,7 @@ enum TestType: String, Codable {
 protocol ClinicalTestProtocol {
     var id: UUID {get}
     var date: Date {get}
+    var evaluator: String? {get}
     var patientID: UUID {get}
     var totalScore: Int {get}
     var maxScore: Int? {get}

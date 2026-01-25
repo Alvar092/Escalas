@@ -33,6 +33,7 @@
 		674EF3B22EDF6A73000CF54C /* escalasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3B02EDF6A73000CF54C /* escalasTests.swift */; };
 		678A224A2EF40A2F004A6F41 /* ScaleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A22492EF40A2F004A6F41 /* ScaleInfoView.swift */; };
 		678A224F2EF45FA0004A6F41 /* ScaleMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */; };
+		679D9DAB2F240804007CC799 /* BergItemPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679D9DAA2F240804007CC799 /* BergItemPDF.swift */; };
 		67C92A7B2F1D62B900F1721E /* BergTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C92A7A2F1D62B200F1721E /* BergTestViewModel.swift */; };
 		67C92A7D2F1D62E400F1721E /* BergItemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C92A7C2F1D62E400F1721E /* BergItemCatalog.swift */; };
 		67C92A7F2F1D632A00F1721E /* BergItemDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C92A7E2F1D632A00F1721E /* BergItemDefinition.swift */; };
@@ -102,6 +103,7 @@
 		674EF3B02EDF6A73000CF54C /* escalasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = escalasTests.swift; sourceTree = "<group>"; };
 		678A22492EF40A2F004A6F41 /* ScaleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleInfoView.swift; sourceTree = "<group>"; };
 		678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMenuViewModel.swift; sourceTree = "<group>"; };
+		679D9DAA2F240804007CC799 /* BergItemPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergItemPDF.swift; sourceTree = "<group>"; };
 		67C92A7A2F1D62B200F1721E /* BergTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergTestViewModel.swift; sourceTree = "<group>"; };
 		67C92A7C2F1D62E400F1721E /* BergItemCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergItemCatalog.swift; sourceTree = "<group>"; };
 		67C92A7E2F1D632A00F1721E /* BergItemDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergItemDefinition.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				67DF22102F2291A50024A130 /* PDFGenerator.swift */,
+				679D9DAA2F240804007CC799 /* BergItemPDF.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				67DF220C2F224ABC0024A130 /* ScaleResultViewModel.swift in Sources */,
 				67E221822EE3009600079E52 /* CreatePatientUseCase.swift in Sources */,
 				67FA9E002F1F9BD000DF5B3D /* CreateTestUseCase.swift in Sources */,
+				679D9DAB2F240804007CC799 /* BergItemPDF.swift in Sources */,
 				67DF220E2F224E3B0024A130 /* GetPatientByIdUseCase.swift in Sources */,
 				674EF3992EDE02A3000CF54C /* PatientEntity.swift in Sources */,
 				674EF3912EDDF4EC000CF54C /* GeneratePDFUseCase.swift in Sources */,

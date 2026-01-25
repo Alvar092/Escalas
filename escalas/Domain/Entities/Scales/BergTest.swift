@@ -10,6 +10,7 @@ struct BergTest: ClinicalTestProtocol {
    
     let id: UUID
     var date: Date
+    var evaluator: String?
     var patientID: UUID
     var items: [BergItem]
     var maxScore: Int? = 56

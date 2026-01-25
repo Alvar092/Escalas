@@ -221,4 +221,8 @@ enum BergItemCatalog {
             needsTimer: true
         )
     ]
+    
+    static func allDefinitions() -> [BergItemDefinition] {
+        Array(definitions.values)
+    }
 }

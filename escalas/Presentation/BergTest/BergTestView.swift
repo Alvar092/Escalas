@@ -87,7 +87,7 @@ struct BergTestView: View {
             
             Spacer()
             
-            HStack {
+            HStack(alignment: .bottom) {
                 Button{
                     viewModel.backItem()
                 } label: {
@@ -113,6 +113,7 @@ struct BergTestView: View {
                 }
             }
             .padding()
+            
         }//VStack padre
         .padding()
         .navigationDestination(isPresented: $viewModel.navigateToResultView) {
