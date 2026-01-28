@@ -50,7 +50,7 @@ class PDFGenerator {
             
             // Info de la prueba
             currentY = drawSection(title: "Información de la evaluación", y: currentY)
-            currentY = drawText(text: "Fecha\(formatDate(test.date))", y: currentY)
+            currentY = drawText(text: "Fecha: \(formatDate(test.date))", y: currentY)
             currentY += 20
             
             // Puntuación total
@@ -122,9 +122,11 @@ class PDFGenerator {
         let dob = patient.dateOfBirth
         let age = calculateAge(from: dob)
         currentY = drawText(
-            text: "Fecha de nacimiento: \(formatDate(dob))(Edad: \(age) años",
+            text: "Fecha de nacimiento: \(formatDate(dob))",
             y: currentY
         )
+        
+        currentY = drawText(text: "Edad: \(age) años", y: currentY)
         
         return currentY
     }
@@ -189,66 +191,50 @@ class PDFGenerator {
     }
     
     private func drawItem(item: BergItemPDF, y: CGFloat) -> CGFloat {
-        // 1- Dimensiones de la fila
-        // Ancho total disponible
         let itemWidth = pageWidth - 2 * margin
-        //Altura de cada fila de item
-        let itemHeight: CGFloat = 50
+        let itemHeight: CGFloat = 65 // Más altura para las opciones
         
-        // 2- Fondo alternado para mejor legibilidad
-        //Si el numero de item es par el fondo es gris claro
+        // Fondo alternado
         if item.number % 2 == 0 {
             UIColor(white: 0.97, alpha: 1.0).setFill()
-            // Rectangulo que cubre la fila
             UIBezierPath(rect: CGRect(x: margin, y: y, width: itemWidth, height: itemHeight)).fill()
         }
         
-        // 3- Número del ítem
-        // Atributos para el numero
+        // Número del ítem
         let numberAttrs: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: 12),
             .foregroundColor: UIColor(red: 0.3, green: 0.4, blue: 0.6, alpha: 1.0)
         ]
-        // Texto del numero
         let numberText = "\(item.number)."
-        // Rectangulo pequeño a la izquierda para el número
         let numberRect = CGRect(x: margin + 10, y: y + 10, width: 30, height: 20)
-        // Rectangulo pequeño a la izquierda para el número
         numberText.draw(in: numberRect, withAttributes: numberAttrs)
         
-        // 4- Dibujar título
+        // Título
         let titleAttrs: [NSAttributedString.Key: Any] = [
-            .font:UIFont.systemFont(ofSize: 11),
+            .font: UIFont.systemFont(ofSize: 11),
             .foregroundColor: UIColor.black
         ]
-        
         let titleRect = CGRect(
             x: margin + 45,
             y: y + 10,
             width: itemWidth - 150 ,
             height: 30
         )
-        
         item.title.draw(in: titleRect, withAttributes: titleAttrs)
-        
-        
-        // 5- Puntuación
-        let scoreAttrs: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: 14),
-            .foregroundColor: UIColor(red: 0.2, green: 0.4, blue: 0.7, alpha: 1.0)
+                
+        // Descripción del item puntuado
+        let descriptionAttrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 11),
+            .foregroundColor: UIColor.darkGray
         ]
+        let descriptionRect = CGRect(
+            x: margin + 45,
+            y: y + 38,
+            width: itemWidth - 60,
+            height: 22
+        )
+        item.scoreDescription.draw(in: descriptionRect, withAttributes: descriptionAttrs)
         
-        let scoreText = "\(item.score)/\(item.maxScore)"
-        let scoreSize = scoreText.size(withAttributes: scoreAttrs)
-        
-        let scoreRect = CGRect(
-            x: pageWidth - margin - scoreSize.width - 10,
-            y: y + 15,
-            width: scoreSize.width,
-            height: scoreSize.height
-            )
-        
-        scoreText.draw(in: scoreRect, withAttributes: scoreAttrs)
         
         return y + itemHeight
     }
@@ -256,73 +242,74 @@ class PDFGenerator {
     
     
     // MARK: - Funciones auxiliares reutilizables
-       
-       private func drawSection(title: String, y: CGFloat) -> CGFloat {
-           let attrs: [NSAttributedString.Key: Any] = [
-               .font: UIFont.boldSystemFont(ofSize: 16),
-               .foregroundColor: UIColor.darkGray
-           ]
-           
-           let textRect = CGRect(x: margin, y: y, width: pageWidth - 2 * margin, height: 25)
-           title.draw(in: textRect, withAttributes: attrs)
-           
-           let linePath = UIBezierPath()
-           linePath.move(to: CGPoint(x: margin, y: y + 23))
-           linePath.addLine(to: CGPoint(x: pageWidth - margin, y: y + 23))
-           UIColor.lightGray.setStroke()
-           linePath.lineWidth = 1
-           linePath.stroke()
-           
-           return y + 35
-       }
-       
-       private func drawText(text: String, y: CGFloat) -> CGFloat {
-           let attrs: [NSAttributedString.Key: Any] = [
-               .font: UIFont.systemFont(ofSize: 12),
-               .foregroundColor: UIColor.black
-           ]
-           
-           let textRect = CGRect(x: margin, y: y, width: pageWidth - 2 * margin, height: 18)
-           text.draw(in: textRect, withAttributes: attrs)
-           return y + 22
-       }
-       
-       private func drawPageNumber(number: Int, context: UIGraphicsPDFRendererContext) {
-           let attrs: [NSAttributedString.Key: Any] = [
-               .font: UIFont.systemFont(ofSize: 9),
-               .foregroundColor: UIColor.gray
-           ]
-           
-           let text = "Página \(number)"
-           let textSize = text.size(withAttributes: attrs)
-           let textRect = CGRect(
-               x: pageWidth - margin - textSize.width,
-               y: pageHeight - margin + 10,
-               width: textSize.width,
-               height: textSize.height
-           )
-           text.draw(in: textRect, withAttributes: attrs)
-       }
-       
-       private func formatDate(_ date: Date) -> String {
-           let formatter = DateFormatter()
-           formatter.dateStyle = .long
-           formatter.timeStyle = .short
-           formatter.locale = Locale(identifier: "es_ES")
-           return formatter.string(from: date)
-       }
-       
-//       private func formatearFechaSolo(_ fecha: Date) -> String {
-//           let formatter = DateFormatter()
-//           formatter.dateStyle = .medium
-//           formatter.locale = Locale(identifier: "es_ES")
-//           return formatter.string(from: fecha)
-//       }
-       
-       private func calculateAge(from birthDate: Date) -> Int {
-           Calendar.current.dateComponents([.year], from: birthDate, to: Date()).year ?? 0
-       }
+    
+    private func drawSection(title: String, y: CGFloat) -> CGFloat {
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 16),
+            .foregroundColor: UIColor.darkGray
+        ]
+        
+        let textRect = CGRect(x: margin, y: y, width: pageWidth - 2 * margin, height: 25)
+        title.draw(in: textRect, withAttributes: attrs)
+        
+        let linePath = UIBezierPath()
+        linePath.move(to: CGPoint(x: margin, y: y + 23))
+        linePath.addLine(to: CGPoint(x: pageWidth - margin, y: y + 23))
+        UIColor.lightGray.setStroke()
+        linePath.lineWidth = 1
+        linePath.stroke()
+        
+        return y + 35
+    }
+    
+    private func drawText(text: String, y: CGFloat) -> CGFloat {
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 12),
+            .foregroundColor: UIColor.black
+        ]
+        
+        let nsString = text as NSString
+        let availableWidth = pageWidth - 2 * margin
+        
+        // Calcula el tamaño necesario para el texto con saltos de linea
+        let boundingRect = nsString.boundingRect(
+            with: CGSize(width: availableWidth, height: .greatestFiniteMagnitude),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            attributes: attrs,
+            context: nil
+        )
+        
+        let textRect = CGRect(x: margin, y: y, width: availableWidth, height: boundingRect.height)
+        nsString.draw(in: textRect, withAttributes: attrs)
+        return y + boundingRect.height + 6
+    }
+    
+    private func drawPageNumber(number: Int, context: UIGraphicsPDFRendererContext) {
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 9),
+            .foregroundColor: UIColor.gray
+        ]
+        
+        let text = "Página \(number)"
+        let textSize = text.size(withAttributes: attrs)
+        let textRect = CGRect(
+            x: pageWidth - margin - textSize.width,
+            y: pageHeight - margin + 10,
+            width: textSize.width,
+            height: textSize.height
+        )
+        text.draw(in: textRect, withAttributes: attrs)
+    }
+    
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        //formatter.timeStyle = .short
+        formatter.locale = Locale(identifier: "es_ES")
+        return formatter.string(from: date)
+    }
+    
+    private func calculateAge(from birthDate: Date) -> Int {
+        Calendar.current.dateComponents([.year], from: birthDate, to: Date()).year ?? 0
+    }
 }
-
-
-

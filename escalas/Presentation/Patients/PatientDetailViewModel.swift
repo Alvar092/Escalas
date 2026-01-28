@@ -7,6 +7,7 @@
 
 import Foundation
 
+@Observable
 final class PatientDetailViewModel {
     
     var patient: Patient

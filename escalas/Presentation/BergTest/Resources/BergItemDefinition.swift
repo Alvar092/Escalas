@@ -13,4 +13,8 @@ struct BergItemDefinition {
     let description: String
     let scoringOptions: [BergScoreOption]
     let needsTimer: Bool
+    
+    func scoreDescription(for score: Int) -> String {
+        scoringOptions.first(where: {$0.score == score})?.description ?? ""
+    }
 }

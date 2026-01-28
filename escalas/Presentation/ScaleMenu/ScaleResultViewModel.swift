@@ -79,11 +79,16 @@ final class ScaleResultViewModel {
             for (index, item) in bergTest.items.enumerated() {
                 // Buscar la definición correspondiente
                 if let definition = definitions.first(where: { $0.type == item.itemType }) {
+                    
+                    let score = item.score ?? 0
+                    let scoreDescription = definition.scoreDescription(for: score)
+                    
                     let itemPDF = BergItemPDF(
                         number: index + 1,
                         definition: definition,
                         item: item,
-                        test: bergTest
+                        test: bergTest,
+                        scoreDescription: scoreDescription
                     )
                     itemsPDF.append(itemPDF)
                 }

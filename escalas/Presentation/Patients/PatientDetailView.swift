@@ -10,7 +10,7 @@ import SwiftUI
 struct PatientDetailView: View {
     @Environment(\.repositories) private var repositories
     
-    var viewModel: PatientDetailViewModel
+    @State var viewModel: PatientDetailViewModel
     
     var body: some View {
         VStack (alignment: .leading, spacing: 16) {
@@ -23,8 +23,8 @@ struct PatientDetailView: View {
                 VStack (alignment: .leading, spacing: 4) {
                     
                     Text(viewModel.patient.name)
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                        .font(.title)
+                        .fontWeight(.bold)
                     
                     Text("\(viewModel.patient.age) años")
                         .font(.subheadline)
@@ -33,33 +33,39 @@ struct PatientDetailView: View {
                 }
             } // HStack
             .padding(.horizontal)
-            
-            Text("Tests")
-                .font(.headline)
-                .padding(.horizontal)
-            
-            ForEach(viewModel.tests, id: \.id) { test in
-                HStack{
-                    VStack(alignment: .leading) {
-                        Text(test.testType.rawValue)
-                            .font(.headline)
-                        Text(test.date.formatted(date:.abbreviated, time: .omitted))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+            ScrollView{
+                Text("Tests")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .padding(.horizontal)
+                
+                ForEach(viewModel.tests, id: \.id) { test in
+                    HStack{
+                        VStack(alignment: .leading) {
+                            Text(test.testType.rawValue)
+                                .font(.default)
+                            Text(test.date.formatted(date:.abbreviated, time: .omitted))
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        
+                        Spacer()
+                        
+                        Text("\(test.totalScore)/\(test.testType.maxScore)")
+                            .font(.title3)
+                            .bold()
                     }
-                    
-                    Spacer()
-                    
-                    Text("\(test.totalScore)/\(test.testType.maxScore)")
-                        .font(.title3)
-                        .bold()
                 }
+                .padding()
             }
-            .padding()
+            
         } // VStack
         .navigationTitle("Paciente")
         .navigationBarTitleDisplayMode(.inline)
         
+        .task {
+            try? await viewModel.getPatientTests()
+        }
         
     }
 }
