@@ -10,6 +10,7 @@ import SwiftUI
 struct BergTestView: View {
     
     @Environment(\.repositories) private var repositories
+    @Environment(\.navigationRouter) private var router
     @State var viewModel: BergTestViewModel
     
     
@@ -118,6 +119,8 @@ struct BergTestView: View {
                 if viewModel.isLastItem {
                     Task {
                         try? await viewModel.finishTest()
+                        let completedTest = viewModel.test
+                        router.navigateToResults(testType: .berg, completedTest: completedTest)
                     }
                 } else {
                     viewModel.nextItem()
@@ -135,9 +138,17 @@ struct BergTestView: View {
 
 #Preview {
     let mockRepository = MockBergTestRepository()
+    let router = NavigationRouter()
+    let repositories = Repositories.preview
     
-    BergTestView(viewModel: BergTestViewModel(
-        useCase: SaveBergTestUseCase(repository: mockRepository),
-        test: BergTest.patient1))
+    let test = BergTest.patient1
+    router.currentTest = test
+    
+    return NavigationStack(path: .constant(NavigationPath())) {
+            router.makeTestView(for: .berg, repositories: repositories)
+        }
+        .environment(\.navigationRouter, router)
+        .environment(\.repositories, repositories)
+    
 }
 

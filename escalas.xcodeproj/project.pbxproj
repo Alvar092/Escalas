@@ -13,6 +13,7 @@
 		67256D092EE1908700D568EF /* BergTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D082EE1908700D568EF /* BergTestView.swift */; };
 		67256D0B2EE1916B00D568EF /* PatientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D0A2EE1916400D568EF /* PatientsViewModel.swift */; };
 		67256D532EE1A08300D568EF /* Environment+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D522EE1A07D00D568EF /* Environment+Repositories.swift */; };
+		674C49A72F2A837000B9273F /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674C49A62F2A837000B9273F /* NavigationRouter.swift */; };
 		674EF2F92EDDC3D6000CF54C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 674EF2F42EDDC3D6000CF54C /* Assets.xcassets */; };
 		674EF2FA2EDDC3D6000CF54C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF2F52EDDC3D6000CF54C /* ContentView.swift */; };
 		674EF2FB2EDDC3D6000CF54C /* escalasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF2F62EDDC3D6000CF54C /* escalasApp.swift */; };
@@ -80,6 +81,7 @@
 		67256D082EE1908700D568EF /* BergTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergTestView.swift; sourceTree = "<group>"; };
 		67256D0A2EE1916400D568EF /* PatientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewModel.swift; sourceTree = "<group>"; };
 		67256D522EE1A07D00D568EF /* Environment+Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Repositories.swift"; sourceTree = "<group>"; };
+		674C49A62F2A837000B9273F /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		674EF2C72EDCB64D000CF54C /* escalas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = escalas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		674EF2D62EDCB64F000CF54C /* escalasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = escalasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		674EF2E02EDCB64F000CF54C /* escalasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = escalasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +230,7 @@
 				674EF2FD2EDDC3DD000CF54C /* Presentation */,
 				674EF2F42EDDC3D6000CF54C /* Assets.xcassets */,
 				674EF2F52EDDC3D6000CF54C /* ContentView.swift */,
+				674C49A62F2A837000B9273F /* NavigationRouter.swift */,
 				674EF2F62EDDC3D6000CF54C /* escalasApp.swift */,
 				674EF2F72EDDC3D6000CF54C /* Item.swift */,
 			);
@@ -558,6 +561,7 @@
 				67C92A7B2F1D62B900F1721E /* BergTestViewModel.swift in Sources */,
 				674EF38F2EDDF4E2000CF54C /* GetPatientsUseCase.swift in Sources */,
 				67D827F02F16AC2A0037BB35 /* ClinicalTestInfoRepository.swift in Sources */,
+				674C49A72F2A837000B9273F /* NavigationRouter.swift in Sources */,
 				674EF3A72EDE1892000CF54C /* BergTestMapper.swift in Sources */,
 				674EF3432EDDC466000CF54C /* Patient.swift in Sources */,
 				67C92A812F1D633600F1721E /* BergScoreOption.swift in Sources */,

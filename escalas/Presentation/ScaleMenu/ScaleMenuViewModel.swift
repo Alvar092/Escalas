@@ -27,7 +27,7 @@ final class ScaleMenuViewModel {
     }
     
     var isStartButtonEnabled: Bool {
-        selectedPatient != nil
+        selectedPatient != nil && createdTest != nil 
     }
     
     var patientDisplayName: String {

@@ -42,4 +42,15 @@ class Repositories {
     }
 }
 
-
+extension Repositories {
+    static var preview: Repositories {
+        let schema = Schema([
+            PatientEntity.self,
+            BergTestEntity.self
+        ])
+        
+        let container = try! ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+        )
+        return Repositories(modelContext: ModelContext(container))
+    }
+}

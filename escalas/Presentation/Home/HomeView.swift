@@ -15,9 +15,10 @@ struct HomeView: View {
     
     
     @Environment(\.repositories) private var repositories
-   
+    @State private var router = NavigationRouter()
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.path) {
             VStack(alignment: .center, spacing: 32) {
                 // Sección superior: mensaje de bienvenida + icono de perfil
                 VStack(alignment: .center, spacing: 16) {
@@ -41,9 +42,10 @@ struct HomeView: View {
                 VStack(alignment: .center, spacing: 20) {
                     Text("Elige una escala para comenzar")
                         .font(.headline)
+                    
                     VStack(spacing: 12) {
-                        NavigationLink("Berg Test") {
-                            ScaleMenuView(testType: .berg)
+                        Button("Berg Test") {
+                            router.navigate(to: .scaleMenu(testType: .berg)) //ScaleMenuView(testType: .berg)
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -52,7 +54,7 @@ struct HomeView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         
                         
-                        NavigationLink("Time Up & Go") {
+                        Button("Time Up & Go") {
                             /* goToTUG */
                         }
                         .frame(maxWidth: .infinity)
@@ -61,7 +63,7 @@ struct HomeView: View {
                         .foregroundStyle(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         
-                        NavigationLink("10 Metres Walking Test") {
+                        Button("10 Metres Walking Test") {
                             /* GoTo10MWT */
                         }
                         .frame(maxWidth: .infinity)
@@ -74,8 +76,8 @@ struct HomeView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Menu {
-                            NavigationLink("Pacientes") {
-                                PatientsView(mode: .browse)
+                            Button("Pacientes") {
+                                router.navigate(to: .patients(mode: .browse))
                             }
                             
                         } label: {
@@ -87,10 +89,33 @@ struct HomeView: View {
                 Spacer()
             }
             .padding()
+            .navigationDestination(for: AppRoute.self) { route in
+                routeView(for: route)
+            }
+        }
+        .environment(\.navigationRouter, router)
+    }
+    
+    @ViewBuilder
+    private func routeView(for route: AppRoute) -> some View {
+        switch route {
+        case .scaleMenu(let testType):
+            ScaleMenuView(testType: testType)
+            
+        case .test(let testType):
+            router.makeTestView(for: testType, repositories: repositories)
+            
+        case .scaleResult(let testType):
+            router.makeResultView(for: testType, repositories: repositories)
+            
+        case .patients:
+            PatientsView(mode: .browse)
         }
     }
 }
 
 #Preview {
     HomeView()
+        .environment(NavigationRouter())
+        .environment(\.repositories, Repositories.preview)
 }
