@@ -44,33 +44,47 @@ struct HomeView: View {
                         .font(.headline)
                     
                     VStack(spacing: 12) {
-                        Button("Berg Test") {
-                            router.navigate(to: .scaleMenu(testType: .berg)) //ScaleMenuView(testType: .berg)
+                        
+                        Button {
+                            router.navigate(to: .scaleMenu(testType: .berg))
+                        } label: {
+                            Text("Berg Test")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.accentColor.gradient)
+                                .foregroundStyle(.white)
+                                .cornerRadius(12)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.accentColor.gradient)
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                       
+                        Button {
+                            /* router.navigate(to: .scaleMenu(testType: .tug)) */
+                            
+                        } label: {
+                            Text("Time Up & Go (Pronto)")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.accentColor.gradient)
+                                .foregroundStyle(.white)
+                                .cornerRadius(12)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        }
+                        .disabled(true)
+                        
+                        Button {
+                            /* router.navigate(to: .scaleMenu(testType: .10mwt)) */
+                        } label: {
+                            Text("10 Metres Walking Test (Pronto)")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.accentColor.gradient)
+                                .foregroundStyle(.white)
+                                .cornerRadius(12)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        }
+                        .disabled(true)
                         
                         
-                        Button("Time Up & Go") {
-                            /* goToTUG */
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.accentColor.gradient)
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        
-                        Button("10 Metres Walking Test") {
-                            /* GoTo10MWT */
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.accentColor.gradient)
-                        .foregroundStyle(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     } //VStack Escalas
                 } // VStack Elige escalas
                 .toolbar {
