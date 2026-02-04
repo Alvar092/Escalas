@@ -134,10 +134,10 @@ struct PatientsView: View {
         VStack(alignment: .leading) {
             Text(patient.name)
                 .font(.m)
-                .foregroundStyle(.textSecondary)
+                .foregroundStyle(.textOnPrimary)
             Text("Nacimiento: \(patient.dateOfBirth.formatted(date: .abbreviated, time: .omitted))")
                 .font(.s)
-                .foregroundStyle(.textSecondary)
+                .foregroundStyle(.textOnPrimary)
         }
         .padding(.vertical, 12)
         .padding(.horizontal, 16)

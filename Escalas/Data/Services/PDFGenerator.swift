@@ -192,7 +192,7 @@ class PDFGenerator {
     
     private func drawItem(item: BergItemPDF, y: CGFloat) -> CGFloat {
         let itemWidth = pageWidth - 2 * margin
-        let itemHeight: CGFloat = 65 // Más altura para las opciones
+        let itemHeight: CGFloat = 120 // Más altura para las opciones
         
         // Fondo alternado
         if item.number % 2 == 0 {
@@ -222,19 +222,29 @@ class PDFGenerator {
         )
         item.title.draw(in: titleRect, withAttributes: titleAttrs)
                 
-        // Descripción del item puntuado
-        let descriptionAttrs: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 11),
-            .foregroundColor: UIColor.darkGray
-        ]
-        let descriptionRect = CGRect(
-            x: margin + 45,
-            y: y + 38,
-            width: itemWidth - 60,
-            height: 22
-        )
-        item.scoreDescription.draw(in: descriptionRect, withAttributes: descriptionAttrs)
         
+        // Descripcion items e item puntuado
+        var currentOptionY = y + 30
+        
+        for option in item.scoringOptions {
+            let optionLineHeight: CGFloat = 14
+            let isSelected = option.score == item.score
+            
+            let optionAttrs: [NSAttributedString.Key : Any] = [
+                .font: isSelected
+                ? UIFont.boldSystemFont(ofSize: 11)
+                : UIFont.systemFont(ofSize: 11),
+                .foregroundColor: isSelected
+                ? UIColor.black
+                : UIColor.darkGray
+            ]
+            
+            let optionText = "\(option.description)"
+            let optionRect = CGRect(x: margin + 45, y: currentOptionY, width: itemWidth - 60, height: optionLineHeight)
+            
+            optionText.draw(in: optionRect, withAttributes: optionAttrs)
+            currentOptionY += optionLineHeight
+        }
         
         return y + itemHeight
     }

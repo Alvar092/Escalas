@@ -56,7 +56,7 @@ struct HomeView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(Color(.primary))
-                                .foregroundStyle(.textSecondary)
+                                .foregroundStyle(.textOnPrimary)
                                 .cornerRadius(12)
                                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
