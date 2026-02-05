@@ -16,7 +16,6 @@ final class BergTestRepository: BergTestRepositoryProtocol {
     }
     
     // Saves a new Beg test in database
-    // 
     func save(_ test: BergTest) async throws {
         let patientID = test.patientID
         
