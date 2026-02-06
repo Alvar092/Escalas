@@ -67,7 +67,6 @@ final class TrunkControlTestRepository: TrunkControlTestRepositoryProtocol {
 
         if let entity = try modelContext.fetch(descriptor).first {
             entity.date = test.date
-            entity.side = test.side.rawValue
             entity.itemsData = try JSONEncoder().encode(test.items)
             try modelContext.save()
         }

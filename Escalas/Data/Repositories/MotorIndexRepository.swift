@@ -1,5 +1,5 @@
 //
-//  MotorIndexRepository.swift
+//  MotricityIndexRepository.swift
 //  Escalas
 //
 //  Created by Álvaro Entrena Casas on 5/2/26.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-final class MotorIndexRepository: MotorIndexRepositoryProtocol {
+final class MotricityIndexRepository: MotricityIndexRepositoryProtocol {
     
     private let modelContext: ModelContext
 
@@ -17,7 +17,7 @@ final class MotorIndexRepository: MotorIndexRepositoryProtocol {
     }
 
     
-    func save(_ test: MotorIndex) async throws {
+    func save(_ test: MotricityIndex) async throws {
         let patientID = test.patientID
         
         let descriptor = FetchDescriptor<PatientEntity>(predicate: #Predicate { $0.id == patientID }
@@ -32,16 +32,16 @@ final class MotorIndexRepository: MotorIndexRepositoryProtocol {
         try modelContext.save()
     }
     
-    func getAll() async throws -> [MotorIndex] {
-        let descriptor = FetchDescriptor<MotorIndexEntity>(
+    func getAll() async throws -> [MotricityIndex] {
+        let descriptor = FetchDescriptor<MotricityIndexEntity>(
             sortBy: [SortDescriptor(\.date, order: .reverse)]
         )
         let entities = try modelContext.fetch(descriptor)
         return try entities.map { try $0.toDomain() }
     }
     
-    func getByPatient(_ patientID: UUID) async throws -> [MotorIndex] {
-        let descriptor = FetchDescriptor<MotorIndexEntity>(
+    func getByPatient(_ patientID: UUID) async throws -> [MotricityIndex] {
+        let descriptor = FetchDescriptor<MotricityIndexEntity>(
             predicate: #Predicate { $0.patient.id == patientID },
             sortBy: [SortDescriptor(\.date, order: .reverse)]
         )
@@ -49,8 +49,8 @@ final class MotorIndexRepository: MotorIndexRepositoryProtocol {
         return try entities.map { try $0.toDomain() }
     }
     
-    func getByID(_ id: UUID) async throws -> MotorIndex? {
-        let descriptor = FetchDescriptor<MotorIndexEntity>(
+    func getByID(_ id: UUID) async throws -> MotricityIndex? {
+        let descriptor = FetchDescriptor<MotricityIndexEntity>(
             predicate: #Predicate { $0.id == id }
         )
         guard let entity = try modelContext.fetch(descriptor).first else {
@@ -59,10 +59,10 @@ final class MotorIndexRepository: MotorIndexRepositoryProtocol {
         return try entity.toDomain()
     }
     
-    func update(_ test: MotorIndex) async throws {
+    func update(_ test: MotricityIndex) async throws {
         let id = test.id
 
-        let descriptor = FetchDescriptor<MotorIndexEntity>(
+        let descriptor = FetchDescriptor<MotricityIndexEntity>(
             predicate: #Predicate { $0.id == id }
         )
 

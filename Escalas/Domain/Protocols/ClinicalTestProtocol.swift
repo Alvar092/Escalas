@@ -9,14 +9,14 @@ import Foundation
 
 enum TestType: String, Codable {
     case berg = "Berg Balance Scale"
-    case motorIndex = "Motor Index"
+    case motricityIndex = "Motor Index"
     case trunkControlTest = "Trunk Control Test "
     
     var maxScore: Int {
         switch self {
         case .berg: return 56
             
-        case .motorIndex: return 198
+        case .motricityIndex: return 198
             
         case .trunkControlTest: return 100
         }
@@ -47,8 +47,8 @@ extension BergTest {
     var testType: TestType { .berg }
 }
 
-extension MotorIndex {
-    var testType: TestType { .motorIndex}
+extension MotricityIndex {
+    var testType: TestType { .motricityIndex}
 }
 
 extension TrunkControlTest {

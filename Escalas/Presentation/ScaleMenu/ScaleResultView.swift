@@ -65,7 +65,7 @@ struct ScaleResultView: View {
             .padding()
             .background(Color(.primary))
             .foregroundStyle(.textOnPrimary)
-            .cornerRadius(12)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .padding(.horizontal)
         

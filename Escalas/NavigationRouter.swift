@@ -76,6 +76,11 @@ extension NavigationRouter {
                         )
                     )
                 }
+            case .motricityIndex:
+                MotricityIndexView()
+                
+            case .trunkControlTest:
+                TrunkControlTestView()
             }
         } else {
             ContentUnavailableView(
@@ -101,6 +106,12 @@ extension NavigationRouter {
                         )
                     )
                 }
+                
+            case .motricityIndex:
+                MotricityIndexView()
+                
+            case .trunkControlTest:
+                TrunkControlTestView()
                 
             }//Switch
         }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class MotorIndexEntity {
+final class MotricityIndexEntity {
     @Attribute(.unique) var id: UUID
     var date: Date
     var side: String

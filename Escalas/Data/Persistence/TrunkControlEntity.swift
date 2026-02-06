@@ -12,14 +12,12 @@ import SwiftData
 final class TrunkControlEntity {
     @Attribute(.unique) var id: UUID
     var date: Date
-    var side: String
     var patient: PatientEntity
     var itemsData: Data
     
-    init(id: UUID, date: Date, side: String, patient: PatientEntity, itemsData: Data) {
+    init(id: UUID, date: Date, patient: PatientEntity, itemsData: Data) {
         self.id = id
         self.date = date
-        self.side = side
         self.patient = patient
         self.itemsData = itemsData
     }

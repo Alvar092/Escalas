@@ -12,34 +12,34 @@ enum BodySide: String, Codable {
     case left
 }
 
-struct MotorIndex: ClinicalTestProtocol {
+struct MotricityIndex: ClinicalTestProtocol {
     var id: UUID
     var date: Date
     var evaluator: String?
     var patientID: UUID
     let side: BodySide
     var maxScore: Int?
-    var items: [MotorIndexItem]
+    var items: [MotricityIndexItem]
     
     var totalScore: Int {
-        items.reduce(0) { $0 + $1.score }
+        items.reduce(0) { $0 + ($1.score ?? 0) }
     }
 }
 
-struct MotorIndexItem: Codable {
+struct MotricityIndexItem: Codable {
     let id: UUID
-    let itemType: MotorIndexItemType
-    var score: Int
+    let itemType: MotricityIndexItemType
+    var score: Int?
 }
 
-enum MotorIndexItemType: String, Codable, CaseIterable {
+enum MotricityIndexItemType: Int, Codable, CaseIterable {
     // upper limb
-    case pinchGrip
-    case elbowFlexion
-    case shoulderAbduction
+    case pinchGrip = 1
+    case elbowFlexion = 2
+    case shoulderAbduction = 3
     
     // Lower limb
-    case hipFlexion
-    case kneeExtension
-    case ankleDorsiflexion
+    case hipFlexion = 4
+    case kneeExtension = 5
+    case ankleDorsiflexion = 6
 }

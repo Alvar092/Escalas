@@ -8,11 +8,11 @@
 import Foundation
 import SwiftData
 
-extension MotorIndex {
-    func toEntity(patientEntity: PatientEntity) throws -> MotorIndexEntity {
+extension MotricityIndex {
+    func toEntity(patientEntity: PatientEntity) throws -> MotricityIndexEntity {
         let itemsData = try JSONEncoder().encode(self.items)
         
-        return MotorIndexEntity(
+        return MotricityIndexEntity(
             id: self.id,
             date: self.date,
             side: self.side.rawValue,
@@ -22,11 +22,11 @@ extension MotorIndex {
     }
 }
 
-extension MotorIndexEntity{
-    func toDomain() throws -> MotorIndex {
-        let items = try JSONDecoder().decode([MotorIndexItem].self, from: itemsData)
+extension MotricityIndexEntity{
+    func toDomain() throws -> MotricityIndex {
+        let items = try JSONDecoder().decode([MotricityIndexItem].self, from: itemsData)
         
-        return MotorIndex(
+        return MotricityIndex(
             id: self.id,
             date: self.date,
             patientID: self.patient.id,

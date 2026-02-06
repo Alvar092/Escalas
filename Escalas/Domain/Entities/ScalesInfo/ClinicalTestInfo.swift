@@ -20,6 +20,10 @@ struct ClinicalTestInfo: Equatable {
         switch self {
         case .berg:
             return "Berg Balance Scale"
+        case .motricityIndex:
+            return "Motricity Index"
+        case .trunkControlTest:
+            return "Trunk Control Test"
         default:
             return "Scale name"
         }
@@ -31,6 +35,10 @@ extension TestType {
         switch self {
         case .berg:
             return ClinicalTestInfo.berg
+        case .motricityIndex:
+            return ClinicalTestInfo.motricityIndex
+        case .trunkControlTest:
+            return ClinicalTestInfo.trunkControlTest
         }
     }
 }

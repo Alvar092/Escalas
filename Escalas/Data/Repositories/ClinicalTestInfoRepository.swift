@@ -12,8 +12,10 @@ final class ClinicalTestInfoRepository: ClinicalTestInfoProtocol {
         switch testType {
         case .berg:
             return .berg
+        case .motricityIndex:
+            return .motricityIndex
+        case .trunkControlTest:
+            return .trunkControlTest
         }
     }
-    
-    
 }

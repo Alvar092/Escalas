@@ -15,7 +15,6 @@ extension TrunkControlTest {
         return TrunkControlEntity(
             id: self.id,
             date: self.date,
-            side: self.side.rawValue,
             patient: patientEntity,
             itemsData: try JSONEncoder().encode(items)
         )
@@ -30,7 +29,6 @@ extension TrunkControlEntity {
             id: self.id,
             date: self.date,
             patientID: self.patient.id,
-            side: BodySide(rawValue: self.side) ?? .right,
             items: items
         )
     }

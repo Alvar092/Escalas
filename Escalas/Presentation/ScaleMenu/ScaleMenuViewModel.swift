@@ -13,9 +13,11 @@ final class ScaleMenuViewModel {
     
     
     var selectedPatient: Patient?
+    var selectedSide: BodySide?
     var showingPatientSelection = false
     let testType: TestType
     var createdTest: ClinicalTestProtocol?
+    
     
     
     @ObservationIgnored
@@ -69,7 +71,7 @@ final class ScaleMenuViewModel {
     private func createTestForSelectedPatient() async {
         guard let patient = selectedPatient else { return }
     
-        let test: ClinicalTestProtocol =  createTestUseCase.createTest(type: testType, patientID: patient.id)
+        let test: ClinicalTestProtocol =  createTestUseCase.createTest(type: testType, patientID: patient.id, side: selectedSide)
         createdTest = test
     }
 
