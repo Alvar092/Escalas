@@ -60,12 +60,12 @@ struct ScaleResultView: View {
                 router.navigateToRoot()
             } label: {
                 Label("Volver a inicio", systemImage: "house.fill")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color(.primary))
+                    .foregroundStyle(.textOnPrimary)
+                    .cornerRadius(12)
             }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color(.primary))
-            .foregroundStyle(.textOnPrimary)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .padding(.horizontal)
         
