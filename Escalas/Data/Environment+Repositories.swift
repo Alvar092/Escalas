@@ -21,14 +21,27 @@ private enum DefaultModelContainer {
 }
 
 private struct RepositoriesKey: EnvironmentKey {
+    #if DEBUG
+    static let defaultValue: Repositories? = nil
+    #else
     static let defaultValue = Repositories(modelContext: DefaultModelContainer.context)
+    #endif
 }
 
 extension EnvironmentValues{
-    var repositories: Repositories {
-        get {self[RepositoriesKey.self]}
-        set {self[RepositoriesKey.self] = newValue }
+#if DEBUG
+    // En desarrollo: Opcional
+    var repositories: Repositories? {
+        get { self[RepositoriesKey.self] }
+        set { self[RepositoriesKey.self] = newValue }
     }
+#else
+    // En producción: No opcional
+    var repositories: Repositories {
+        get { self[RepositoriesKey.self] }
+        set { self[RepositoriesKey.self] = newValue }
+    }
+#endif
 }
 
 @Observable

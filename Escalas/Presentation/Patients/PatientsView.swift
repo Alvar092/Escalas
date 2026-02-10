@@ -20,58 +20,70 @@ struct PatientsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.repositories) private var repositories
     
-    @State private var viewModel: PatientViewModel?
+    var body: some View {
+        if let repositories {
+            PatientsContentView(
+                mode: mode,
+                onPatientSelected: onPatientSelected,
+                repositories: repositories,
+                viewModel: PatientViewModel(
+                    getPatientsUseCase: GetPatientsUseCase(
+                        patientRepository: repositories.patientRepository
+                    ),
+                    createPatientUseCase: CreatePatientUseCase(
+                        patientRepository: repositories.patientRepository
+                    )
+                )
+            )
+        } else {
+            // Teoricamente esto nunca pasará
+            ProgressView("Inicializando...")
+        }
+    }
+}
+
+
+private struct PatientsContentView: View {
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    
+    let mode: PatientSelectionMode
+    var onPatientSelected: ((Patient) -> Void)? = nil
+    let repositories: Repositories
+    
+    @State var viewModel: PatientViewModel
     
     @State private var showCreationForm = false
     @State private var newName = ""
     @State private var newDate = Date()
     @State private var isAdding = false
     
-    
     var body: some View {
-        Group {
-            if let viewModel {
-                patientList(viewModel: viewModel)
-            } else {
-                ProgressView("Cargando pacientes...")
-            }
-        } // Group
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.backg))
-        
-        .navigationTitle(mode == .select ? "Seleccionar paciente" : "Pacientes")
-        .toolbar {
-            if mode == .select {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") {
-                        dismiss()
+        patientList(viewModel: viewModel)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(.backg))
+            .navigationTitle(mode == .select ? "Seleccionar paciente" : "Pacientes")
+            .toolbar {
+                if mode == .select {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancelar") {
+                            dismiss()
+                        }
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        withAnimation { isAdding.toggle() }
+                    } label: {
+                        Label("Añadir", systemImage: isAdding ? "xmark" : "plus")
                     }
                 }
             }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    withAnimation { isAdding.toggle() }
-                } label: {
-                    Label("Añadir", systemImage: isAdding ? "xmark": "plus")
-                }
+            .task {
+                try? await viewModel.loadPatients()
             }
-        } // toolbar
-        .task {
-            let getUseCase = GetPatientsUseCase(patientRepository: repositories.patientRepository)
-            let createUseCase = CreatePatientUseCase(patientRepository: repositories.patientRepository)
-            
-            let vm = PatientViewModel(
-                getPatientsUseCase: getUseCase,
-                createPatientUseCase: createUseCase
-            )
-            
-            viewModel = vm
-            
-            try? await viewModel?.loadPatients()
-        }
-    }// View
-        
+    }
     
     @ViewBuilder
     func patientList(viewModel: PatientViewModel) -> some View {
@@ -114,7 +126,8 @@ struct PatientsView: View {
                                 patient: patient,
                                 history: PatientHistory(patient: patient, bergTests: []),
                                 getTestsUseCase: GetPatientTestsUseCase(
-                                    patientRepository: repositories.patientRepository, bergTestRepository: repositories.bergTestRepository
+                                    patientRepository: repositories.patientRepository,
+                                    bergTestRepository: repositories.bergTestRepository
                                 )
                             )
                         )

@@ -118,18 +118,28 @@ struct HomeView: View {
     
     @ViewBuilder
     private func routeView(for route: AppRoute) -> some View {
-        switch route {
-        case .scaleMenu(let testType):
-            ScaleMenuView(testType: testType)
+        if let repositories {
             
-        case .test(let testType):
-            router.makeTestView(for: testType, repositories: repositories)
-            
-        case .scaleResult(let testType):
-            router.makeResultView(for: testType, repositories: repositories)
-            
-        case .patients:
-            PatientsView(mode: .browse)
+            switch route {
+            case .scaleMenu(let testType):
+                ScaleMenuView(testType: testType)
+                
+            case .test(let testType):
+                router.makeTestView(for: testType, repositories: repositories)
+                
+            case .scaleResult(let testType):
+                router.makeResultView(for: testType, repositories: repositories)
+                
+            case .patients:
+                PatientsView(mode: .browse)
+            }
+        }
+        else {
+            ContentUnavailableView(
+                       "Error de configuración",
+                       systemImage: "exclamationmark.triangle",
+                       description: Text("Los repositorios no están disponibles")
+                   )
         }
     }
 }
