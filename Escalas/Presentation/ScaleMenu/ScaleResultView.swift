@@ -14,46 +14,59 @@ struct ScaleResultView: View {
     
     
     var body: some View {
-        VStack(spacing: 20) {
-            // Título test
-            Text(viewModel.test.name)
-                .font(.title)
-                .bold()
-            VStack(alignment: .leading,spacing: 12){
-                // Paciente seleccionado
-                if let patient = viewModel.patient {
-                    Text("Paciente:\(patient.name)")
-                }
+        ZStack {
+            Color.backg
+                .ignoresSafeArea()
+            
+            VStack(spacing: 20) {
+                // Título test
+                Text(viewModel.test.name)
+                    .font(.xlSemi)
+                    .bold()
                 
-                Text("Fecha: \(formatDate(viewModel.test.date))")
+                VStack(alignment: .leading,spacing: 12){
+                    // Paciente seleccionado
+                    if let patient = viewModel.patient {
+                        Text("Paciente:\(patient.name)")
+                            .font(.l)
+                    }
                     
-                
-                
-                // Puntuación
-                if let maxScore = viewModel.test.maxScore {
-                    Text("Puntuación: \(viewModel.test.totalScore) / \(maxScore)")
-                        .font(.largeTitle)
-                } else {
-                    Text("Puntuación: \(viewModel.test.totalScore)")
+                    Text("Fecha: \(formatDate(viewModel.test.date))")
+                        .font(.l)
+                    
+                    // Lado evaluado??
+                    if let test = viewModel.test as? MotricityIndex,
+                       let side = test.side {
+                        Text("Lado evaluado: \(side.rawValue.capitalized)")
+                            .font(.l)
+                    }
+                    
+                    // Puntuación
+                    if let maxScore = viewModel.test.maxScore {
+                        Text("Puntuación: \(viewModel.test.totalScore) / \(maxScore)")
+                            .font(.l)
+                    } else {
+                        Text("Puntuación: \(viewModel.test.totalScore)")
+                            .font(.l)
+                    }
+                    
+                    // Exportar en PDF
+                    Button {
+                        viewModel.exportPDF()
+                    } label: {
+                        Label("Exportar en PDF", systemImage: "doc.text.fill")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color(.prim))
+                            .foregroundStyle(.textOnPrim)
+                            .font(.m)
+                            .cornerRadius(10)
+                    }
                 }
-                
-                // Exportar en PDF
-                Button {
-                    viewModel.exportPDF()
-                } label: {
-                    Label("Exportar en PDF", systemImage: "doc.text.fill")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color(.PDF))
-                        .foregroundStyle(.textOnPrimary)
-                        .cornerRadius(10)
-                }
+                .padding()
             }
-            .padding()
         }
         .background(Color.backg)
-        
-        Spacer()
         
         VStack{
             Button {
@@ -62,11 +75,12 @@ struct ScaleResultView: View {
                 Label("Volver a inicio", systemImage: "house.fill")
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color(.primary))
-                    .foregroundStyle(.textOnPrimary)
+                    .background(Color(.prim))
+                    .font(.m)
+                    .foregroundStyle(.textOnPrim)
                     .cornerRadius(12)
             }
-        }
+        } // VStack HomeButton
         .padding(.horizontal)
         
         .sheet(isPresented: $viewModel.showShare) {
@@ -91,12 +105,13 @@ struct ScaleResultView: View {
         }
     }
     
+    
     private func formatDate(_ date: Date) -> String {
-          let formatter = DateFormatter()
-          formatter.dateStyle = .medium
-          formatter.locale = Locale(identifier: "es_ES")
-          return formatter.string(from: date)
-      }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.locale = Locale(identifier: "es_ES")
+        return formatter.string(from: date)
+    }
     
     struct ShareSheet: UIViewControllerRepresentable {
         let items: [Any]
@@ -112,5 +127,5 @@ struct ScaleResultView: View {
 #Preview {
     let mockRepo = MockPatientRepository(initialPatients: [Patient.patient1])
     
-    ScaleResultView(viewModel: ScaleResultViewModel(test: BergTest.patient1, useCase: GetPatientByIdUseCase(patientsRepository: mockRepo)))
+    ScaleResultView(viewModel: ScaleResultViewModel(test: MotricityIndex.patient1, useCase: GetPatientByIdUseCase(patientsRepository: mockRepo)))
 }

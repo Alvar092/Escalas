@@ -88,3 +88,51 @@ extension BergItem {
         )
     ]
 }
+
+
+
+
+extension MotricityIndex {
+    static let patient1 = MotricityIndex(
+        id: UUID(),
+        date: Calendar.current.date(byAdding: .day, value: -3, to: .now)!,
+        patientID: UUID(uuidString: "00000000-0000-0000-0000-000000000001") ?? UUID(),
+        side: .left,
+        items: MotricityIndexItem.mockItems
+    )
+}
+
+extension MotricityIndexItem {
+    static let mockItems: [MotricityIndexItem] = [
+        MotricityIndexItem(
+            id: UUID(),
+            itemType: .ankleDorsiflexion,
+            score: 0
+        ),
+        MotricityIndexItem(
+            id: UUID(),
+            itemType: .elbowFlexion,
+            score: 0
+        ),
+        MotricityIndexItem(
+            id: UUID(),
+            itemType: .hipFlexion,
+            score: 0
+        ),
+        MotricityIndexItem(
+            id: UUID(),
+            itemType: .kneeExtension,
+            score: 0
+        ),
+        MotricityIndexItem(
+            id: UUID(),
+            itemType: .pinchGrip,
+            score: 0
+        ),
+        MotricityIndexItem(
+            id: UUID(),
+            itemType: .shoulderAbduction,
+            score: 0
+        )
+    ]
+}

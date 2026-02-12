@@ -27,7 +27,7 @@ struct ScaleMenuView: View {
             Spacer()
             VStack (alignment: .center, spacing: 24) {
                 Text(viewModel.testType.displayName)
-                    .font(.title.bold())
+                    .font(.xlSemi)
                     .padding()
                 
                 Spacer()
@@ -39,30 +39,22 @@ struct ScaleMenuView: View {
                         HStack {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 6)
-                                    .fill(viewModel.hasSelectedPatient ? Color.accentColor.opacity(0.2): Color.gray.opacity(0.1))
+                                    .fill(patientButtonBackgroundColor())
                                     .frame(width: 32, height: 32)
-                                if let initials = viewModel.patientName {
-                                    Text(initials)
-                                        .font(.m)
-                                        .foregroundColor(.textSecondary)
-                                } else {
-                                    Image(systemName: "person.fill")
-                                        .font(.title)
-                                        .foregroundStyle(.white)
-                                }
-                            }
+                                patientInitialsOrIcon()
+                            }//ZStack
                             
                             Text(viewModel.patientDisplayName)
-                                .foregroundStyle(.primary)
+                                .foregroundStyle(.textOnPrim)
                             
                             
                             Image(systemName: "chevron.right")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
-                        }
+                        }//HStack
                         .frame(maxWidth: .infinity)
                         .padding(20)
-                        .background(Color(.primary))
+                        .background(Color(.prim))
                         .foregroundStyle(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     }
@@ -73,7 +65,7 @@ struct ScaleMenuView: View {
                         Text("Información de la prueba")
                             .frame(maxWidth: .infinity)
                             .padding(32)
-                            .background(Color(.primary))
+                            .background(Color(.prim))
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 12,style: .continuous))
                     }
@@ -87,8 +79,7 @@ struct ScaleMenuView: View {
                             .frame(maxWidth: .infinity)
                             .padding(48)
                             .background(
-                                viewModel.isStartButtonEnabled ?
-                                Color(.primary): Color.gray
+                                startButtonBackgroundColor()
                             )
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 12,style: .continuous))
@@ -108,6 +99,32 @@ struct ScaleMenuView: View {
         }
         .background(Color(.backg))
     } // VStack general
+    
+    
+}
+
+
+private extension ScaleMenuView {
+    func patientButtonBackgroundColor() -> Color {
+        viewModel.hasSelectedPatient ? Color.accentColor.opacity(0.2) : Color.gray.opacity(0.1)
+    }
+    
+    func startButtonBackgroundColor() -> Color {
+        viewModel.isStartButtonEnabled ? Color(.prim) : Color.gray
+    }
+    
+    @ViewBuilder
+    func patientInitialsOrIcon() -> some View {
+        if let initials = viewModel.patientName {
+            Text(initials)
+                .font(.m)
+                .foregroundColor(.textOnPrim)
+        } else {
+            Image(systemName: "person.fill")
+                .font(.title)
+                .foregroundStyle(.textOnPrim)
+        }
+    }
 }
 
 
@@ -117,7 +134,7 @@ struct ScaleMenuView: View {
     
     
     NavigationStack(path: $router.path) {
-        ScaleMenuView(testType: .berg)
+        ScaleMenuView(testType: .motricityIndex)
             .navigationDestination(for: AppRoute.self) { route in
                 switch route {
                 case .test(let testType):

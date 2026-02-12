@@ -77,7 +77,14 @@ extension NavigationRouter {
                     )
                 }
             case .motricityIndex:
-                MotricityIndexView()
+                if let motricityTest = test as? MotricityIndex {
+                    MotricityIndexView(
+                        viewModel: MotricityIndexViewModel(
+                            useCase: SaveMotricityIndexUseCase(repository: repositories.motricityIndexRepository),
+                            test: motricityTest
+                        )
+                    )
+                }
                 
             case .trunkControlTest:
                 TrunkControlTestView()
@@ -108,7 +115,14 @@ extension NavigationRouter {
                 }
                 
             case .motricityIndex:
-                MotricityIndexView()
+                if let motricityTest = test as? MotricityIndex {
+                    ScaleResultView(
+                        viewModel: ScaleResultViewModel(
+                            test: motricityTest,
+                            useCase: GetPatientByIdUseCase(patientsRepository: repositories.patientRepository)
+                        )
+                    )
+                }
                 
             case .trunkControlTest:
                 TrunkControlTestView()

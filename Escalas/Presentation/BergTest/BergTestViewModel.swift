@@ -81,9 +81,9 @@ final class BergTestViewModel {
         "\(currentItemIndex + 1) / \(items.count)"
     }
     
-    var canGoNext: Bool {
-        currentItem.score != nil
-    }
+//    var canGoNext: Bool {
+//        currentItem.score != nil
+//    }
     
     var isLastItem: Bool {
         currentItemIndex == items.count - 1

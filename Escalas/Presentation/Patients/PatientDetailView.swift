@@ -24,11 +24,11 @@ struct PatientDetailView: View {
                     
                     Text(viewModel.patient.name)
                         .font(.lSemi)
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(.prim)
                     
                     Text("\(viewModel.patient.age) años")
                         .font(.subheadline)
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(.prim)
                     
                 }
             } // HStack

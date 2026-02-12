@@ -14,10 +14,10 @@ enum BodySide: String, Codable {
 
 struct MotricityIndex: ClinicalTestProtocol {
     var id: UUID
-    var date: Date
+    let date: Date
     var evaluator: String?
-    var patientID: UUID
-    let side: BodySide
+    let patientID: UUID
+    var side: BodySide?
     var maxScore: Int?
     var items: [MotricityIndexItem]
     

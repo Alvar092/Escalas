@@ -16,7 +16,7 @@ extension TrunkControlTest {
             id: self.id,
             date: self.date,
             patient: patientEntity,
-            itemsData: try JSONEncoder().encode(items)
+            itemsData: itemsData
         )
     }
 }

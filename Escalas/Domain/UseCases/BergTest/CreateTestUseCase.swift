@@ -32,10 +32,6 @@ final class CreateTestUseCase: CreateTestUseCaseProtocol {
             )
             
         case .motricityIndex:
-            guard let side else {
-                fatalError("MotricityIndex requires BodySide")
-            }
-            
             let items = MotricityIndexItemType.allCases.map { type in
                 MotricityIndexItem(
                     id: UUID(),
@@ -48,7 +44,7 @@ final class CreateTestUseCase: CreateTestUseCaseProtocol {
                 id: UUID(),
                 date: Date(),
                 patientID: patientID,
-                side: side,
+                side: nil,
                 items: items
             )
         case .trunkControlTest:

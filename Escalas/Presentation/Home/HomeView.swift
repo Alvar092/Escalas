@@ -31,21 +31,21 @@ struct HomeView: View {
                     }
                     ZStack {
                         Circle()
-                            .fill(Color(.primary))
+                            .fill(Color(.prim))
                             .frame(width: 48, height: 48)
                         
                         Image(systemName: "person.crop.circle")
                             .resizable()
                             .scaledToFit()
                             .foregroundStyle(.white)
-                            .background(Color(.primary))
+                            .background(Color(.prim))
                             .frame(width: 32, height: 32)
                     } // ZStack
                 } // VStack Bienvenida
                 VStack(alignment: .center, spacing: 20) {
                     Text("Elige una escala para comenzar")
                         .font(.m)
-                        .foregroundStyle(.textPrimary)
+                        .foregroundStyle(.textPrim)
                     
                     VStack(spacing: 12) {
                         
@@ -55,17 +55,29 @@ struct HomeView: View {
                             Text("Berg Test")
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color(.primary))
-                                .foregroundStyle(.textOnPrimary)
+                                .background(Color(.prim))
+                                .foregroundStyle(.textOnPrim)
                                 .cornerRadius(12)
                                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
                        
                         Button {
-                            /* router.navigate(to: .scaleMenu(testType: .tug)) */
+                            router.navigate(to: .scaleMenu(testType: .motricityIndex)) 
                             
                         } label: {
-                            Text("Time Up & Go (Pronto)")
+                            Text("Motricity Index")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color(.prim))
+                                .foregroundStyle(.textOnPrim)
+                                .cornerRadius(12)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        }
+                        
+                        Button {
+                            /* router.navigate(to: .scaleMenu(testType: .10mwt)) */
+                        } label: {
+                            Text("Trunk Control Test")
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(Color.accentColor.gradient)
@@ -78,7 +90,7 @@ struct HomeView: View {
                         Button {
                             /* router.navigate(to: .scaleMenu(testType: .10mwt)) */
                         } label: {
-                            Text("10 Metres Walking Test (Pronto)")
+                            Text("Próximamente")
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(Color.accentColor.gradient)

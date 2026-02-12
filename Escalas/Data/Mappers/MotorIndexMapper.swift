@@ -8,16 +8,21 @@
 import Foundation
 import SwiftData
 
+enum MotricityIndexMappingError: Error {
+    case missingSide
+}
+
 extension MotricityIndex {
     func toEntity(patientEntity: PatientEntity) throws -> MotricityIndexEntity {
         let itemsData = try JSONEncoder().encode(self.items)
+        guard let side = self.side else { throw MotricityIndexMappingError.missingSide }
         
         return MotricityIndexEntity(
             id: self.id,
             date: self.date,
-            side: self.side.rawValue,
+            side: side.rawValue,
             patient: patientEntity,
-            itemsData: try JSONEncoder().encode(items)
+            itemsData: itemsData
         )
     }
 }

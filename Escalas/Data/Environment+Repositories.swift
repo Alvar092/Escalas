@@ -13,7 +13,8 @@ private enum DefaultModelContainer {
     static let container: ModelContainer = {
         let schema = Schema([
             PatientEntity.self,
-            BergTestEntity.self
+            BergTestEntity.self,
+            MotricityIndexEntity.self
         ])
         return try! ModelContainer(for: schema)
     }()
@@ -48,10 +49,12 @@ extension EnvironmentValues{
 class Repositories {
     let patientRepository: PatientRepositoryProtocol
     let bergTestRepository: BergTestRepositoryProtocol
+    let motricityIndexRepository: MotricityIndexRepositoryProtocol
     
     init(modelContext: ModelContext) {
         self.patientRepository = PatientRespository(modelContext: modelContext)
         self.bergTestRepository = BergTestRepository(modelContext: modelContext)
+        self.motricityIndexRepository = MotricityIndexRepository(modelContext: modelContext)
     }
 }
 
@@ -59,7 +62,8 @@ extension Repositories {
     static var preview: Repositories {
         let schema = Schema([
             PatientEntity.self,
-            BergTestEntity.self
+            BergTestEntity.self,
+            MotricityIndexEntity.self
         ])
         
         let container = try! ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true)
@@ -67,3 +71,4 @@ extension Repositories {
         return Repositories(modelContext: ModelContext(container))
     }
 }
+

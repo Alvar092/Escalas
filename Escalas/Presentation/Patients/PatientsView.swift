@@ -147,15 +147,15 @@ private struct PatientsContentView: View {
         VStack(alignment: .leading) {
             Text(patient.name)
                 .font(.m)
-                .foregroundStyle(.textOnPrimary)
+                .foregroundStyle(.textOnPrim)
             Text("Nacimiento: \(patient.dateOfBirth.formatted(date: .abbreviated, time: .omitted))")
                 .font(.s)
-                .foregroundStyle(.textOnPrimary)
+                .foregroundStyle(.textOnPrim)
         }
         .padding(.vertical, 12)
         .padding(.horizontal, 16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.primary))
+        .background(Color(.prim))
         .clipShape(RoundedRectangle(cornerRadius: 12))
         
     }

@@ -13,7 +13,7 @@
 		67256D092EE1908700D568EF /* BergTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D082EE1908700D568EF /* BergTestView.swift */; };
 		67256D0B2EE1916B00D568EF /* PatientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D0A2EE1916400D568EF /* PatientsViewModel.swift */; };
 		67256D532EE1A08300D568EF /* Environment+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D522EE1A07D00D568EF /* Environment+Repositories.swift */; };
-		674727202F34C79B007E2FFB /* MotorIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6747271F2F34C79B007E2FFB /* MotorIndex.swift */; };
+		674727202F34C79B007E2FFB /* MotricityIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6747271F2F34C79B007E2FFB /* MotricityIndex.swift */; };
 		674727222F34CA8F007E2FFB /* TrunkControlTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674727212F34CA8F007E2FFB /* TrunkControlTest.swift */; };
 		6747272A2F35008E007E2FFB /* MotricityIndexRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674727292F35008E007E2FFB /* MotricityIndexRepositoryProtocol.swift */; };
 		6747272C2F3500CC007E2FFB /* TrunkControlTestRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6747272B2F3500CC007E2FFB /* TrunkControlTestRepositoryProtocol.swift */; };
@@ -42,6 +42,11 @@
 		674EF3A92EDF1AE3000CF54C /* PatientRespository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3A82EDF1AE3000CF54C /* PatientRespository.swift */; };
 		674EF3AB2EDF4CE7000CF54C /* PatientMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3AA2EDF4CE7000CF54C /* PatientMapper.swift */; };
 		674EF3B22EDF6A73000CF54C /* EscalasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674EF3B02EDF6A73000CF54C /* EscalasTests.swift */; };
+		676B9B612F3CE16800DB8725 /* MotricityIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B9B602F3CE16800DB8725 /* MotricityIndexViewModel.swift */; };
+		676B9B642F3CE5A600DB8725 /* MotricityIndexCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B9B632F3CE5A600DB8725 /* MotricityIndexCatalog.swift */; };
+		676B9B662F3CE6A100DB8725 /* MotricityItemDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B9B652F3CE6A100DB8725 /* MotricityItemDefinition.swift */; };
+		676B9B682F3CE6B900DB8725 /* MotricityScoreOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B9B672F3CE6B900DB8725 /* MotricityScoreOption.swift */; };
+		676B9B6A2F3CED4100DB8725 /* SaveMotricityIndexUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B9B692F3CED4100DB8725 /* SaveMotricityIndexUseCase.swift */; };
 		678A224A2EF40A2F004A6F41 /* ScaleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A22492EF40A2F004A6F41 /* ScaleInfoView.swift */; };
 		678A224F2EF45FA0004A6F41 /* ScaleMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */; };
 		679D9DAB2F240804007CC799 /* BergItemPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679D9DAA2F240804007CC799 /* BergItemPDF.swift */; };
@@ -96,7 +101,7 @@
 		67256D082EE1908700D568EF /* BergTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergTestView.swift; sourceTree = "<group>"; };
 		67256D0A2EE1916400D568EF /* PatientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewModel.swift; sourceTree = "<group>"; };
 		67256D522EE1A07D00D568EF /* Environment+Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Repositories.swift"; sourceTree = "<group>"; };
-		6747271F2F34C79B007E2FFB /* MotorIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorIndex.swift; sourceTree = "<group>"; };
+		6747271F2F34C79B007E2FFB /* MotricityIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndex.swift; sourceTree = "<group>"; };
 		674727212F34CA8F007E2FFB /* TrunkControlTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlTest.swift; sourceTree = "<group>"; };
 		674727292F35008E007E2FFB /* MotricityIndexRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndexRepositoryProtocol.swift; sourceTree = "<group>"; };
 		6747272B2F3500CC007E2FFB /* TrunkControlTestRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlTestRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -128,6 +133,11 @@
 		674EF3A82EDF1AE3000CF54C /* PatientRespository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRespository.swift; sourceTree = "<group>"; };
 		674EF3AA2EDF4CE7000CF54C /* PatientMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientMapper.swift; sourceTree = "<group>"; };
 		674EF3B02EDF6A73000CF54C /* EscalasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscalasTests.swift; sourceTree = "<group>"; };
+		676B9B602F3CE16800DB8725 /* MotricityIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndexViewModel.swift; sourceTree = "<group>"; };
+		676B9B632F3CE5A600DB8725 /* MotricityIndexCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndexCatalog.swift; sourceTree = "<group>"; };
+		676B9B652F3CE6A100DB8725 /* MotricityItemDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityItemDefinition.swift; sourceTree = "<group>"; };
+		676B9B672F3CE6B900DB8725 /* MotricityScoreOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityScoreOption.swift; sourceTree = "<group>"; };
+		676B9B692F3CED4100DB8725 /* SaveMotricityIndexUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMotricityIndexUseCase.swift; sourceTree = "<group>"; };
 		678A22492EF40A2F004A6F41 /* ScaleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleInfoView.swift; sourceTree = "<group>"; };
 		678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMenuViewModel.swift; sourceTree = "<group>"; };
 		679D9DAA2F240804007CC799 /* BergItemPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergItemPDF.swift; sourceTree = "<group>"; };
@@ -272,7 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				67AC81122F36018F0063E2D9 /* TrunkControlTest */,
-				67AC81112F3601870063E2D9 /* MotorIndex */,
+				67AC81112F3601870063E2D9 /* MotricityIndex */,
 				67256D032EE0CB6B00D568EF /* BergTest */,
 				67256D012EE0CB5A00D568EF /* Patients */,
 				67256CFC2EE0C20400D568EF /* ScaleMenu */,
@@ -379,6 +389,16 @@
 			path = EscalasTests;
 			sourceTree = "<group>";
 		};
+		676B9B622F3CE18600DB8725 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				676B9B632F3CE5A600DB8725 /* MotricityIndexCatalog.swift */,
+				676B9B652F3CE6A100DB8725 /* MotricityItemDefinition.swift */,
+				676B9B672F3CE6B900DB8725 /* MotricityScoreOption.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		678A224B2EF41412004A6F41 /* ScalesInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,7 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				674EF3462EDDC4C5000CF54C /* BergTest.swift */,
-				6747271F2F34C79B007E2FFB /* MotorIndex.swift */,
+				6747271F2F34C79B007E2FFB /* MotricityIndex.swift */,
 				674727212F34CA8F007E2FFB /* TrunkControlTest.swift */,
 			);
 			path = Scales;
@@ -409,12 +429,14 @@
 			path = Patient;
 			sourceTree = "<group>";
 		};
-		67AC81112F3601870063E2D9 /* MotorIndex */ = {
+		67AC81112F3601870063E2D9 /* MotricityIndex */ = {
 			isa = PBXGroup;
 			children = (
+				676B9B622F3CE18600DB8725 /* Resources */,
 				67AC81152F3601BB0063E2D9 /* MotricityIndexView.swift */,
+				676B9B602F3CE16800DB8725 /* MotricityIndexViewModel.swift */,
 			);
-			path = MotorIndex;
+			path = MotricityIndex;
 			sourceTree = "<group>";
 		};
 		67AC81122F36018F0063E2D9 /* TrunkControlTest */ = {
@@ -468,6 +490,7 @@
 			children = (
 				674EF38C2EDDF4CC000CF54C /* SaveBergTestUseCase.swift */,
 				67FA9DFF2F1F9BD000DF5B3D /* CreateTestUseCase.swift */,
+				676B9B692F3CED4100DB8725 /* SaveMotricityIndexUseCase.swift */,
 			);
 			path = BergTest;
 			sourceTree = "<group>";
@@ -612,12 +635,14 @@
 				67256D532EE1A08300D568EF /* Environment+Repositories.swift in Sources */,
 				674EF39E2EDE0B2C000CF54C /* BergTestRepository.swift in Sources */,
 				674EF2FA2EDDC3D6000CF54C /* ContentView.swift in Sources */,
-				674727202F34C79B007E2FFB /* MotorIndex.swift in Sources */,
+				674727202F34C79B007E2FFB /* MotricityIndex.swift in Sources */,
 				67256D002EE0CB4F00D568EF /* PatientsView.swift in Sources */,
 				67D827EE2F16AB850037BB35 /* ClinicalTestInfo.swift in Sources */,
 				67D827F22F16AC6A0037BB35 /* ClinicalTestInfoProtocol.swift in Sources */,
 				67CB90462EF1C8570067952C /* PatientDetailView.swift in Sources */,
 				67CB908D2EF1CFAD0067952C /* ClinicalTestProtocol.swift in Sources */,
+				676B9B6A2F3CED4100DB8725 /* SaveMotricityIndexUseCase.swift in Sources */,
+				676B9B682F3CE6B900DB8725 /* MotricityScoreOption.swift in Sources */,
 				674727342F3511BE007E2FFB /* MotorIndexEntity.swift in Sources */,
 				67256D092EE1908700D568EF /* BergTestView.swift in Sources */,
 				67AC811A2F3602590063E2D9 /* MotorIndexInfo.swift in Sources */,
@@ -628,6 +653,7 @@
 				67FA9E002F1F9BD000DF5B3D /* CreateTestUseCase.swift in Sources */,
 				679D9DAB2F240804007CC799 /* BergItemPDF.swift in Sources */,
 				67DF220E2F224E3B0024A130 /* GetPatientByIdUseCase.swift in Sources */,
+				676B9B662F3CE6A100DB8725 /* MotricityItemDefinition.swift in Sources */,
 				674EF3992EDE02A3000CF54C /* PatientEntity.swift in Sources */,
 				674727222F34CA8F007E2FFB /* TrunkControlTest.swift in Sources */,
 				674727322F35109B007E2FFB /* MotorIndexMapper.swift in Sources */,
@@ -636,6 +662,7 @@
 				674727382F351676007E2FFB /* TrunkControlTestMapper.swift in Sources */,
 				674EF3912EDDF4EC000CF54C /* GeneratePDFUseCase.swift in Sources */,
 				67DF220A2F223D930024A130 /* ScaleResultView.swift in Sources */,
+				676B9B642F3CE5A600DB8725 /* MotricityIndexCatalog.swift in Sources */,
 				67256CFA2EE0BC5B00D568EF /* HomeView.swift in Sources */,
 				67C92A7B2F1D62B900F1721E /* BergTestViewModel.swift in Sources */,
 				674EF38F2EDDF4E2000CF54C /* GetPatientsUseCase.swift in Sources */,
@@ -656,6 +683,7 @@
 				674EF3472EDDC4C7000CF54C /* BergTest.swift in Sources */,
 				678A224A2EF40A2F004A6F41 /* ScaleInfoView.swift in Sources */,
 				674EF38D2EDDF4D7000CF54C /* SaveBergTestUseCase.swift in Sources */,
+				676B9B612F3CE16800DB8725 /* MotricityIndexViewModel.swift in Sources */,
 				67D827F42F16ACCE0037BB35 /* BergTestInfo.swift in Sources */,
 				674EF3A92EDF1AE3000CF54C /* PatientRespository.swift in Sources */,
 				6747272E2F350176007E2FFB /* MotorIndexRepository.swift in Sources */,
