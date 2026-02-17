@@ -25,5 +25,4 @@ struct BergItemPDF {
         self.scoreDescription = scoreDescription
         self.maxScore = test.maxScore ?? 56
     }
-  
 }

@@ -42,12 +42,9 @@ final class ScaleResultViewModel {
             return
         }
         
-        let itemsPDF = prepareItemsForPDF()
-        
         let pdfData = pdfGenerator.generatePDF(
             test: test,
             patient: patient,
-            items: itemsPDF
         )
         
         let tempURL = FileManager.default.temporaryDirectory
