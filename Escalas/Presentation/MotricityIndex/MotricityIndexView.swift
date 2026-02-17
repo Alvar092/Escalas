@@ -54,6 +54,8 @@ private struct MotricityIndexContentView: View {
     @Environment(\.navigationRouter) private var router
     @State var viewModel: MotricityIndexViewModel
     
+    
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView {
@@ -139,8 +141,11 @@ private struct MotricityIndexContentView: View {
             
             Spacer()
             
-            VStack(alignment: .center) {
-                Text("Puntuación\ntotal: \(viewModel.totalScore)/100")
+            VStack(alignment: .center, spacing: 4) {
+                Text("Puntuación MS: \(viewModel.upperLimbScore)/100")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                Text("Puntuación MI: \(viewModel.lowerLimbScore)/100")
                     .font(.headline)
                     .multilineTextAlignment(.center)
             }
@@ -218,3 +223,4 @@ struct SideSelectionView: View {
         .environment(\.navigationRouter, router)
         .environment(\.repositories, repositories)
 }
+

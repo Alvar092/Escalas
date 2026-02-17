@@ -17,7 +17,7 @@
                 type: .pinchGrip,
                 title: "Pinza fina",
                 description: "Capacidad para realizar pinza entre pulgar e índice.",
-                scoringOptions: standardScoring
+                scoringOptions: pinchGripScoring
             ),
 
             .elbowFlexion: MotricityItemDefinition(
@@ -66,6 +66,15 @@
             .init(score: 14, description: "14. Movimiento sin vencer gravedad."),
             .init(score: 19, description: "19. Movimiento venciendo gravedad."),
             .init(score: 25, description: "25. Movimiento contra resistencia leve."),
+            .init(score: 33, description: "33. Fuerza normal.")
+        ]
+        
+        private static let pinchGripScoring: [MotricityScoreOption] = [
+            .init(score: 0, description: "0. No contracción visible."),
+            .init(score: 11, description: "11. Contracción palpable sin movimiento."),
+            .init(score: 19, description: "19. Movimiento sin vencer gravedad."),
+            .init(score: 22, description: "22. Movimiento venciendo gravedad."),
+            .init(score: 26, description: "26. Movimiento contra resistencia leve."),
             .init(score: 33, description: "33. Fuerza normal.")
         ]
     }

@@ -22,8 +22,23 @@ struct MotricityIndex: ClinicalTestProtocol {
     var items: [MotricityIndexItem]
     
     var totalScore: Int {
-        items.reduce(0) { $0 + ($1.score ?? 0) }
+        (upperLimbScore + lowerLimbScore) / 2
     }
+
+    var upperLimbScore: Int {
+        items.filter {$0.itemType.isUpperLimb}
+            .reduce(0) {$0 + ($1.score ?? 0) } + 1
+    }
+    
+    var lowerLimbScore: Int {
+        items.filter {$0.itemType.isLowerLimb}
+            .reduce(0) { $0 + ($1.score ?? 0) } + 1
+    }
+    
+//    var finalScore: Int {
+//        totalScore / 2
+//    }
+   
 }
 
 struct MotricityIndexItem: Codable {
@@ -34,12 +49,23 @@ struct MotricityIndexItem: Codable {
 
 enum MotricityIndexItemType: Int, Codable, CaseIterable {
     // upper limb
-    case pinchGrip = 1
-    case elbowFlexion = 2
-    case shoulderAbduction = 3
+    case pinchGrip = 0
+    case elbowFlexion = 1
+    case shoulderAbduction = 2
     
     // Lower limb
-    case hipFlexion = 4
-    case kneeExtension = 5
-    case ankleDorsiflexion = 6
+    case hipFlexion = 3
+    case kneeExtension = 4
+    case ankleDorsiflexion = 5
+}
+
+extension MotricityIndexItemType {
+    var isUpperLimb: Bool {
+        switch self {
+        case .pinchGrip, .elbowFlexion, .shoulderAbduction: return true
+        case .hipFlexion, .kneeExtension, .ankleDorsiflexion: return false
+        }
+    }
+    
+    var isLowerLimb: Bool { !isUpperLimb }
 }

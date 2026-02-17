@@ -51,13 +51,19 @@ final class MotricityIndexViewModel {
         selectedScore != nil
     }
     
-    
-    var totalScore: Int {
-        items.compactMap {$0.score}.reduce(0, +)
-    }
-    
     var progress: String {
         "\(currentItemIndex + 1) / \(items.count)"
+    }
+    
+    // En el ViewModel
+    var upperLimbScore: Int {
+        items.filter { $0.itemType.isUpperLimb }
+            .reduce(0) { $0 + ($1.score ?? 0) } + 1
+    }
+
+    var lowerLimbScore: Int {
+        items.filter { $0.itemType.isLowerLimb }
+            .reduce(0) { $0 + ($1.score ?? 0) } + 1
     }
     
     func selectScore(_ score: Int) {
@@ -87,12 +93,11 @@ final class MotricityIndexViewModel {
     }
     
     func finishTest() async throws {
-        if test.side != nil && items.allSatisfy({$0.score != nil}) {
-            test.items = items
-            try await useCase.saveMotricityIndex(test: test)
-            isCompleted = true
-            navigateToResultView = true
-        }
+        guard test.side != nil, items.allSatisfy({ $0.score != nil }) else { return }
+          
+          test.items = items
+          try await useCase.saveMotricityIndex(test: test)
+          isCompleted = true
+          navigateToResultView = true
     }
-    
 }

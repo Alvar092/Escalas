@@ -17,6 +17,7 @@
 		673EDCD82F433F8F00A03A47 /* PDFLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCD72F433F8F00A03A47 /* PDFLayout.swift */; };
 		673EDCDC2F43496900A03A47 /* BergPDFStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCDB2F43496900A03A47 /* BergPDFStrategy.swift */; };
 		673EDCDE2F434F8600A03A47 /* MotricityIndexPDFStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCDD2F434F7E00A03A47 /* MotricityIndexPDFStrategy.swift */; };
+		673EDCE12F447C2B00A03A47 /* MotricityIndexItemPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCE02F447C2B00A03A47 /* MotricityIndexItemPDF.swift */; };
 		674727202F34C79B007E2FFB /* MotricityIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6747271F2F34C79B007E2FFB /* MotricityIndex.swift */; };
 		674727222F34CA8F007E2FFB /* TrunkControlTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674727212F34CA8F007E2FFB /* TrunkControlTest.swift */; };
 		6747272A2F35008E007E2FFB /* MotricityIndexRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674727292F35008E007E2FFB /* MotricityIndexRepositoryProtocol.swift */; };
@@ -109,6 +110,7 @@
 		673EDCD72F433F8F00A03A47 /* PDFLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFLayout.swift; sourceTree = "<group>"; };
 		673EDCDB2F43496900A03A47 /* BergPDFStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergPDFStrategy.swift; sourceTree = "<group>"; };
 		673EDCDD2F434F7E00A03A47 /* MotricityIndexPDFStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndexPDFStrategy.swift; sourceTree = "<group>"; };
+		673EDCE02F447C2B00A03A47 /* MotricityIndexItemPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndexItemPDF.swift; sourceTree = "<group>"; };
 		6747271F2F34C79B007E2FFB /* MotricityIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndex.swift; sourceTree = "<group>"; };
 		674727212F34CA8F007E2FFB /* TrunkControlTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlTest.swift; sourceTree = "<group>"; };
 		674727292F35008E007E2FFB /* MotricityIndexRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndexRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -253,9 +255,9 @@
 		673EDCD92F43493F00A03A47 /* PDF */ = {
 			isa = PBXGroup;
 			children = (
+				673EDCDF2F447C0F00A03A47 /* ItemsPDF */,
 				673EDCDA2F43494900A03A47 /* Strategies */,
 				67DF22102F2291A50024A130 /* PDFGenerator.swift */,
-				679D9DAA2F240804007CC799 /* BergItemPDF.swift */,
 				673EDCD72F433F8F00A03A47 /* PDFLayout.swift */,
 			);
 			path = PDF;
@@ -268,6 +270,15 @@
 				673EDCDB2F43496900A03A47 /* BergPDFStrategy.swift */,
 			);
 			path = Strategies;
+			sourceTree = "<group>";
+		};
+		673EDCDF2F447C0F00A03A47 /* ItemsPDF */ = {
+			isa = PBXGroup;
+			children = (
+				679D9DAA2F240804007CC799 /* BergItemPDF.swift */,
+				673EDCE02F447C2B00A03A47 /* MotricityIndexItemPDF.swift */,
+			);
+			path = ItemsPDF;
 			sourceTree = "<group>";
 		};
 		674EF2BE2EDCB64D000CF54C = {
@@ -355,7 +366,7 @@
 		674EF38B2EDDF4C5000CF54C /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				67FA9DFE2F1F9BBB00DF5B3D /* BergTest */,
+				67FA9DFE2F1F9BBB00DF5B3D /* Scales */,
 				67CB90472EF1C8E90067952C /* Patients */,
 				674EF3902EDDF4E6000CF54C /* GeneratePDFUseCase.swift */,
 			);
@@ -513,14 +524,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		67FA9DFE2F1F9BBB00DF5B3D /* BergTest */ = {
+		67FA9DFE2F1F9BBB00DF5B3D /* Scales */ = {
 			isa = PBXGroup;
 			children = (
 				674EF38C2EDDF4CC000CF54C /* SaveBergTestUseCase.swift */,
 				67FA9DFF2F1F9BD000DF5B3D /* CreateTestUseCase.swift */,
 				676B9B692F3CED4100DB8725 /* SaveMotricityIndexUseCase.swift */,
 			);
-			path = BergTest;
+			path = Scales;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -672,6 +683,7 @@
 				676B9B6A2F3CED4100DB8725 /* SaveMotricityIndexUseCase.swift in Sources */,
 				676B9B682F3CE6B900DB8725 /* MotricityScoreOption.swift in Sources */,
 				674727342F3511BE007E2FFB /* MotorIndexEntity.swift in Sources */,
+				673EDCE12F447C2B00A03A47 /* MotricityIndexItemPDF.swift in Sources */,
 				67256D092EE1908700D568EF /* BergTestView.swift in Sources */,
 				67AC811A2F3602590063E2D9 /* MotorIndexInfo.swift in Sources */,
 				67DF220C2F224ABC0024A130 /* ScaleResultViewModel.swift in Sources */,
