@@ -8,7 +8,7 @@
 import Foundation
 import PDFKit
 
-class BergPDFStrategy: TestPDFStrategyProtocol {
+final class BergPDFStrategy: TestPDFStrategyProtocol {
     
     func drawContent(
         test: any ClinicalTestProtocol,

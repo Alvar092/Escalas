@@ -48,8 +48,7 @@ class PDFGenerator {
         case .motricityIndex:
             return MotricityIndexPDFStrategy()
         case .trunkControlTest:
-            return BergPDFStrategy()
-            // return trunkControlPDFStrategy()
+            return TrunkControlPDFStrategy()
         }
     }
 }

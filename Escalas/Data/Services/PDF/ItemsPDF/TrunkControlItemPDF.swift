@@ -1,5 +1,5 @@
 //
-//  MotricityIndexItemPDF.swift
+//  TrunkControlItemPDF.swift
 //  Escalas
 //
 //  Created by Álvaro Entrena Casas on 17/2/26.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct MotricityIndexItemPDF {
+struct TrunkControlItemPDF {
     let number: Int
     let title: String
     let description: String
-    let scoringOptions: [MotricityScoreOption]
+    let scoringOptions: [TrunkControlScoreOption]
     let score: Int
     let maxScore: Int
     
-    init(number: Int, definition: MotricityItemDefinition, item: MotricityIndexItem) {
+    init(number: Int, definition: TrunkControlItemDefinition, item: TrunkControlTestItem) {
         self.number = number
         self.title = definition.title
         self.description = definition.description

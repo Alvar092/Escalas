@@ -50,6 +50,10 @@ final class TrunkControlTestViewModel {
         selectedScore != nil
     }
     
+    var totalScore: Int {
+        items.compactMap{ $0.score }.reduce(0, +)
+    }
+    
     var progress: String {
         "\(currentItemIndex + 1) / \(items.count)"
     }

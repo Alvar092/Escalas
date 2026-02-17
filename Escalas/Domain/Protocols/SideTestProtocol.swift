@@ -10,3 +10,13 @@ import Foundation
 protocol SideTestProtocol {
     var side: BodySide? { get }
 }
+
+// MARK: - BodySide Display
+extension BodySide {
+    var displayName: String {
+        switch self {
+        case .right: return "Derecho"
+        case .left:  return "Izquierdo"
+        }
+    }
+}

@@ -135,7 +135,7 @@ private struct TrunkControlTestContentView: View {
             Spacer()
             
             VStack(alignment: .center, spacing: 4) {
-                Text("Puntuación total: \(viewModel.test.totalScore)")
+                Text("Puntuación total: \(viewModel.totalScore)")
                     .font(.headline)
                     .multilineTextAlignment(.center)
                 

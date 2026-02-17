@@ -1,16 +1,16 @@
 //
-//  MotricityIndexPDFStrategy.swift
+//  TrunkControlPDFStrategy.swift
 //  Escalas
 //
-//  Created by Álvaro Entrena Casas on 16/2/26.
+//  Created by Álvaro Entrena Casas on 17/2/26.
 //
 
 import Foundation
 import PDFKit
 
-final class MotricityIndexPDFStrategy: TestPDFStrategyProtocol {
+final class TrunkControlPDFStrategy: TestPDFStrategyProtocol {
     func drawContent(test: any ClinicalTestProtocol, patient: Patient, context: UIGraphicsPDFRendererContext, layout: PDFLayout) -> CGFloat {
-        guard let motricityTest = test as? MotricityIndex else {
+        guard let trunkTest = test as? TrunkControlTest else {
             return layout.margin
         }
         
@@ -31,7 +31,7 @@ final class MotricityIndexPDFStrategy: TestPDFStrategyProtocol {
         currentY = drawText(text: "Fecha: \(formatDate(test.date))", y: currentY, layout: layout)
         
         // LADO EVALUADO (específico del Motricity Index)
-        if let side = motricityTest.side {
+        if let side = trunkTest.side {
             currentY = drawText(
                 text: "Lado evaluado: \(side.displayName)",
                 y: currentY,
@@ -39,18 +39,7 @@ final class MotricityIndexPDFStrategy: TestPDFStrategyProtocol {
             )
         }
         
-        // PUNTUACIONES POR MIEMBRO (específico de MotricityIndex)
-        currentY = drawText(
-            text: "Puntuación Miembro Superior: \(motricityTest.upperLimbScore) / 100",
-            y: currentY,
-            layout: layout
-        )
-        currentY = drawText(
-            text: "Puntuación Miembro Inferior: \(motricityTest.lowerLimbScore) / 100",
-            y: currentY,
-            layout: layout
-        )
-        currentY += 20
+        currentY += 20        
         
         // PUNTUACIÓN TOTAL
         currentY = drawTotalScore(
@@ -62,7 +51,7 @@ final class MotricityIndexPDFStrategy: TestPDFStrategyProtocol {
         currentY += 30
         
         // ITEMS
-        let itemsPDF = prepareItemsForPDF(motricityTest: motricityTest)
+        let itemsPDF = prepareItemsForPDF(trunkControlTest: trunkTest)
         
         currentY = drawSection(title: "Detalle de Ítems", y: currentY, layout: layout)
         currentY += 10
@@ -86,13 +75,13 @@ final class MotricityIndexPDFStrategy: TestPDFStrategyProtocol {
     
     // MARK: - Preparar Items
     
-    private func prepareItemsForPDF(motricityTest: MotricityIndex) -> [MotricityIndexItemPDF] {
-        return motricityTest.items.enumerated().compactMap { (index, item) -> MotricityIndexItemPDF? in
-            guard let definition = MotricityIndexCatalog.definitions[item.itemType] else {
+    private func prepareItemsForPDF(trunkControlTest: TrunkControlTest) -> [TrunkControlItemPDF] {
+        return trunkControlTest.items.enumerated().compactMap { (index, item) -> TrunkControlItemPDF? in
+            guard let definition = TrunkControlTestCatalog.definitions[item.itemType] else {
                 return nil
             }
             
-            return MotricityIndexItemPDF(
+            return TrunkControlItemPDF(
                 number: index + 1,
                 definition: definition,
                 item: item
@@ -215,7 +204,7 @@ final class MotricityIndexPDFStrategy: TestPDFStrategyProtocol {
         return y + boxRect.height
     }
     
-    private func drawItem(item: MotricityIndexItemPDF, y: CGFloat, layout: PDFLayout) -> CGFloat {
+    private func drawItem(item: TrunkControlItemPDF, y: CGFloat, layout: PDFLayout) -> CGFloat {
         let itemHeight: CGFloat = 120
         
         if item.number % 2 == 0 {
@@ -285,8 +274,7 @@ final class MotricityIndexPDFStrategy: TestPDFStrategyProtocol {
     
     private func formatDate(_ date: Date) -> String {
         let f = DateFormatter()
-        f.dateStyle = .long
-        f.timeStyle = .short
+        f.dateStyle = .short
         f.locale = Locale(identifier: "es_ES")
         return f.string(from: date)
     }
@@ -298,7 +286,4 @@ final class MotricityIndexPDFStrategy: TestPDFStrategyProtocol {
         return f.string(from: date)
     }
 }
-
-
-
 

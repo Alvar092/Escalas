@@ -24,6 +24,8 @@
 		673EDCEA2F44CEE900A03A47 /* TrunkControlIndexCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCE92F44CEE900A03A47 /* TrunkControlIndexCatalog.swift */; };
 		673EDCEC2F44CF0300A03A47 /* TrunkControlScoreOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCEB2F44CF0300A03A47 /* TrunkControlScoreOption.swift */; };
 		673EDCEF2F44E82600A03A47 /* SideTestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCEE2F44E82600A03A47 /* SideTestProtocol.swift */; };
+		673EDCF12F44F10400A03A47 /* TrunkControlPDFStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCF02F44F10400A03A47 /* TrunkControlPDFStrategy.swift */; };
+		673EDCF32F44F2C600A03A47 /* TrunkControlItemPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCF22F44F2C600A03A47 /* TrunkControlItemPDF.swift */; };
 		674727202F34C79B007E2FFB /* MotricityIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6747271F2F34C79B007E2FFB /* MotricityIndex.swift */; };
 		674727222F34CA8F007E2FFB /* TrunkControlTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674727212F34CA8F007E2FFB /* TrunkControlTest.swift */; };
 		6747272A2F35008E007E2FFB /* MotricityIndexRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674727292F35008E007E2FFB /* MotricityIndexRepositoryProtocol.swift */; };
@@ -123,6 +125,8 @@
 		673EDCE92F44CEE900A03A47 /* TrunkControlIndexCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlIndexCatalog.swift; sourceTree = "<group>"; };
 		673EDCEB2F44CF0300A03A47 /* TrunkControlScoreOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlScoreOption.swift; sourceTree = "<group>"; };
 		673EDCEE2F44E82600A03A47 /* SideTestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTestProtocol.swift; sourceTree = "<group>"; };
+		673EDCF02F44F10400A03A47 /* TrunkControlPDFStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlPDFStrategy.swift; sourceTree = "<group>"; };
+		673EDCF22F44F2C600A03A47 /* TrunkControlItemPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlItemPDF.swift; sourceTree = "<group>"; };
 		6747271F2F34C79B007E2FFB /* MotricityIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndex.swift; sourceTree = "<group>"; };
 		674727212F34CA8F007E2FFB /* TrunkControlTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlTest.swift; sourceTree = "<group>"; };
 		674727292F35008E007E2FFB /* MotricityIndexRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndexRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 			children = (
 				673EDCDD2F434F7E00A03A47 /* MotricityIndexPDFStrategy.swift */,
 				673EDCDB2F43496900A03A47 /* BergPDFStrategy.swift */,
+				673EDCF02F44F10400A03A47 /* TrunkControlPDFStrategy.swift */,
 			);
 			path = Strategies;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 			children = (
 				679D9DAA2F240804007CC799 /* BergItemPDF.swift */,
 				673EDCE02F447C2B00A03A47 /* MotricityIndexItemPDF.swift */,
+				673EDCF22F44F2C600A03A47 /* TrunkControlItemPDF.swift */,
 			);
 			path = ItemsPDF;
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 			files = (
 				674EF39B2EDE031F000CF54C /* BergTestEntity.swift in Sources */,
 				67256D532EE1A08300D568EF /* Environment+Repositories.swift in Sources */,
+				673EDCF32F44F2C600A03A47 /* TrunkControlItemPDF.swift in Sources */,
 				673EDCE82F44CEDA00A03A47 /* TrunkControlItemDefinition.swift in Sources */,
 				673EDCE52F44CA2600A03A47 /* TrunkControlTestViewModel.swift in Sources */,
 				674EF39E2EDE0B2C000CF54C /* BergTestRepository.swift in Sources */,
@@ -718,6 +725,7 @@
 				67CB908D2EF1CFAD0067952C /* ClinicalTestProtocol.swift in Sources */,
 				676B9B6A2F3CED4100DB8725 /* SaveMotricityIndexUseCase.swift in Sources */,
 				676B9B682F3CE6B900DB8725 /* MotricityScoreOption.swift in Sources */,
+				673EDCF12F44F10400A03A47 /* TrunkControlPDFStrategy.swift in Sources */,
 				674727342F3511BE007E2FFB /* MotorIndexEntity.swift in Sources */,
 				673EDCE12F447C2B00A03A47 /* MotricityIndexItemPDF.swift in Sources */,
 				67256D092EE1908700D568EF /* BergTestView.swift in Sources */,
