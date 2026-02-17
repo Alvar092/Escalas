@@ -87,7 +87,14 @@ extension NavigationRouter {
                 }
                 
             case .trunkControlTest:
-                TrunkControlTestView()
+                if let trunkControlTest = test as? TrunkControlTest {
+                    TrunkControlTestView(
+                        viewModel: TrunkControlTestViewModel(
+                            useCase: SaveTrunkControlTestUseCase(repository: repositories.trunkControlTestRepository),
+                            test: trunkControlTest
+                        )
+                    )
+                }
             }
         } else {
             ContentUnavailableView(
@@ -125,7 +132,15 @@ extension NavigationRouter {
                 }
                 
             case .trunkControlTest:
-                TrunkControlTestView()
+                if let trunkTest = test as? TrunkControlTest {
+                    ScaleResultView(
+                        viewModel: ScaleResultViewModel(
+                            test: trunkTest,
+                            useCase: GetPatientByIdUseCase(patientsRepository: repositories.patientRepository)
+                        )
+                    )
+                }
+                
                 
             }//Switch
         }

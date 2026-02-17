@@ -12,7 +12,7 @@ enum BodySide: String, Codable {
     case left
 }
 
-struct MotricityIndex: ClinicalTestProtocol {
+struct MotricityIndex: ClinicalTestProtocol, SideTestProtocol {
     var id: UUID
     let date: Date
     var evaluator: String?

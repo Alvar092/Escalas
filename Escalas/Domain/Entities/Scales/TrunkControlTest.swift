@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct TrunkControlTest: ClinicalTestProtocol {
+struct TrunkControlTest: ClinicalTestProtocol, SideTestProtocol {
     var id: UUID
     var date: Date
     var evaluator: String?
     var patientID: UUID
+    var side: BodySide?
     var maxScore: Int?
     var items: [TrunkControlTestItem]
     
@@ -27,9 +28,9 @@ struct TrunkControlTestItem: Codable {
 }
 
 enum TrunkControlItemType: Int, Codable, CaseIterable {
-    case rollToWeakSide = 1
-    case rollStrongSide = 2
-    case balanceSitting = 3
-    case sitFromLyingDown = 4
+    case rollingToWeakSide = 1
+    case rollingToStrongSide = 2
+    case balancedSitting = 3
+    case sittingUpFromLyingDown = 4
 }
 

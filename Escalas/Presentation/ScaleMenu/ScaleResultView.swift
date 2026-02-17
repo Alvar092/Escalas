@@ -34,9 +34,9 @@ struct ScaleResultView: View {
                     Text("Fecha: \(formatDate(viewModel.test.date))")
                         .font(.l)
                     
-                    // Lado evaluado??
-                    if let test = viewModel.test as? MotricityIndex,
-                       let side = test.side {
+                    // Lado evaluado
+                    if let sidedTest = viewModel.test as? SideTestProtocol,
+                       let side = sidedTest.side {
                         Text("Lado evaluado: \(side.rawValue.capitalized)")
                             .font(.l)
                     }

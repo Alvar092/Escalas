@@ -75,17 +75,16 @@ struct HomeView: View {
                         }
                         
                         Button {
-                            /* router.navigate(to: .scaleMenu(testType: .10mwt)) */
+                             router.navigate(to: .scaleMenu(testType: .trunkControlTest))
                         } label: {
                             Text("Trunk Control Test")
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.accentColor.gradient)
-                                .foregroundStyle(.white)
+                                .background(Color(.prim))
+                                .foregroundStyle(.textOnPrim)
                                 .cornerRadius(12)
                                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
-                        .disabled(true)
                         
                         Button {
                             /* router.navigate(to: .scaleMenu(testType: .10mwt)) */

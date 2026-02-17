@@ -136,3 +136,41 @@ extension MotricityIndexItem {
         )
     ]
 }
+
+extension TrunkControlTest {
+    
+    static let patient1 = TrunkControlTest(
+        id: UUID(),
+        date: Calendar.current.date(byAdding: .day, value: -2, to: .now)!,
+        evaluator: "Fisioterapeuta 1",
+        patientID: UUID(uuidString: "00000000-0000-0000-0000-000000000001") ?? UUID(),
+        maxScore: 100,
+        items: TrunkControlTestItem.mockItems
+    )
+}
+
+extension TrunkControlTestItem {
+    
+    static let mockItems: [TrunkControlTestItem] = [
+        TrunkControlTestItem(
+            id: UUID(),
+            itemType: .rollingToWeakSide,
+            score: 0
+        ),
+        TrunkControlTestItem(
+            id: UUID(),
+            itemType: .rollingToStrongSide,
+            score: 0
+        ),
+        TrunkControlTestItem(
+            id: UUID(),
+            itemType: .balancedSitting,
+            score: 0
+        ),
+        TrunkControlTestItem(
+            id: UUID(),
+            itemType: .sittingUpFromLyingDown,
+            score: 0
+        )
+    ]
+}

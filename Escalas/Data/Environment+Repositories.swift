@@ -50,11 +50,13 @@ class Repositories {
     let patientRepository: PatientRepositoryProtocol
     let bergTestRepository: BergTestRepositoryProtocol
     let motricityIndexRepository: MotricityIndexRepositoryProtocol
+    let trunkControlTestRepository: TrunkControlTestRepositoryProtocol
     
     init(modelContext: ModelContext) {
         self.patientRepository = PatientRespository(modelContext: modelContext)
         self.bergTestRepository = BergTestRepository(modelContext: modelContext)
         self.motricityIndexRepository = MotricityIndexRepository(modelContext: modelContext)
+        self.trunkControlTestRepository = TrunkControlTestRepository(modelContext: modelContext)
     }
 }
 
@@ -63,7 +65,8 @@ extension Repositories {
         let schema = Schema([
             PatientEntity.self,
             BergTestEntity.self,
-            MotricityIndexEntity.self
+            MotricityIndexEntity.self,
+            TrunkControlEntity.self
         ])
         
         let container = try! ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true)

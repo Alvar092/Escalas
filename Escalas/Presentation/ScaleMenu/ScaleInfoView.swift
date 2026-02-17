@@ -69,5 +69,5 @@ struct ScaleInfoView: View {
 }
 
 #Preview {
-    ScaleInfoView(info: ClinicalTestInfo.berg)
+    ScaleInfoView(info: ClinicalTestInfo.trunkControlTest)
 }
