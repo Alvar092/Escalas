@@ -61,36 +61,36 @@ final class ScaleResultViewModel {
         
     }
     
-    private func prepareItemsForPDF() -> [BergItemPDF] {
-            // Verificar si es BergTest
-            guard let bergTest = test as? BergTest else {
-                return []
-            }
-            
-            // Obtener las definiciones de los items de Berg
-            let definitions = BergItemCatalog.allDefinitions()
-            
-            // Combinar items con sus definiciones
-            var itemsPDF: [BergItemPDF] = []
-            
-            for (index, item) in bergTest.items.enumerated() {
-                // Buscar la definición correspondiente
-                if let definition = definitions.first(where: { $0.type == item.itemType }) {
-                    
-                    let score = item.score ?? 0
-                    let scoreDescription = definition.scoreDescription(for: score)
-                    
-                    let itemPDF = BergItemPDF(
-                        number: index + 1,
-                        definition: definition,
-                        item: item,
-                        test: bergTest,
-                        scoreDescription: scoreDescription
-                    )
-                    itemsPDF.append(itemPDF)
-                }
-            }
-            
-            return itemsPDF
-        }
+//    private func prepareItemsForPDF() -> [BergItemPDF] {
+//            // Verificar si es BergTest
+//            guard let bergTest = test as? BergTest else {
+//                return []
+//            }
+//            
+//            // Obtener las definiciones de los items de Berg
+//            let definitions = BergItemCatalog.allDefinitions()
+//            
+//            // Combinar items con sus definiciones
+//            var itemsPDF: [BergItemPDF] = []
+//            
+//            for (index, item) in bergTest.items.enumerated() {
+//                // Buscar la definición correspondiente
+//                if let definition = definitions.first(where: { $0.type == item.itemType }) {
+//                    
+//                    let score = item.score ?? 0
+//                    let scoreDescription = definition.scoreDescription(for: score)
+//                    
+//                    let itemPDF = BergItemPDF(
+//                        number: index + 1,
+//                        definition: definition,
+//                        item: item,
+//                        test: bergTest,
+//                        scoreDescription: scoreDescription
+//                    )
+//                    itemsPDF.append(itemPDF)
+//                }
+//            }
+//            
+//            return itemsPDF
+//        }
 }

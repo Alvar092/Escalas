@@ -13,7 +13,9 @@ struct EscalasApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             PatientEntity.self,
-            BergTestEntity.self
+            BergTestEntity.self,
+            MotricityIndexEntity.self,
+            TrunkControlEntity.self         
         ])
         
         let configuration = ModelConfiguration(schema: schema)

@@ -1,0 +1,412 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "Berg Balance Scale" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Berg Balance Scale"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escala equilibrio Berg"
+          }
+        }
+      }
+    },
+    "Motricity Index" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Motricity Index "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "índice motor"
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A widely used scale to assess static and dynamic balance in both sitting and standing positions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es una escala ampliamente usada para valorar el equilibrio estático y dinámico tanto en sedestación como en bipedestación."
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.interpretation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0 to 20: Wheelchair dependent.\n21 to 40: Walks with assistance.\n41 to 56: Independent."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De 0 a 20: Precisa de silla de ruedas.\nDe 21 a 40: Puede caminar con ayuda.\nDe 41 a 56: Independiente."
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.material.0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopwatch"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronómetro"
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.material.1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chair between 45 and 50 cm with armrests"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silla de entre 45 y 50 cm con reposabrazos"
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.material.2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chair between 45 and 50 cm without armrests"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silla de entre 45 y 50 cm sin reposabrazos"
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.material.3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step/box between 20 and 23 cm"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escalón/cajón de entre 20 y 23 cm"
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.material.4" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruler"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regla"
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.material.5" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A shoe"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una zapatilla"
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berg Balance Scale"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berg Balance Scale"
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.recommendations" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To detect changes, it is advisable to perform the test at least twice and, if possible, under the same conditions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para apreciar cambios, es aconsejable realizar la prueba al menos 2 veces y, a ser posible, bajo las mismas condiciones."
+          }
+        }
+      }
+    },
+    "scalesInfo.berg.scoring" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each item is scored from 0 to 4. A score of 0 indicates inability to perform the task and a score of 4 indicates full ability to perform the task.\nItems are scored based on time, level of independence or supervision required. If the patient requires supervision or assistance, this will be negatively reflected in the score."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada ítem puntúa de 0 a 4. Una puntuación de 0 indica incapacidad para realizar la tarea y una puntuación de 4 indica capacidad para poder hacer la tarea.\nLos ítems puntúan en relación al tiempo, nivel de independencia o supervisión requerida. Si el paciente necesita supervisión o asistencia, esto se verá reflejado en la puntuación negativamente."
+          }
+        }
+      }
+    },
+    "scalesInfo.motricityIndex.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Motricity Index is an ordinal method for measuring motor strength in patients with hemiparesis following a stroke, based on selected movements of the upper and lower limbs to reflect the ability to generate force in key muscle groups."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El Motricity Index es un método ordinal para medir la fuerza motora en pacientes con hemiparesia tras un accidente cerebrovascular, basado en movimientos seleccionados de extremidades superiores e inferiores para reflejar la capacidad de generar fuerza en grupos musculares clave."
+          }
+        }
+      }
+    },
+    "scalesInfo.motricityIndex.interpretation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A higher score indicates greater overall motor strength. The Motricity Index is used to assess motor function in post-stroke patients and to monitor strength recovery."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una puntuación más alta indica mayor fuerza motora global. El Motricity Index se utiliza para evaluar la función motora en pacientes post-ictus y monitorizar la recuperación de fuerza."
+          }
+        }
+      }
+    },
+    "scalesInfo.motricityIndex.material.0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2.5 cm cube for grip testing"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cubito de 2.5 cm para pruebas de prensión"
+          }
+        }
+      }
+    },
+    "scalesInfo.motricityIndex.name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motricity Index"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motricity Index"
+          }
+        }
+      }
+    },
+    "scalesInfo.motricityIndex.recommendations" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use as part of the clinical assessment to plan motor strength-focused rehabilitation interventions and to monitor recovery progress."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar como parte de la evaluación clínica para planificar intervenciones de rehabilitación centradas en fuerza motora y para seguimiento de la recuperación."
+          }
+        }
+      }
+    },
+    "scalesInfo.motricityIndex.scoring" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Six items (3 for the upper limb: pinch grip, elbow flexion, shoulder abduction; and 3 for the lower limb: ankle dorsiflexion, knee extension and hip flexion).\nEach component is assessed with weighted scores and the total sum ranges from 0 to 100."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seis ítems (3 para extremidad superior: prensión, flexión de codo, abducción de hombro; y 3 para extremidad inferior: dorsiflexión de tobillo, extensión de rodilla y flexión de cadera).\nCada componente se evalúa con puntuaciones ponderadas y la suma total varía de 0 a 100."
+          }
+        }
+      }
+    },
+    "scalesInfo.trunkControlTest.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Trunk Control Test assesses trunk control and stability through four functional movements designed to measure the patient's ability to initiate and perform trunk control without assistance."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El Trunk Control Test evalúa el control y la estabilidad de tronco mediante cuatro movimientos funcionales destinados a medir la capacidad del paciente para iniciar y realizar control de tronco sin asistencia."
+          }
+        }
+      }
+    },
+    "scalesInfo.trunkControlTest.interpretation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A higher total score indicates better trunk control. The TCT is used to assess postural function in patients with neurological disorders (e.g. stroke or spinal cord injury). Higher scores correlate with greater independence and functional capacity, including the likelihood of walking independently."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una puntuación total más alta indica mejor control del tronco. El TCT se utiliza para evaluar la función postural en pacientes con alteraciones neurológicas (por ejemplo, ictus o lesión medular). Mejores puntuaciones se correlacionan con mayor independencia y capacidad funcional, incluyendo la probabilidad de caminar de manera independiente."
+          }
+        }
+      }
+    },
+    "scalesInfo.trunkControlTest.material.0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treatment table"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camilla"
+          }
+        }
+      }
+    },
+    "scalesInfo.trunkControlTest.name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Trunk Control Test"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test de control de tronco"
+          }
+        }
+      }
+    },
+    "scalesInfo.trunkControlTest.recommendations" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The TCT can be used to guide the rehabilitation plan aimed at improving trunk control and to monitor changes over time. Its use is recommended as part of a battery of functional assessments of the trunk and lower limb."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El TCT puede ser utilizado para guiar el plan de rehabilitación dirigido a mejorar el control del tronco y para monitorizar cambios a lo largo del tiempo. Se recomienda su uso como parte de una batería de evaluaciones funcionales del tronco y miembro inferior."
+          }
+        }
+      }
+    },
+    "scalesInfo.trunkControlTest.scoring" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Four items, each scored with 0, 12 or 25. The total score is the sum of all four, ranging from 0 (worst control) to 100 (best control)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuatro ítems, cada uno puntuado con 0, 12 o 25. La puntuación total es la suma de los cuatro, con un rango de 0 (peor control) a 100 (mejor control)."
+          }
+        }
+      }
+    },
+    "Trunk Control Test" : {
+
+    }
+  },
+  "version" : "1.0"
+}

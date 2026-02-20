@@ -17,13 +17,13 @@ struct ClinicalTestInfo: Equatable {
     let referenceURL: URL?
     
     var name: String {
-        switch self {
+        switch self.testType {
         case .berg:
-            return "Berg Balance Scale"
+            return String(localized: "Berg Balance Scale", table: "ScalesInfo")
         case .motricityIndex:
-            return "Motricity Index"
+            return String(localized: "Motricity Index", table: "ScalesInfo")
         case .trunkControlTest:
-            return "Trunk Control Test"
+            return String(localized: "Trunk Control Test", table: "ScalesInfo")
         default:
             return "Scale name"
         }

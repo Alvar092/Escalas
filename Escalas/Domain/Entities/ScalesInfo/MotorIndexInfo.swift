@@ -10,11 +10,13 @@ import Foundation
 extension ClinicalTestInfo {
     static let motricityIndex = ClinicalTestInfo(
         testType: .motricityIndex,
-        description: "El Motricity Index es un método ordinal para medir la fuerza motora en pacientes con hemiparesia tras un accidente cerebrovascular, basado en movimientos seleccionados de extremidades superiores e inferiores para reflejar la capacidad de generar fuerza en grupos musculares clave.",
-        materials: ["Cubito de 2.5 cm para pruebas de prensión"],
-        scoring: "Seis ítems (3 para extremidad superior: prensión, flexión de codo, abducción de hombro; y 3 para extremidad inferior: dorsiflexión de tobillo, extensión de rodilla y flexión de cadera). \nCada componente se evalúa con puntuaciones ponderadas y la suma total varía de 0 a 100.",
-        interpretation: "Una puntuación más alta indica mayor fuerza motora global. El Motricity Index se utiliza para evaluar la función motora en pacientes post-ictus y monitorizar la recuperación de fuerza.",
-        recommendations: "Usar como parte de la evaluación clínica para planificar intervenciones de rehabilitación centradas en fuerza motora y para seguimiento de la recuperación.",
+        description: String(localized: "scalesInfo.motricityIndex.description", table: "ScalesInfo"),
+        materials: [
+            String(localized: "scalesInfo.motricityIndex.material.0", table: "ScalesInfo")
+        ],
+        scoring: String(localized: "scalesInfo.motricityIndex.scoring", table: "ScalesInfo"),
+        interpretation: String(localized: "scalesInfo.motricityIndex.interpretation", table: "ScalesInfo"),
+        recommendations: String(localized: "scalesInfo.motricityIndex.recommendations", table: "ScalesInfo"),
         referenceURL: URL(string: "https://www.sralab.org/rehabilitation-measures/motricity-index")
     )
 }

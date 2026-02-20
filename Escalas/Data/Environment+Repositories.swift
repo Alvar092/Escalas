@@ -14,7 +14,8 @@ private enum DefaultModelContainer {
         let schema = Schema([
             PatientEntity.self,
             BergTestEntity.self,
-            MotricityIndexEntity.self
+            MotricityIndexEntity.self,
+            TrunkControlEntity.self
         ])
         return try! ModelContainer(for: schema)
     }()

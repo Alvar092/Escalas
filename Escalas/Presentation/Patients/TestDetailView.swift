@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct PatientTestDetailView: View {
-    let test: any ClinicalTestProtocol
+struct TestDetailView: View {
+    @State var viewModel: TestDetailViewModel
     
     var body: some View {
         ScrollView {
@@ -20,7 +20,7 @@ struct PatientTestDetailView: View {
             .padding()
         }
         .background(Color(.backg))
-        .navigationTitle(test.testType.rawValue)
+        .navigationTitle(viewModel.test.testType.rawValue)
         .navigationBarTitleDisplayMode(.inline)
     }
     
@@ -28,31 +28,30 @@ struct PatientTestDetailView: View {
     
     private var testHeader: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(test.testType.rawValue)
+            Text(viewModel.test.testType.rawValue)
                 .font(.lSemi)
                 .foregroundStyle(.textPrim)
             
-            if let evaluator = test.evaluator {
-                Text("Evaluador: \(evaluator)")
+            if let evaluator = viewModel.test.evaluator {
+                Text(String(localized: "testDetail.evaluator", defaultValue: "Evaluador: \(evaluator)"))
                     .font(.s)
                     .foregroundStyle(.textPrim)
             }
             
-            Text(test.date.formatted(date: .abbreviated, time: .omitted))
+            Text(viewModel.test.date.formatted(date: .abbreviated, time: .omitted))
                 .font(.m)
                 .foregroundStyle(.textPrim)
             
-
-            Text("Puntuación total: \(test.totalScore)\(test.maxScore.map { "/\($0)" } ?? "")")
+            Text(String(format: String(localized: "testDetail.totalScore"), viewModel.test.totalScore, viewModel.test.maxScore.map { "/\($0)" } ?? ""))
                 .font(.lSemi)
                 .foregroundStyle(.textPrim)
             
             Spacer()
             
             Button {
-                exportPDF()
+                //exportPDF()
             } label: {
-                Label("Exportar PDF", systemImage: "square.and.arrow.up")
+                Label(String(localized: "testDetail.exportPDF"), systemImage: "square.and.arrow.up")
                     .padding(.vertical, 12)
                     .frame(maxWidth: .infinity)
             }
@@ -60,8 +59,6 @@ struct PatientTestDetailView: View {
             .foregroundStyle(.textOnPrim)
             .font(.m)
             .clipShape(RoundedRectangle(cornerRadius: 8))
-         
-            
         }
         .padding()
     }
@@ -70,7 +67,7 @@ struct PatientTestDetailView: View {
     
     @ViewBuilder
     private var testItems: some View {
-        switch test {
+        switch viewModel.test {
         case let berg as BergTest:
             BergDetailSection(test: berg)
         case let motricity as MotricityIndex:
@@ -78,191 +75,185 @@ struct PatientTestDetailView: View {
         case let trunk as TrunkControlTest:
             TrunkControlDetailSection(test: trunk)
         default:
-            Text("Tipo de test no reconocido")
+            Text(String(localized: "testDetail.unknownTest"))
         }
     }
     
-    // MARK: - PDF
+    // MARK: - Item Row
     
-    private func exportPDF() {
-        // Aquí conectas con tu lógica de PDF existente
-    }
-}
-
-// MARK: - Item Row
-
-private struct TestItemRow: View {
-    let itemNumber: Int
-    let title: String
-    let description: String
-    let scoreText: String
-    
-    @State private var isExpanded = false
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Button {
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    isExpanded.toggle()
+    private struct TestItemRow: View {
+        let itemNumber: Int
+        let title: String
+        let description: String
+        let scoreText: String
+        
+        @State private var isExpanded = false
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 8) {
+                Button {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isExpanded.toggle()
+                    }
+                } label: {
+                    HStack {
+                        Text("\(itemNumber)- \(title) :")
+                            .font(.m)
+                            .foregroundStyle(.textOnPrim)
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                            .font(.s)
+                            .foregroundStyle(.secondary)
+                    }
                 }
-            } label: {
-                HStack {
-                    Text("\(itemNumber)- \(title) :")
-                        .font(.m)
-                        .foregroundStyle(.textOnPrim)
-                        .multilineTextAlignment(.leading)
-                    Spacer()
-                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                .buttonStyle(.plain)
+                
+                if isExpanded {
+                    Text(description)
                         .font(.s)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.textOnPrim)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-            }
-            .buttonStyle(.plain)
-            
-            if isExpanded {
-                Text(description)
-                    .font(.s)
+                
+                Text(scoreText)
+                    .font(.m)
                     .foregroundStyle(.textOnPrim)
-                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                    .background(Color(.prim))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             }
-            
-            Text(scoreText)
-                .font(.m)
-                .foregroundStyle(.textOnPrim)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 4)
-                .background(Color(.prim))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+            .padding()
+            .background(Color(.prim))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
-        .padding()
-        .background(Color(.prim))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
-}
-
-// MARK: - Berg Section
-
-private struct BergDetailSection: View {
-    let test: BergTest
     
-    private var items: [BergItemPDF] {
-        let definitions = BergItemCatalog.allDefinitions()
-        return test.items.enumerated().compactMap { index, item in
-            guard let definition = definitions.first(where: { $0.type == item.itemType }) else { return nil }
-            let scoreDescription = definition.scoringOptions.first(where: { $0.score == item.score })?.description ?? "Sin puntuar"
-            return BergItemPDF(number: index + 1, definition: definition, item: item, test: test, scoreDescription: scoreDescription)
-            
+    // MARK: - Berg Section
+    
+    private struct BergDetailSection: View {
+        let test: BergTest
+        
+        private var items: [BergItemPDF] {
+            let definitions = BergItemCatalog.allDefinitions()
+            return test.items.enumerated().compactMap { index, item in
+                guard let definition = definitions.first(where: { $0.type == item.itemType }) else { return nil }
+                let scoreDescription = definition.scoringOptions.first(where: { $0.score == item.score })?.description ?? "Sin puntuar"
+                return BergItemPDF(number: index + 1, definition: definition, item: item, test: test, scoreDescription: scoreDescription)
+            }
         }
-    }
         
         var body: some View {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Ítems")
+                Text(String(localized: "testDetail.items"))
                     .font(.lSemi)
                     .foregroundStyle(.prim)
                 
                 ForEach(items, id: \.number) { item in
-                        TestItemRow(
-                            itemNumber: item.number,
-                            title: item.title,
-                            description: item.description,
-                            scoreText: item.scoreDescription
-                        )
+                    TestItemRow(
+                        itemNumber: item.number,
+                        title: item.title,
+                        description: item.description,
+                        scoreText: item.scoreDescription
+                    )
                 }
             }
         }
     }
     
-private struct MotricityDetailSection: View {
-    let test: MotricityIndex
+    // MARK: - Motricity Section
 
-    private var upperItems: [MotricityIndexItemPDF] {
-        prepareItems(filter: { $0.itemType.isUpperLimb })
-    }
-
-    private var lowerItems: [MotricityIndexItemPDF] {
-        prepareItems(filter: { $0.itemType.isLowerLimb }, startingAt: upperItems.count + 1)
-    }
-
-    private func prepareItems(filter: (MotricityIndexItem) -> Bool, startingAt start: Int = 1) -> [MotricityIndexItemPDF] {
-        let definitions = MotricityIndexCatalog.definitions
-        return test.items.filter(filter).enumerated().compactMap { index, item in
-            guard let definition = definitions[item.itemType] else { return nil }
-            return MotricityIndexItemPDF(number: start + index, definition: definition, item: item)
+    private struct MotricityDetailSection: View {
+        let test: MotricityIndex
+        
+        private var upperItems: [MotricityIndexItemPDF] {
+            prepareItems(filter: { $0.itemType.isUpperLimb })
         }
-    }
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            if let side = test.side {
-                Text("Lado: \(side.rawValue.capitalized)")
+        
+        private var lowerItems: [MotricityIndexItemPDF] {
+            prepareItems(filter: { $0.itemType.isLowerLimb }, startingAt: upperItems.count + 1)
+        }
+        
+        private func prepareItems(filter: (MotricityIndexItem) -> Bool, startingAt start: Int = 1) -> [MotricityIndexItemPDF] {
+            let definitions = MotricityIndexCatalog.definitions
+            return test.items.filter(filter).enumerated().compactMap { index, item in
+                guard let definition = definitions[item.itemType] else { return nil }
+                return MotricityIndexItemPDF(number: start + index, definition: definition, item: item)
+            }
+        }
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 16) {
+                if let side = test.side {
+                    Text(String(format: String(localized: "testDetail.side"), side.rawValue.capitalized))
+                        .font(.mSemi)
+                        .foregroundStyle(.secondary)
+                }
+                
+                Text(String(localized: "testDetail.upperLimb"))
                     .font(.mSemi)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.prim)
+                
+                ForEach(upperItems, id: \.number) { item in
+                    TestItemRow(
+                        itemNumber: item.number,
+                        title: item.title,
+                        description: item.description,
+                        scoreText: "\(item.score)/\(item.maxScore)"
+                    )
+                }
+                
+                Text(String(localized: "testDetail.lowerLimb"))
+                    .font(.mSemi)
+                    .foregroundStyle(.prim)
+                    .padding(.top, 8)
+                
+                ForEach(lowerItems, id: \.number) { item in
+                    TestItemRow(
+                        itemNumber: item.number,
+                        title: item.title,
+                        description: item.description,
+                        scoreText: "\(item.score)/\(item.maxScore)"
+                    )
+                }
             }
-
-            Text("Miembro superior")
-                .font(.mSemi)
-                .foregroundStyle(.prim)
-
-            ForEach(upperItems, id: \.number) { item in
-                TestItemRow(
-                    itemNumber: item.number,
-                    title: item.title,
-                    description: item.description,
-                    scoreText: "\(item.score)/\(item.maxScore)"
-                )
+        }
+    }
+    
+    // MARK: - Trunk Control Section
+    
+    private struct TrunkControlDetailSection: View {
+        let test: TrunkControlTest
+        
+        private var items: [TrunkControlItemPDF] {
+            let definitions = TrunkControlTestCatalog.definitions
+            return test.items.enumerated().compactMap { index, item in
+                guard let definition = definitions[item.itemType] else { return nil }
+                return TrunkControlItemPDF(number: index + 1, definition: definition, item: item)
             }
-
-            Text("Miembro inferior")
-                .font(.mSemi)
-                .foregroundStyle(.prim)
-                .padding(.top, 8)
-
-            ForEach(lowerItems, id: \.number) { item in
-                TestItemRow(
-                    itemNumber: item.number,
-                    title: item.title,
-                    description: item.description,
-                    scoreText: "\(item.score)/\(item.maxScore)"
-                )
+        }
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 16) {
+                Text(String(localized: "testDetail.items"))
+                    .font(.lSemi)
+                    .foregroundStyle(.prim)
+                
+                ForEach(items, id: \.number) { item in
+                    TestItemRow(
+                        itemNumber: item.number,
+                        title: item.title,
+                        description: item.description,
+                        scoreText: "\(item.score)/\(item.maxScore)"
+                    )
+                }
             }
         }
     }
 }
 
-// MARK: - Trunk Control Section
 
-private struct TrunkControlDetailSection: View {
-    let test: TrunkControlTest
-
-    private var items: [TrunkControlItemPDF] {
-        let definitions = TrunkControlTestCatalog.definitions
-        return test.items.enumerated().compactMap { index, item in
-            guard let definition = definitions[item.itemType] else { return nil }
-            return TrunkControlItemPDF(number: index + 1, definition: definition, item: item)
-        }
-    }
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Ítems")
-                .font(.lSemi)
-                .foregroundStyle(.prim)
-
-            ForEach(items, id: \.number) { item in
-                TestItemRow(
-                    itemNumber: item.number,
-                    title: item.title,
-                    description: item.description,
-                    scoreText: "\(item.score)/\(item.maxScore)"
-                )
-            }
-        }
-    }
+#Preview {
+    TestDetailView(viewModel: TestDetailViewModel(test: BergTest.patient1, patient: Patient.patient1))
 }
-    
-    
-    
-    #Preview {
-        PatientTestDetailView(test: BergTest.patient1)
-    }

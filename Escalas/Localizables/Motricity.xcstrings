@@ -1,0 +1,159 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+
+    "motricity.pinchGrip.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Pinza fina" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pinch Grip" } }
+      }
+    },
+    "motricity.pinchGrip.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Capacidad para realizar pinza entre pulgar e índice." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ability to perform a pinch grip between thumb and index finger." } }
+      }
+    },
+
+    "motricity.elbowFlexion.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Flexión de codo" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Elbow Flexion" } }
+      }
+    },
+    "motricity.elbowFlexion.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Flexión activa del codo contra gravedad o resistencia." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active elbow flexion against gravity or resistance." } }
+      }
+    },
+
+    "motricity.shoulderAbduction.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abducción de hombro" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Shoulder Abduction" } }
+      }
+    },
+    "motricity.shoulderAbduction.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abducción activa del hombro contra gravedad o resistencia." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active shoulder abduction against gravity or resistance." } }
+      }
+    },
+
+    "motricity.ankleDorsiflexion.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Dorsiflexión de tobillo" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ankle Dorsiflexion" } }
+      }
+    },
+    "motricity.ankleDorsiflexion.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Elevación activa del pie contra gravedad." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active foot elevation against gravity." } }
+      }
+    },
+
+    "motricity.kneeExtension.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Extensión de rodilla" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Knee Extension" } }
+      }
+    },
+    "motricity.kneeExtension.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Extensión activa de la rodilla contra gravedad o resistencia." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active knee extension against gravity or resistance." } }
+      }
+    },
+
+    "motricity.hipFlexion.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Flexión de cadera" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hip Flexion" } }
+      }
+    },
+    "motricity.hipFlexion.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Flexión activa de cadera contra gravedad o resistencia." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Active hip flexion against gravity or resistance." } }
+      }
+    },
+
+    "motricity.standard.score.0" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "0. No contracción visible." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "0. No visible contraction." } }
+      }
+    },
+    "motricity.standard.score.9" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "9. Contracción palpable sin movimiento." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "9. Palpable contraction, no movement." } }
+      }
+    },
+    "motricity.standard.score.14" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "14. Movimiento sin vencer gravedad." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "14. Movement without overcoming gravity." } }
+      }
+    },
+    "motricity.standard.score.19" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "19. Movimiento venciendo gravedad." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "19. Movement overcoming gravity." } }
+      }
+    },
+    "motricity.standard.score.25" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "25. Movimiento contra resistencia leve." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "25. Movement against mild resistance." } }
+      }
+    },
+    "motricity.standard.score.33" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "33. Fuerza normal." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "33. Normal strength." } }
+      }
+    },
+
+    "motricity.pinchGrip.score.0" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "0. No contracción visible." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "0. No visible contraction." } }
+      }
+    },
+    "motricity.pinchGrip.score.11" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "11. Contracción palpable sin movimiento." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "11. Palpable contraction, no movement." } }
+      }
+    },
+    "motricity.pinchGrip.score.19" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "19. Movimiento sin vencer gravedad." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "19. Movement without overcoming gravity." } }
+      }
+    },
+    "motricity.pinchGrip.score.22" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "22. Movimiento venciendo gravedad." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "22. Movement overcoming gravity." } }
+      }
+    },
+    "motricity.pinchGrip.score.26" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "26. Movimiento contra resistencia leve." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "26. Movement against mild resistance." } }
+      }
+    },
+    "motricity.pinchGrip.score.33" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "33. Fuerza normal." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "33. Normal strength." } }
+      }
+    }
+
+  },
+  "version" : "1.0"
+}

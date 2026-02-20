@@ -50,16 +50,7 @@
     "Atras" : {
 
     },
-    "Calificación:" : {
-
-    },
-    "Comenzar prueba" : {
-
-    },
     "Derecho" : {
-
-    },
-    "Descripción:" : {
 
     },
     "Error al cargar el test" : {
@@ -68,54 +59,8 @@
     "Error de configuración" : {
 
     },
-    "Evaluador: %@" : {
-
-    },
-    "Exportar en PDF" : {
-
-    },
-    "Exportar PDF" : {
-
-    },
-    "Fecha: %@" : {
-
-    },
     "Finalizar" : {
 
-    },
-    "home.error.config.message" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Repositories are not available"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los repositorios no están disponibles"
-          }
-        }
-      }
-    },
-    "home.error.config.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configuration Error"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error de configuración"
-          }
-        }
-      }
     },
     "home.menu.patients" : {
       "localizations" : {
@@ -145,23 +90,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Escala equilibrio Berg"
-          }
-        }
-      }
-    },
-    "home.scale.comingSoon" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Coming Soon"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Próximamente"
           }
         }
       }
@@ -246,66 +174,89 @@
         }
       }
     },
-    "Información" : {
-
-    },
-    "Información de la prueba" : {
-
-    },
-    "Iniciar" : {
-
-    },
-    "Interpretación:" : {
-
-    },
-    "Item at %@" : {
-
-    },
-    "Ítems" : {
-
-    },
-    "Izquierdo" : {
-
-    },
-    "Lado evaluado: %@" : {
-
-    },
-    "Lado: %@" : {
-
-    },
-    "Los repositorios no están disponibles" : {
-
-    },
-    "Materiales:" : {
-
-    },
-    "Miembro inferior" : {
-
-    },
-    "Miembro superior" : {
-
-    },
-    "No se pudo inicializar el test correctamente" : {
-
-    },
-    "Ok" : {
-
-    },
-    "Paciente" : {
-
-    },
-    "Paciente:%@" : {
-
-    },
-    "patientDetail.age" : {
+    "homeError.repositories" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Years old"
+            "value" : "Repositories are not available"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los repositorios no están disponibles"
+          }
+        }
+      }
+    },
+    "homeError.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuration Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de configuración"
+          }
+        }
+      }
+    },
+    "homeScale.comingSoon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coming Soon"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximamente"
+          }
+        }
+      }
+    },
+    "Iniciar" : {
+
+    },
+    "Item at %@" : {
+
+    },
+    "Izquierdo" : {
+
+    },
+    "Los repositorios no están disponibles" : {
+
+    },
+    "No se pudo inicializar el test correctamente" : {
+
+    },
+    "paciente" : {
+
+    },
+    "patientDetail.test" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tests"
+          }
+        }
+      }
+    },
+    "patientDetail.years" : {
+      "extractionState" : "manual",
+      "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -476,35 +427,6 @@
     "Puntuación total: %lld" : {
 
     },
-    "Puntuación total: %lld%@" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Puntuación total: %1$lld%2$@"
-          }
-        }
-      }
-    },
-    "Puntuación: %lld" : {
-
-    },
-    "Puntuación: %lld / %lld" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Puntuación: %1$lld / %2$lld"
-          }
-        }
-      }
-    },
-    "Recomendaciones:" : {
-
-    },
-    "Referencias bibliográficas:" : {
-
-    },
     "Repositories no disponibles" : {
 
     },
@@ -523,14 +445,150 @@
     "SraLab" : {
 
     },
-    "Tests" : {
-
+    "testDetail.evaluator" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evaluator: %1$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evaluador: %1$@"
+          }
+        }
+      }
     },
-    "Tipo de test no reconocido" : {
-
+    "testDetail.exportPDF" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export PDF"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar PDF"
+          }
+        }
+      }
     },
-    "Volver a inicio" : {
-
+    "testDetail.items" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Items"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ítems"
+          }
+        }
+      }
+    },
+    "testDetail.lowerLimb" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lower limb"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miembro inferior"
+          }
+        }
+      }
+    },
+    "testDetail.side" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Side: %1$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lado: %1$@"
+          }
+        }
+      }
+    },
+    "testDetail.totalScore" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total score: %1$lld%2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puntuación total: %1$lld%2$@"
+          }
+        }
+      }
+    },
+    "testDetail.unknownTest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown test type"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de test no reconocido"
+          }
+        }
+      }
+    },
+    "testDetail.upperLimb" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upper limb"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miembro superior"
+          }
+        }
+      }
+    },
+    "testDetailDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date: %1$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha: %1$@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

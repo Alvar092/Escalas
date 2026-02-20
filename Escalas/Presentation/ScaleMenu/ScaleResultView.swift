@@ -18,42 +18,37 @@ struct ScaleResultView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                // Título test
                 Text(viewModel.test.name)
                     .font(.xlSemi)
                     .bold()
                 
-                VStack(alignment: .leading,spacing: 12){
-                    // Paciente seleccionado
+                VStack(alignment: .leading, spacing: 12) {
                     if let patient = viewModel.patient {
-                        Text("Paciente:\(patient.name)")
+                        Text(String(format: String(localized: "scale.result.patient", table: "ScaleMenu"), patient.name))
                             .font(.l)
                     }
                     
-                    Text("Fecha: \(formatDate(viewModel.test.date))")
+                    Text(String(format: String(localized: "testDetailDate"), formatDate(viewModel.test.date)))
                         .font(.l)
                     
-                    // Lado evaluado
                     if let sidedTest = viewModel.test as? SideTestProtocol,
                        let side = sidedTest.side {
-                        Text("Lado evaluado: \(side.rawValue.capitalized)")
+                        Text(String(format: String(localized: "testDetail.side"), side.rawValue.capitalized))
                             .font(.l)
                     }
                     
-                    // Puntuación
                     if let maxScore = viewModel.test.maxScore {
-                        Text("Puntuación: \(viewModel.test.totalScore) / \(maxScore)")
+                        Text(String(format: String(localized: "scale.result.score.withMax", table: "ScaleMenu"), viewModel.test.totalScore, maxScore))
                             .font(.l)
                     } else {
-                        Text("Puntuación: \(viewModel.test.totalScore)")
+                        Text(String(format: String(localized: "scale.result.score.withoutMax", table: "ScaleMenu"), viewModel.test.totalScore))
                             .font(.l)
                     }
                     
-                    // Exportar en PDF
                     Button {
                         viewModel.exportPDF()
                     } label: {
-                        Label("Exportar en PDF", systemImage: "doc.text.fill")
+                        Label(String(localized: "testDetail.exportPDF"), systemImage: "doc.text.fill")
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(Color(.prim))
@@ -67,11 +62,11 @@ struct ScaleResultView: View {
         }
         .background(Color.backg)
         
-        VStack{
+        VStack {
             Button {
                 router.navigateToRoot()
             } label: {
-                Label("Volver a inicio", systemImage: "house.fill")
+                Label(String(localized: "scale.result.backToHome", table: "ScaleMenu"), systemImage: "house.fill")
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color(.prim))
@@ -79,7 +74,7 @@ struct ScaleResultView: View {
                     .foregroundStyle(.textOnPrim)
                     .cornerRadius(12)
             }
-        } // VStack HomeButton
+        }
         .padding(.horizontal)
         
         .sheet(isPresented: $viewModel.showShare) {
@@ -88,8 +83,8 @@ struct ScaleResultView: View {
             }
         }
         
-        .alert("Información", isPresented: $viewModel.showError) {
-            Button("Ok", role: .cancel) {}
+        .alert(String(localized: "scale.result.alert.title", table: "ScaleMenu"), isPresented: $viewModel.showError) {
+            Button(String(localized: "scale.result.alert.ok", table: "ScaleMenu"), role: .cancel) {}
         } message: {
             Text(viewModel.errorText)
         }
@@ -97,18 +92,16 @@ struct ScaleResultView: View {
         .task {
             do {
                 try await viewModel.getPatient()
-            }
-            catch {
+            } catch {
                 print("Error cargando paciente: \(error)")
             }
         }
     }
     
-    
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        formatter.locale = Locale(identifier: "es_ES")
+        formatter.locale = Locale.current
         return formatter.string(from: date)
     }
     
@@ -126,5 +119,5 @@ struct ScaleResultView: View {
 #Preview {
     let mockRepo = MockPatientRepository(initialPatients: [Patient.patient1])
     
-    ScaleResultView(viewModel: ScaleResultViewModel(test: MotricityIndex.patient1, useCase: GetPatientByIdUseCase(patientsRepository: mockRepo)))
+    ScaleResultView(viewModel: ScaleResultViewModel(test: BergTest.patient1, useCase: GetPatientByIdUseCase(patientsRepository: mockRepo)))
 }

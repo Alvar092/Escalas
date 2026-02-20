@@ -34,9 +34,9 @@ final class ScaleMenuViewModel {
     
     var patientDisplayName: String {
         if let patient = selectedPatient {
-            return "Paciente: \(patient.name)"
+            return "\(String(localized: "paciente", table: "ScaleMenu")): \(patient.name)"
         } else {
-            return "Seleccionar paciente"
+            return (String(localized: "scale.selectPatient", table: "ScaleMenu"))
         }
     }
     

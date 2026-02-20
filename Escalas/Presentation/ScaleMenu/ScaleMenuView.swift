@@ -20,19 +20,17 @@ struct ScaleMenuView: View {
         self.viewModel = ScaleMenuViewModel(testType: testType, createTestUseCase: createTestUseCase)
     }
     
-    
-    
     var body: some View {
         VStack {
             Spacer()
-            VStack (alignment: .center, spacing: 24) {
+            VStack(alignment: .center, spacing: 24) {
                 Text(viewModel.testType.displayName)
                     .font(.xlSemi)
                     .padding()
                 
                 Spacer()
                 
-                VStack(alignment: .center, spacing: 12){
+                VStack(alignment: .center, spacing: 12) {
                     Button {
                         viewModel.showPatientSelection()
                     } label: {
@@ -42,16 +40,15 @@ struct ScaleMenuView: View {
                                     .fill(patientButtonBackgroundColor())
                                     .frame(width: 32, height: 32)
                                 patientInitialsOrIcon()
-                            }//ZStack
+                            }
                             
                             Text(viewModel.patientDisplayName)
                                 .foregroundStyle(.textOnPrim)
                             
-                            
                             Image(systemName: "chevron.right")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
-                        }//HStack
+                        }
                         .frame(maxWidth: .infinity)
                         .padding(20)
                         .background(Color(.prim))
@@ -62,47 +59,41 @@ struct ScaleMenuView: View {
                     NavigationLink {
                         ScaleInfoView(info: viewModel.testType.clinicalInfo)
                     } label: {
-                        Text("Información de la prueba")
+                        Text(String(localized: "scale.menu.testInfo", table: "ScaleMenu"))
                             .frame(maxWidth: .infinity)
                             .padding(32)
                             .background(Color(.prim))
                             .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 12,style: .continuous))
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     }
                     
                     Button {
                         if let test = viewModel.createdTest {
                             router.navigateToTest(testType: testType, test: test)
                         }
-                    } label:{
-                        Text("Comenzar prueba")
+                    } label: {
+                        Text(String(localized: "scale.menu.start", table: "ScaleMenu"))
                             .frame(maxWidth: .infinity)
                             .padding(48)
-                            .background(
-                                startButtonBackgroundColor()
-                            )
+                            .background(startButtonBackgroundColor())
                             .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 12,style: .continuous))
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     }
                     .disabled(!viewModel.isStartButtonEnabled)
                 }
-            } // VStack
-            
+            }
             .padding(4.0)
-        } // VStack nombre escala
+        }
         .sheet(isPresented: $viewModel.showingPatientSelection) {
             NavigationStack {
-                PatientsView(mode:.select) { patient in
+                PatientsView(mode: .select) { patient in
                     viewModel.selectPatient(patient)
                 }
             }
         }
         .background(Color(.backg))
-    } // VStack general
-    
-    
+    }
 }
-
 
 private extension ScaleMenuView {
     func patientButtonBackgroundColor() -> Color {
@@ -127,11 +118,9 @@ private extension ScaleMenuView {
     }
 }
 
-
 #Preview {
     @Previewable @State var router = NavigationRouter()
     let repositories = Repositories.preview
-    
     
     NavigationStack(path: $router.path) {
         ScaleMenuView(testType: .motricityIndex)

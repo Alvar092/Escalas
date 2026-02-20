@@ -13,38 +13,38 @@ enum TrunkControlTestCatalog {
 
         .rollingToWeakSide: TrunkControlItemDefinition(
             type: .rollingToWeakSide,
-            title: "Giro hacia el lado afecto",
-            description: "Capacidad para girar desde decúbito supino hacia el lado afecto.",
+            title: String(localized: "trunkControl.rollingToWeakSide.title", table: "TrunkControl"),
+            description: String(localized: "trunkControl.rollingToWeakSide.description", table: "TrunkControl"),
             scoringOptions: standardScoring
         ),
 
         .rollingToStrongSide: TrunkControlItemDefinition(
             type: .rollingToStrongSide,
-            title: "Giro hacia el lado sano",
-            description: "Capacidad para girar desde decúbito supino hacia el lado sano.",
+            title: String(localized: "trunkControl.rollingToStrongSide.title", table: "TrunkControl"),
+            description: String(localized: "trunkControl.rollingToStrongSide.description", table: "TrunkControl"),
             scoringOptions: standardScoring
         ),
 
         .balancedSitting: TrunkControlItemDefinition(
             type: .balancedSitting,
-            title: "Equilibrio en sedestación",
-            description: "Capacidad para mantenerse sentado sin apoyo durante al menos 30 segundos.",
+            title: String(localized: "trunkControl.balancedSitting.title", table: "TrunkControl"),
+            description: String(localized: "trunkControl.balancedSitting.description", table: "TrunkControl"),
             scoringOptions: standardScoring
         ),
-        
-            .sittingUpFromLyingDown: TrunkControlItemDefinition(
-                type: .sittingUpFromLyingDown,
-                title: "Incorporación desde supino",
-                description: "Capacidad para incorporarse desde decúbito supino hasta sedestación.",
-                scoringOptions: standardScoring
-            )
+
+        .sittingUpFromLyingDown: TrunkControlItemDefinition(
+            type: .sittingUpFromLyingDown,
+            title: String(localized: "trunkControl.sittingUpFromLyingDown.title", table: "TrunkControl"),
+            description: String(localized: "trunkControl.sittingUpFromLyingDown.description", table: "TrunkControl"),
+            scoringOptions: standardScoring
+        )
     ]
 
     // MARK: - Standard Scoring (TCT Official Scale)
 
     private static let standardScoring: [TrunkControlScoreOption] = [
-        .init(score: 0, description: "0. Incapaz de realizar la tarea sin ayuda."),
-        .init(score: 12, description: "12. Realiza la tarea con ayuda."),
-        .init(score: 25, description: "25. Realiza la tarea de forma independiente.")
+        .init(score: 0,  description: String(localized: "trunkControl.standard.score.0",  table: "TrunkControl")),
+        .init(score: 12, description: String(localized: "trunkControl.standard.score.12", table: "TrunkControl")),
+        .init(score: 25, description: String(localized: "trunkControl.standard.score.25", table: "TrunkControl"))
     ]
 }

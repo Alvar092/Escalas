@@ -1,0 +1,78 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+
+    "trunkControl.rollingToWeakSide.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Giro hacia el lado afecto" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rolling to Weak Side" } }
+      }
+    },
+    "trunkControl.rollingToWeakSide.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Capacidad para girar desde decúbito supino hacia el lado afecto." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ability to roll from supine to the affected side." } }
+      }
+    },
+
+    "trunkControl.rollingToStrongSide.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Giro hacia el lado sano" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rolling to Strong Side" } }
+      }
+    },
+    "trunkControl.rollingToStrongSide.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Capacidad para girar desde decúbito supino hacia el lado sano." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ability to roll from supine to the unaffected side." } }
+      }
+    },
+
+    "trunkControl.balancedSitting.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Equilibrio en sedestación" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Balanced Sitting" } }
+      }
+    },
+    "trunkControl.balancedSitting.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Capacidad para mantenerse sentado sin apoyo durante al menos 30 segundos." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ability to sit unsupported for at least 30 seconds." } }
+      }
+    },
+
+    "trunkControl.sittingUpFromLyingDown.title" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Incorporación desde supino" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sitting Up from Lying Down" } }
+      }
+    },
+    "trunkControl.sittingUpFromLyingDown.description" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Capacidad para incorporarse desde decúbito supino hasta sedestación." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ability to move from supine to a sitting position." } }
+      }
+    },
+
+    "trunkControl.standard.score.0" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "0. Incapaz de realizar la tarea sin ayuda." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "0. Unable to perform the task without assistance." } }
+      }
+    },
+    "trunkControl.standard.score.12" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "12. Realiza la tarea con ayuda." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "12. Performs the task with assistance." } }
+      }
+    },
+    "trunkControl.standard.score.25" : {
+      "localizations" : {
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "25. Realiza la tarea de forma independiente." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "25. Performs the task independently." } }
+      }
+    }
+
+  },
+  "version" : "1.0"
+}

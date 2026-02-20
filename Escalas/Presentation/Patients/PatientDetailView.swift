@@ -26,7 +26,7 @@ struct PatientDetailView: View {
                         .font(.lSemi)
                         .foregroundStyle(.prim)
                     
-                    Text("\(viewModel.patient.age) \(String(localized: "patientDetail.age"))")
+                    Text("\(viewModel.patient.age) \(String(localized: "patientDetail.years"))")
                         .font(.subheadline)
                         .foregroundStyle(.prim)
                     
@@ -34,24 +34,30 @@ struct PatientDetailView: View {
             } // HStack
             .padding(.horizontal)
             ScrollView{
-                Text("Tests")
+                Text("patientDetail.test")
                     .font(.lSemi)
                     .padding(.horizontal)
                 
                 ForEach(viewModel.tests, id: \.id) { test in
-                    HStack{
-                        VStack(alignment: .leading) {
-                            Text(test.testType.rawValue)
-                                .font(.m)
-                            Text(test.date.formatted(date:.abbreviated, time: .omitted))
-                                .font(.s)
-                                .foregroundStyle(.secondary)
+                    NavigationLink {
+                        TestDetailView(viewModel: TestDetailViewModel(test: test, patient: viewModel.patient))
+                    } label: {
+                        HStack{
+                            VStack(alignment: .leading) {
+                                Text(test.testType.rawValue)
+                                    .font(.m)
+                                    .foregroundStyle(.textPrim)
+                                Text(test.date.formatted(date:.abbreviated, time: .omitted))
+                                    .font(.s)
+                                    .foregroundStyle(.textPrim)
+                            }
+                            
+                            Spacer()
+                            
+                            Text("\(test.totalScore)/\(test.testType.maxScore)")
+                                .font(.mSemi)
+                                .foregroundStyle(.textPrim)
                         }
-                        
-                        Spacer()
-                        
-                        Text("\(test.totalScore)/\(test.testType.maxScore)")
-                            .font(.mSemi)
                     }
                 }
                 .padding()
@@ -60,7 +66,7 @@ struct PatientDetailView: View {
         } // VStack
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.backg)
-        .navigationTitle("Paciente")
+        .navigationTitle("paciente")
         .navigationBarTitleDisplayMode(.inline)
         
         .task {

@@ -17,57 +17,53 @@ struct ScaleInfoView: View {
                 Text(info.name)
                     .font(.xlSemi)
                 
-                Text("Descripción:")
+                Text(String(localized: "scale.info.description.label", table: "ScaleMenu"))
                     .font(.lSemi)
                 Text(info.description)
                     .font(.m)
                 
-                if let materials = info.materials{
-                    Text("Materiales:")
+                if let materials = info.materials {
+                    Text(String(localized: "scale.info.materials.label", table: "ScaleMenu"))
                         .font(.lSemi)
-
-                    ForEach(materials, id: \.self ){ material in
+                    
+                    ForEach(materials, id: \.self) { material in
                         Text("-\(material)")
                             .font(.m)
-                        
                     }
-                } //Materials
+                }
                 
-                Text("Calificación:")
+                Text(String(localized: "scale.info.scoring.label", table: "ScaleMenu"))
                     .font(.lSemi)
-                
                 Text(info.scoring)
                     .font(.m)
                 
-                Text("Interpretación:")
+                Text(String(localized: "scale.info.interpretation.label", table: "ScaleMenu"))
                     .font(.lSemi)
-                
                 Text(info.interpretation)
                     .font(.m)
                 
                 if let recommendations = info.recommendations {
-                    Text("Recomendaciones:")
+                    Text(String(localized: "scale.info.recommendations.label", table: "ScaleMenu"))
                         .font(.lSemi)
-                    
                     Text(recommendations)
                         .font(.m)
                 }
                 
-                
-                Text("Referencias bibliográficas:")
+                Text(String(localized: "scale.info.references.label", table: "ScaleMenu"))
                     .font(.lSemi)
                 
                 if let referenceURL = info.referenceURL {
-                    Link("SraLab",destination: referenceURL)
+                    Link("SraLab", destination: referenceURL)
                         .font(.m)
                 }
-            }// VStack
+            }
             .padding(16)
         }
         .background(Color.backg)
     }
 }
 
-#Preview {
+#Preview{
     ScaleInfoView(info: ClinicalTestInfo.trunkControlTest)
+        .environment(\.locale, Locale(identifier: "en"))
 }

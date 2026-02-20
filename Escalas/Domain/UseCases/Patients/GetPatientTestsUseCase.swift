@@ -19,7 +19,7 @@ final class GetPatientTestsUseCase: GetPatientTestsUseCaseProtocol {
     private let motricityIndexRepository: MotricityIndexRepositoryProtocol
     private let trunkControlTestRepository: TrunkControlTestRepositoryProtocol
     
-    init(patientRepository: PatientRepositoryProtocol, bergTestRepository: BergTestRepositoryProtocol,    motricityIndexRepository: MotricityIndexRepositoryProtocol,
+    init(patientRepository: PatientRepositoryProtocol, bergTestRepository: BergTestRepositoryProtocol, motricityIndexRepository: MotricityIndexRepositoryProtocol,
          trunkControlTestRepository: TrunkControlTestRepositoryProtocol) {
         self.patientRepository = patientRepository
         self.bergTestRepository = bergTestRepository
