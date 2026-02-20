@@ -36,26 +36,37 @@ final class TestDetailViewModel {
     
     var motricityUpperItems: [MotricityIndexItemPDF] {
         guard let motricityTest = test as? MotricityIndex else { return [] }
-        return motricityTest.items.filter { $0.itemType.isUpperLimb }.enumerated().compactMap { index, item in
+        return motricityTest.items
+            .filter { $0.itemType.isUpperLimb }
+            .enumerated()
+            .compactMap { index, item -> MotricityIndexItemPDF? in
             guard let definition = MotricityIndexCatalog.definitions[item.itemType] else { return nil }
-            return MotricityIndexItemPDF(number: index + 1, definition: definition, item: item)
+            let scoreDescription = definition.scoreDescription(for: item.score ?? 0)
+            return MotricityIndexItemPDF(number: index + 1, definition: definition, item: item, scoreDescription: scoreDescription)
         }
     }
     
     var motricityLowerItems: [MotricityIndexItemPDF] {
         guard let motricityTest = test as? MotricityIndex else { return [] }
         let startIndex = motricityUpperItems.count + 1
-        return motricityTest.items.filter { $0.itemType.isLowerLimb }.enumerated().compactMap { index, item in
+        return motricityTest.items
+            .filter { $0.itemType.isLowerLimb }
+            .enumerated()
+            .compactMap { index, item -> MotricityIndexItemPDF? in
             guard let definition = MotricityIndexCatalog.definitions[item.itemType] else { return nil }
-            return MotricityIndexItemPDF(number: startIndex + index, definition: definition, item: item)
+            let scoreDescription = definition.scoreDescription(for: item.score ?? 0)
+            return MotricityIndexItemPDF(number: startIndex + index, definition: definition, item: item, scoreDescription: scoreDescription)
         }
     }
     
     var trunkItems: [TrunkControlItemPDF] {
         guard let trunkTest = test as? TrunkControlTest else { return [] }
-        return trunkTest.items.enumerated().compactMap { index, item in
+        return trunkTest.items
+            .enumerated()
+            .compactMap { index, item in
             guard let definition = TrunkControlTestCatalog.definitions[item.itemType] else { return nil }
-            return TrunkControlItemPDF(number: index + 1, definition: definition, item: item)
+            let scoreDescription = definition.scoreDescription(for: item.score ?? 0)
+            return TrunkControlItemPDF(number: index + 1, definition: definition, item: item, scoreDescription: scoreDescription)
         }
     }
     

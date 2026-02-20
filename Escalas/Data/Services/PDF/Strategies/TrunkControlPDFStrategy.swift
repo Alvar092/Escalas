@@ -81,10 +81,18 @@ final class TrunkControlPDFStrategy: TestPDFStrategyProtocol {
                 return nil
             }
             
+            var scoreDescription = ""
+            if let itemScore = item.score {
+                if let matchingOption = definition.scoringOptions.first(where: { $0.score == itemScore }) {
+                    scoreDescription = matchingOption.description
+                }
+            }
+            
             return TrunkControlItemPDF(
                 number: index + 1,
                 definition: definition,
-                item: item
+                item: item,
+                scoreDescription: scoreDescription
             )
         }
     }

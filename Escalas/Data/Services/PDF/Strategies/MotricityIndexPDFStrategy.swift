@@ -92,10 +92,18 @@ final class MotricityIndexPDFStrategy: TestPDFStrategyProtocol {
                 return nil
             }
             
+            var scoreDescription = ""
+            if let itemScore = item.score {
+                if let matchingOption = definition.scoringOptions.first(where: { $0.score == itemScore }) {
+                    scoreDescription = matchingOption.description
+                }
+            }
+            
             return MotricityIndexItemPDF(
                 number: index + 1,
                 definition: definition,
-                item: item
+                item: item,
+                scoreDescription: scoreDescription
             )
         }
     }

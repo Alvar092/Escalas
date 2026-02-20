@@ -12,4 +12,8 @@ struct TrunkControlItemDefinition {
     let title: String
     let description: String
     let scoringOptions: [TrunkControlScoreOption]
+    
+    func scoreDescription(for score: Int) -> String {
+        scoringOptions.first(where: {$0.score == score})?.description ?? ""
+    }
 }

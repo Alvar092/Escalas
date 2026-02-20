@@ -12,5 +12,9 @@ struct MotricityItemDefinition {
     let title: String
     let description: String
     let scoringOptions: [MotricityScoreOption]
+    
+    func scoreDescription(for score: Int) -> String {
+        scoringOptions.first(where: {$0.score == score})?.description ?? ""
+    }
 }
 

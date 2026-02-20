@@ -104,7 +104,7 @@ struct TestDetailView: View {
                         Spacer()
                         Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                             .font(.s)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.textOnPrim)
                     }
                 }
                 .buttonStyle(.plain)
@@ -179,7 +179,8 @@ struct TestDetailView: View {
             let definitions = MotricityIndexCatalog.definitions
             return test.items.filter(filter).enumerated().compactMap { index, item in
                 guard let definition = definitions[item.itemType] else { return nil }
-                return MotricityIndexItemPDF(number: start + index, definition: definition, item: item)
+                let scoreDescription = definition.scoringOptions.first(where: {$0.score == item.score})?.description ?? "\(item.score ?? 0)"
+                return MotricityIndexItemPDF(number: start + index, definition: definition, item: item, scoreDescription: scoreDescription)
             }
         }
         
@@ -200,7 +201,7 @@ struct TestDetailView: View {
                         itemNumber: item.number,
                         title: item.title,
                         description: item.description,
-                        scoreText: "\(item.score)/\(item.maxScore)"
+                        scoreText: item.scoreDescription
                     )
                 }
                 
@@ -214,7 +215,7 @@ struct TestDetailView: View {
                         itemNumber: item.number,
                         title: item.title,
                         description: item.description,
-                        scoreText: "\(item.score)/\(item.maxScore)"
+                        scoreText: item.scoreDescription
                     )
                 }
             }
@@ -230,7 +231,8 @@ struct TestDetailView: View {
             let definitions = TrunkControlTestCatalog.definitions
             return test.items.enumerated().compactMap { index, item in
                 guard let definition = definitions[item.itemType] else { return nil }
-                return TrunkControlItemPDF(number: index + 1, definition: definition, item: item)
+                let scoreDescription = definition.scoringOptions.first(where: {$0.score == item.score})?.description ?? "\(item.score ?? 0)"
+                return TrunkControlItemPDF(number: index + 1, definition: definition, item: item, scoreDescription: scoreDescription)
             }
         }
         
@@ -245,7 +247,7 @@ struct TestDetailView: View {
                         itemNumber: item.number,
                         title: item.title,
                         description: item.description,
-                        scoreText: "\(item.score)/\(item.maxScore)"
+                        scoreText: item.scoreDescription
                     )
                 }
             }
@@ -255,5 +257,5 @@ struct TestDetailView: View {
 
 
 #Preview {
-    TestDetailView(viewModel: TestDetailViewModel(test: BergTest.patient1, patient: Patient.patient1))
+    TestDetailView(viewModel: TestDetailViewModel(test: TrunkControlTest.patient1, patient: Patient.patient1))
 }
