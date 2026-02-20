@@ -26,7 +26,7 @@ struct PatientDetailView: View {
                         .font(.lSemi)
                         .foregroundStyle(.prim)
                     
-                    Text("\(viewModel.patient.age) años")
+                    Text("\(viewModel.patient.age) \(String(localized: "patientDetail.age"))")
                         .font(.subheadline)
                         .foregroundStyle(.prim)
                     
@@ -75,7 +75,7 @@ struct PatientDetailView: View {
     
     PatientDetailView(viewModel: PatientDetailViewModel(
         patient: Patient.patient1,
-        history: PatientHistory(patient: Patient.patient1, bergTests: [BergTest.patient1]),
+        history: PatientHistory(patient: Patient.patient1, bergTests: [BergTest.patient1],motricityIndexTests: [MotricityIndex.patient1], trunkControlTests: [TrunkControlTest.patient1]),
         getTestsUseCase: mockUseCase
     ))
 }

@@ -10,6 +10,8 @@ import SwiftData
 
 final class MotricityIndexRepository: MotricityIndexRepositoryProtocol {
     
+    typealias Test = MotricityIndex
+    
     private let modelContext: ModelContext
 
     init(modelContext: ModelContext) {
@@ -77,5 +79,39 @@ final class MotricityIndexRepository: MotricityIndexRepositoryProtocol {
         entity.itemsData = try JSONEncoder().encode(test.items)
         
         try modelContext.save()
+    }
+}
+
+final class MockMotricityIndexRepository: MotricityIndexRepositoryProtocol {
+    
+    typealias Test = MotricityIndex
+    
+    private(set) var tests: [MotricityIndex]
+    
+    init(initialTests: [MotricityIndex] = []) {
+        self.tests = initialTests
+    }
+    
+    func save(_ test: MotricityIndex) async throws {
+        tests.append(test)
+    }
+    
+    func getAll() async throws -> [MotricityIndex] {
+        tests
+    }
+    
+    func getByPatient(_ patientID: UUID) async throws -> [MotricityIndex] {
+        tests.filter { $0.patientID == patientID }
+    }
+    
+    func getByID(_ id: UUID) async throws -> MotricityIndex? {
+        tests.first { $0.id == id }
+    }
+    
+    func update(_ test: MotricityIndex) async throws {
+        guard let index = tests.firstIndex(where: { $0.id == test.id }) else {
+            throw MockRepositoryError.notFound
+        }
+        tests[index] = test
     }
 }

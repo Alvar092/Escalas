@@ -12,7 +12,6 @@ struct ScaleResultView: View {
     @Environment(\.navigationRouter) private var router
     @State var viewModel: ScaleResultViewModel
     
-    
     var body: some View {
         ZStack {
             Color.backg
@@ -60,7 +59,7 @@ struct ScaleResultView: View {
                             .background(Color(.prim))
                             .foregroundStyle(.textOnPrim)
                             .font(.m)
-                            .cornerRadius(10)
+                            .cornerRadius(8)
                     }
                 }
                 .padding()

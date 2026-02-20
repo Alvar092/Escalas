@@ -9,7 +9,7 @@ import Foundation
 
 enum TestType: String, Codable {
     case berg = "Berg Balance Scale"
-    case motricityIndex = "Motor Index"
+    case motricityIndex = "Motricity Index"
     case trunkControlTest = "Trunk Control Test "
     
     var maxScore: Int {

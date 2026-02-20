@@ -61,7 +61,7 @@ extension BergTest {
 }
 
 extension BergItem {
-
+    
     static let mockItems: [BergItem] = [
         BergItem(
             id: UUID(uuidString: "00000000-0000-0000-0000-000000000001") ?? UUID(),
@@ -85,7 +85,7 @@ extension BergItem {
                  itemType: .standingUnsupported,
                  score: 0,
                  timeRecorded: nil
-        )
+                )
     ]
 }
 
@@ -97,6 +97,21 @@ extension MotricityIndex {
         id: UUID(),
         date: Calendar.current.date(byAdding: .day, value: -3, to: .now)!,
         patientID: UUID(uuidString: "00000000-0000-0000-0000-000000000001") ?? UUID(),
+        side: .left,
+        items: MotricityIndexItem.mockItems
+    )
+    static let patient2 = MotricityIndex(
+        id: UUID(),
+        date: Calendar.current.date(byAdding: .day, value: -1, to: .now)!,
+        patientID: UUID(uuidString: "00000000-0000-0000-0000-000000000002") ?? UUID(),
+        side: .right,
+        items: MotricityIndexItem.mockItems
+    )
+    
+    static let patient3 = MotricityIndex(
+        id: UUID(),
+        date: Calendar.current.date(byAdding: .day, value: 0, to: .now)!,
+        patientID: UUID(uuidString: "00000000-0000-0000-0000-000000000003") ?? UUID(),
         side: .left,
         items: MotricityIndexItem.mockItems
     )
@@ -144,6 +159,24 @@ extension TrunkControlTest {
         date: Calendar.current.date(byAdding: .day, value: -2, to: .now)!,
         evaluator: "Fisioterapeuta 1",
         patientID: UUID(uuidString: "00000000-0000-0000-0000-000000000001") ?? UUID(),
+        maxScore: 100,
+        items: TrunkControlTestItem.mockItems
+    )
+    
+    static let patient2 = TrunkControlTest(
+        id: UUID(),
+        date: Calendar.current.date(byAdding: .day, value: -1, to: .now)!,
+        evaluator: "Fisioterapeuta 2",
+        patientID: UUID(uuidString: "00000000-0000-0000-0000-000000000002") ?? UUID(),
+        maxScore: 100,
+        items: TrunkControlTestItem.mockItems
+    )
+    
+    static let patient3 = TrunkControlTest(
+        id: UUID(),
+        date: Calendar.current.date(byAdding: .day, value: 0, to: .now)!,
+        evaluator: "Fisioterapeuta 3",
+        patientID: UUID(uuidString: "00000000-0000-0000-0000-000000000003") ?? UUID(),
         maxScore: 100,
         items: TrunkControlTestItem.mockItems
     )

@@ -13,7 +13,6 @@ import SwiftUI
 
 struct HomeView: View {
     
-    
     @Environment(\.repositories) private var repositories
     @State private var router = NavigationRouter()
     
@@ -23,9 +22,9 @@ struct HomeView: View {
                 // Sección superior: mensaje de bienvenida + icono de perfil
                 VStack(alignment: .center, spacing: 16) {
                     VStack(alignment: .center, spacing: 4) {
-                        Text("¡Bienvenido!")
+                        Text("home.welcome")
                             .font(.xlSemi)
-                        Text("Nos alegra verte de nuevo.")
+                        Text("home.welcome.subtitle")
                             .font(.m)
                             
                     }
@@ -43,7 +42,7 @@ struct HomeView: View {
                     } // ZStack
                 } // VStack Bienvenida
                 VStack(alignment: .center, spacing: 20) {
-                    Text("Elige una escala para comenzar")
+                    Text("home.select.scale")
                         .font(.m)
                         .foregroundStyle(.textPrim)
                     
@@ -52,7 +51,7 @@ struct HomeView: View {
                         Button {
                             router.navigate(to: .scaleMenu(testType: .berg))
                         } label: {
-                            Text("Berg Test")
+                            Text("home.scale.berg")
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(Color(.prim))
@@ -65,7 +64,7 @@ struct HomeView: View {
                             router.navigate(to: .scaleMenu(testType: .motricityIndex)) 
                             
                         } label: {
-                            Text("Motricity Index")
+                            Text("home.scale.motricity")
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(Color(.prim))
@@ -77,7 +76,7 @@ struct HomeView: View {
                         Button {
                              router.navigate(to: .scaleMenu(testType: .trunkControlTest))
                         } label: {
-                            Text("Trunk Control Test")
+                            Text("home.scale.trunkControl")
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(Color(.prim))
@@ -105,7 +104,7 @@ struct HomeView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Menu {
-                            Button("Pacientes") {
+                            Button("home.menu.patients") {
                                 router.navigate(to: .patients(mode: .browse))
                             }
                             

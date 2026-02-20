@@ -9,6 +9,8 @@ import SwiftData
 
 final class BergTestRepository: BergTestRepositoryProtocol {
     
+    typealias Test = BergTest 
+    
     private let modelContext: ModelContext
     
     init(modelContext: ModelContext) {
@@ -75,6 +77,8 @@ final class BergTestRepository: BergTestRepositoryProtocol {
 
 final class MockBergTestRepository: BergTestRepositoryProtocol {
 
+    typealias Test = BergTest 
+    
     private(set) var bergTests: [BergTest]
 
     init(initialTests: [BergTest] = []) {

@@ -1,0 +1,537 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "-%@" : {
+
+    },
+    "%@ %lld" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$lld"
+          }
+        }
+      }
+    },
+    "%lld %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
+    "%lld- %@ :" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld- %2$@ :"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "Add Item" : {
+
+    },
+    "Atras" : {
+
+    },
+    "Calificación:" : {
+
+    },
+    "Comenzar prueba" : {
+
+    },
+    "Derecho" : {
+
+    },
+    "Descripción:" : {
+
+    },
+    "Error al cargar el test" : {
+
+    },
+    "Error de configuración" : {
+
+    },
+    "Evaluador: %@" : {
+
+    },
+    "Exportar en PDF" : {
+
+    },
+    "Exportar PDF" : {
+
+    },
+    "Fecha: %@" : {
+
+    },
+    "Finalizar" : {
+
+    },
+    "home.error.config.message" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repositories are not available"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los repositorios no están disponibles"
+          }
+        }
+      }
+    },
+    "home.error.config.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuration Error"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de configuración"
+          }
+        }
+      }
+    },
+    "home.menu.patients" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patients"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pacientes"
+          }
+        }
+      }
+    },
+    "home.scale.berg" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berg Balance Scale"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escala equilibrio Berg"
+          }
+        }
+      }
+    },
+    "home.scale.comingSoon" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coming Soon"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximamente"
+          }
+        }
+      }
+    },
+    "home.scale.motricity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motricity Index"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Índice motor"
+          }
+        }
+      }
+    },
+    "home.scale.trunkControl" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Trunk Control Test"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test de control de tronco"
+          }
+        }
+      }
+    },
+    "home.select.scale" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a scale to get started"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige una escala para comenzar"
+          }
+        }
+      }
+    },
+    "home.welcome" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido"
+          }
+        }
+      }
+    },
+    "home.welcome.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We're glad to see you again"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nos alegra verte de nuevo"
+          }
+        }
+      }
+    },
+    "Información" : {
+
+    },
+    "Información de la prueba" : {
+
+    },
+    "Iniciar" : {
+
+    },
+    "Interpretación:" : {
+
+    },
+    "Item at %@" : {
+
+    },
+    "Ítems" : {
+
+    },
+    "Izquierdo" : {
+
+    },
+    "Lado evaluado: %@" : {
+
+    },
+    "Lado: %@" : {
+
+    },
+    "Los repositorios no están disponibles" : {
+
+    },
+    "Materiales:" : {
+
+    },
+    "Miembro inferior" : {
+
+    },
+    "Miembro superior" : {
+
+    },
+    "No se pudo inicializar el test correctamente" : {
+
+    },
+    "Ok" : {
+
+    },
+    "Paciente" : {
+
+    },
+    "Paciente:%@" : {
+
+    },
+    "patientDetail.age" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Years old"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Años"
+          }
+        }
+      }
+    },
+    "patients.add" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir"
+          }
+        }
+      }
+    },
+    "patients.age" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Age:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edad:"
+          }
+        }
+      }
+    },
+    "patients.birthdate.label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Date of birth"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de nacimiento:"
+          }
+        }
+      }
+    },
+    "patients.browse.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patients"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pacientes"
+          }
+        }
+      }
+    },
+    "patients.cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
+    },
+    "patients.create.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create patient"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear paciente"
+          }
+        }
+      }
+    },
+    "patients.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Initializing..."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicializando..."
+          }
+        }
+      }
+    },
+    "patients.name.placeholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patient name"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre del paciente"
+          }
+        }
+      }
+    },
+    "patients.select.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Patient"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar paciente"
+          }
+        }
+      }
+    },
+    "Pausar" : {
+
+    },
+    "Próximamente" : {
+
+    },
+    "Puntuación\ntotal: %lld/56" : {
+
+    },
+    "Puntuación MI: %lld/100" : {
+
+    },
+    "Puntuación MS: %lld/100" : {
+
+    },
+    "Puntuación total: %lld" : {
+
+    },
+    "Puntuación total: %lld%@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Puntuación total: %1$lld%2$@"
+          }
+        }
+      }
+    },
+    "Puntuación: %lld" : {
+
+    },
+    "Puntuación: %lld / %lld" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Puntuación: %1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "Recomendaciones:" : {
+
+    },
+    "Referencias bibliográficas:" : {
+
+    },
+    "Repositories no disponibles" : {
+
+    },
+    "Reset" : {
+
+    },
+    "Selecciona el lado a evaluar" : {
+
+    },
+    "Select an item" : {
+
+    },
+    "Siguiente" : {
+
+    },
+    "SraLab" : {
+
+    },
+    "Tests" : {
+
+    },
+    "Tipo de test no reconocido" : {
+
+    },
+    "Volver a inicio" : {
+
+    }
+  },
+  "version" : "1.0"
+}

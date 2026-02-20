@@ -34,10 +34,6 @@ struct MotricityIndex: ClinicalTestProtocol, SideTestProtocol {
         items.filter {$0.itemType.isLowerLimb}
             .reduce(0) { $0 + ($1.score ?? 0) } + 1
     }
-    
-//    var finalScore: Int {
-//        totalScore / 2
-//    }
    
 }
 

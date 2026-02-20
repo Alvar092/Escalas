@@ -1,8 +1,8 @@
 //
-//  TrunkControlTestRepository.swift
+//  TrunkControlTestRepositoryProtocol.swift
 //  Escalas
 //
-//  Created by Álvaro Entrena Casas on 5/2/26.
+//  Created by Álvaro Entrena Casas on 18/2/26.
 //
 
 import Foundation

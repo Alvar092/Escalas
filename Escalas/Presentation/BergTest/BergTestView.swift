@@ -191,6 +191,5 @@ private struct BergTestContentView: View {
         }
         .environment(\.navigationRouter, router)
         .environment(\.repositories, repositories)
-    
 }
 

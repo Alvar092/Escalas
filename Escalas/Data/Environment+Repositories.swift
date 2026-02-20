@@ -58,20 +58,43 @@ class Repositories {
         self.motricityIndexRepository = MotricityIndexRepository(modelContext: modelContext)
         self.trunkControlTestRepository = TrunkControlTestRepository(modelContext: modelContext)
     }
+    
+    init(
+        patientRepository: PatientRepositoryProtocol,
+        bergTestRepository: BergTestRepositoryProtocol,
+        motricityIndexRepository: MotricityIndexRepositoryProtocol,
+        trunkControlTestRepository: TrunkControlTestRepositoryProtocol
+    ) {
+        self.patientRepository = patientRepository
+        self.bergTestRepository = bergTestRepository
+        self.motricityIndexRepository = motricityIndexRepository
+        self.trunkControlTestRepository = trunkControlTestRepository
+    }
 }
+
+//extension Repositories {
+//    static var preview: Repositories {
+//        let schema = Schema([
+//            PatientEntity.self,
+//            BergTestEntity.self,
+//            MotricityIndexEntity.self,
+//            TrunkControlEntity.self
+//        ])
+//        
+//        let container = try! ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+//        )
+//        return Repositories(modelContext: ModelContext(container))
+//    }
+//}
 
 extension Repositories {
     static var preview: Repositories {
-        let schema = Schema([
-            PatientEntity.self,
-            BergTestEntity.self,
-            MotricityIndexEntity.self,
-            TrunkControlEntity.self
-        ])
-        
-        let container = try! ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+        Repositories(
+            patientRepository: MockPatientRepository(initialPatients: [.patient1, .patient2, .patient3]),
+            bergTestRepository: MockBergTestRepository(),
+            motricityIndexRepository: MockMotricityIndexRepository(),
+            trunkControlTestRepository: MockTrunkControlTestRepository()
         )
-        return Repositories(modelContext: ModelContext(container))
     }
 }
 

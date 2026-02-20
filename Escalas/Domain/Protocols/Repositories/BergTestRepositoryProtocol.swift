@@ -1,8 +1,8 @@
 //
-//  BergTestRespositoryProtocol.swift
-//  escalas
+//  BergTestRepositoryProtocol.swift
+//  Escalas
 //
-//  Created by Álvaro Entrena Casas on 1/12/25.
+//  Created by Álvaro Entrena Casas on 18/2/26.
 //
 
 import Foundation

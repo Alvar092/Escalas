@@ -37,7 +37,7 @@ struct PatientsView: View {
             )
         } else {
             // Teoricamente esto nunca pasará
-            ProgressView("Inicializando...")
+            ProgressView("patients.loading")
         }
     }
 }
@@ -63,11 +63,11 @@ private struct PatientsContentView: View {
         patientList(viewModel: viewModel)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(.backg))
-            .navigationTitle(mode == .select ? "Seleccionar paciente" : "Pacientes")
+            .navigationTitle(mode == .select ? "patients.select.title" : "patients.browse.title")
             .toolbar {
                 if mode == .select {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button("Cancelar") {
+                        Button("patients.cancel") {
                             dismiss()
                         }
                     }
@@ -76,7 +76,7 @@ private struct PatientsContentView: View {
                     Button {
                         withAnimation { isAdding.toggle() }
                     } label: {
-                        Label("Añadir", systemImage: isAdding ? "xmark" : "plus")
+                        Label("patients.add", systemImage: isAdding ? "xmark" : "plus")
                     }
                 }
             }
@@ -90,14 +90,14 @@ private struct PatientsContentView: View {
         List {
             if isAdding {
                 Section {
-                    TextField("Nombre del paciente", text: $newName)
+                    TextField("patients.name.placeholder", text: $newName)
                     
-                    DatePicker("Fecha de nacimiento",
+                    DatePicker("patients.birthdate.label",
                                selection: $newDate,
                                displayedComponents: .date)
                     
                     
-                    Button("Crear paciente") {
+                    Button("patients.create.button") {
                         Task {
                             try? await viewModel.createPatient(newName: newName, dateOfBirth: newDate)
                             try await viewModel.loadPatients()
@@ -124,10 +124,12 @@ private struct PatientsContentView: View {
                         PatientDetailView(
                             viewModel: PatientDetailViewModel(
                                 patient: patient,
-                                history: PatientHistory(patient: patient, bergTests: []),
+                                history: PatientHistory(patient: patient, bergTests: [], motricityIndexTests: [], trunkControlTests: []),
                                 getTestsUseCase: GetPatientTestsUseCase(
                                     patientRepository: repositories.patientRepository,
-                                    bergTestRepository: repositories.bergTestRepository
+                                    bergTestRepository: repositories.bergTestRepository,
+                                    motricityIndexRepository: repositories.motricityIndexRepository,
+                                    trunkControlTestRepository: repositories.trunkControlTestRepository
                                 )
                             )
                         )
@@ -148,7 +150,7 @@ private struct PatientsContentView: View {
             Text(patient.name)
                 .font(.m)
                 .foregroundStyle(.textOnPrim)
-            Text("Nacimiento: \(patient.dateOfBirth.formatted(date: .abbreviated, time: .omitted))")
+            Text("\(String(localized: "patients.age")) \(patient.age)")
                 .font(.s)
                 .foregroundStyle(.textOnPrim)
         }
@@ -171,6 +173,13 @@ private struct PatientsContentView: View {
 }
 
 #Preview {
-    @Previewable @State var selectedPatient: Patient? = nil
-    PatientsView(mode: .browse)
+    // Repositorios de prueba
+    let repositories = Repositories.preview
+    
+    // Llamada a la vista con modo .browse
+    PatientsView(
+        mode: .select,
+        onPatientSelected: nil
+    )
+    .environment(\.repositories, repositories)
 }

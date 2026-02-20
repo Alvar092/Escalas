@@ -72,3 +72,37 @@ final class TrunkControlTestRepository: TrunkControlTestRepositoryProtocol {
         }
     }
 }
+
+final class MockTrunkControlTestRepository: TrunkControlTestRepositoryProtocol {
+    
+    typealias Test = TrunkControlTest
+    
+    private(set) var tests: [TrunkControlTest]
+    
+    init(initialTests: [TrunkControlTest] = []) {
+        self.tests = initialTests
+    }
+    
+    func save(_ test: TrunkControlTest) async throws {
+        tests.append(test)
+    }
+    
+    func getAll() async throws -> [TrunkControlTest] {
+        tests
+    }
+    
+    func getByPatient(_ patientID: UUID) async throws -> [TrunkControlTest] {
+        tests.filter { $0.patientID == patientID }
+    }
+    
+    func getByID(_ id: UUID) async throws -> TrunkControlTest? {
+        tests.first { $0.id == id }
+    }
+    
+    func update(_ test: TrunkControlTest) async throws {
+        guard let index = tests.firstIndex(where: { $0.id == test.id }) else {
+            throw MockRepositoryError.notFound
+        }
+        tests[index] = test
+    }
+}
