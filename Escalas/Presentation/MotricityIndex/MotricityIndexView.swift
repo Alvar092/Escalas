@@ -21,14 +21,16 @@ struct MotricityIndexView: View {
                 .sheet(isPresented: $showingSideSelection) {
                     SideSelectionView { selectedSide in
                         viewModel.test.side = selectedSide
+                        viewModel.isSideSelected = true
                         showingSideSelection = false
                     }
+                    .interactiveDismissDisabled(true)
                     .presentationDetents([.fraction(0.5)])
                     .presentationDragIndicator(.visible)
                 }
             
                 .onAppear {
-                    if viewModel.test.side == nil {
+                    if viewModel.test.side == nil || !viewModel.isSideSelected {
                         showingSideSelection = true
                     }
                 }
@@ -223,4 +225,3 @@ struct SideSelectionView: View {
         .environment(\.navigationRouter, router)
         .environment(\.repositories, repositories)
 }
-

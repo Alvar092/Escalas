@@ -23,6 +23,7 @@ struct TrunkControlTestView: View {
                         viewModel.test.side = selectedSide
                         showingSideSelection = false
                     }
+                    .interactiveDismissDisabled(true)
                     .presentationDetents([.fraction(0.5)])
                     .presentationDragIndicator(.visible)
                 }

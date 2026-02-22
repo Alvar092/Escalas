@@ -23,6 +23,7 @@ final class MotricityIndexViewModel {
         items[currentItemIndex]
     }
     
+    var isSideSelected = false
     var isCompleted = false
     var navigateToResultView = false
     
@@ -93,7 +94,7 @@ final class MotricityIndexViewModel {
     }
     
     func finishTest() async throws {
-        guard test.side != nil, items.allSatisfy({ $0.score != nil }) else { return }
+        guard test.side != nil, isSideSelected, items.allSatisfy({ $0.score != nil }) else { return }
           
           test.items = items
           try await useCase.saveMotricityIndex(test: test)
