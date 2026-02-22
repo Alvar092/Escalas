@@ -88,7 +88,7 @@ private struct BergTestContentView: View {
                             } label: {
                                 HStack(alignment: .top) {
                                     Text(option.description)
-                                        .foregroundStyle(.prim)
+                                        .foregroundStyle(fontColorForOption(option))
                                         .font(.m)
                                         .multilineTextAlignment(.leading)
                                         .fixedSize(horizontal: false, vertical: true)
@@ -98,20 +98,10 @@ private struct BergTestContentView: View {
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 16)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(
-                                            viewModel.isOptionSelected(option)
-                                            ? Color.sec : Color.clear
-                                        )
-                                )
+                                .background(backgroundColorForOption(option))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(
-                                            viewModel.isOptionSelected(option)
-                                            ? Color.blue
-                                            : Color.blue.opacity(0.7)
-                                        )
+                                        .stroke(strokeColorForOption(option))
                                 )
                             }
                         }
@@ -137,6 +127,18 @@ private struct BergTestContentView: View {
                 )
             )
         }
+    }
+    
+    private func backgroundColorForOption(_ option: BergScoreOption) -> Color {
+        viewModel.isOptionSelected(option) ? Color(.sec) : Color.clear
+    }
+    
+    private func strokeColorForOption(_ option: BergScoreOption) -> Color {
+           viewModel.isOptionSelected(option) ? Color.blue : Color.blue.opacity(0.7)
+       }
+    
+    private func fontColorForOption(_ option: BergScoreOption) -> Color {
+        viewModel.isOptionSelected(option) ? Color.textSecondary : Color.textPrim
     }
     
     private var bottomBar: some View {

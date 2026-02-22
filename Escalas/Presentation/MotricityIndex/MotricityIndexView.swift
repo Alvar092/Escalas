@@ -72,6 +72,7 @@ private struct MotricityIndexContentView: View {
                         Text(viewModel.currentItemDefinition.description)
                             .font(.m)
                     } // VStack Item
+                    .foregroundStyle(Color.textPrim)
                     
                     VStack(alignment: .leading, spacing: 12) {
                         ForEach(viewModel.scoreOptions) { option in
@@ -103,7 +104,7 @@ private struct MotricityIndexContentView: View {
         } label: {
             HStack(alignment: .top) {
                 Text(option.description)
-                    .foregroundStyle(Color.prim)
+                    .foregroundStyle(fontColorForOption(option))
                     .font(.m)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
@@ -129,6 +130,10 @@ private struct MotricityIndexContentView: View {
     private func strokeColorForOption(_ option: MotricityScoreOption) -> Color {
            viewModel.isOptionSelected(option) ? Color.blue : Color.blue.opacity(0.7)
        }
+    
+    private func fontColorForOption(_ option: MotricityScoreOption) -> Color {
+        viewModel.isOptionSelected(option) ? Color.textSecondary : Color.textPrim
+    }
     
     
     private var bottomBar: some View {

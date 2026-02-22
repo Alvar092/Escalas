@@ -100,7 +100,7 @@ private struct TrunkControlTestContentView: View {
         } label: {
             HStack(alignment: .top) {
                 Text(option.description)
-                    .foregroundStyle(Color.prim)
+                    .foregroundStyle(fontColorForOption(option))
                     .font(.m)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
@@ -120,7 +120,11 @@ private struct TrunkControlTestContentView: View {
     }
     
     private func strokeColorForOption(_ option: TrunkControlScoreOption) -> Color {
-        viewModel.isOptionSelected(option) ? Color.blue : Color.blue.opacity(0.7)
+           viewModel.isOptionSelected(option) ? Color.blue : Color.blue.opacity(0.7)
+       }
+    
+    private func fontColorForOption(_ option: TrunkControlScoreOption) -> Color {
+        viewModel.isOptionSelected(option) ? Color.textSecondary : Color.textPrim
     }
     
     private var bottomBar: some View {
