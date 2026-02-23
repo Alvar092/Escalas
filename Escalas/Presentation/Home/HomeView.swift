@@ -108,6 +108,10 @@ struct HomeView: View {
                                 router.navigate(to: .patients(mode: .browse))
                             }
                             
+                            Button("home.menu.contact") {
+                                router.navigate(to: .contact)
+                            }
+                            
                         } label: {
                             Image(systemName: "line.3.horizontal")
                                 .imageScale(.large)
@@ -142,6 +146,9 @@ struct HomeView: View {
                 
             case .patients:
                 PatientsView(mode: .browse)
+                
+            case .contact:
+                ContactView()
             }
         }
         else {

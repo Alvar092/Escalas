@@ -14,6 +14,7 @@
 		67256D0B2EE1916B00D568EF /* PatientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D0A2EE1916400D568EF /* PatientsViewModel.swift */; };
 		67256D532EE1A08300D568EF /* Environment+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256D522EE1A07D00D568EF /* Environment+Repositories.swift */; };
 		673778722F45E3FD00224CE9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 673778712F45E3FD00224CE9 /* Localizable.xcstrings */; };
+		673D774F2F4C7A3D004480C9 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673D774E2F4C7A3D004480C9 /* ContactView.swift */; };
 		673EDCD62F3E456C00A03A47 /* TestPDFStrategyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCD52F3E456C00A03A47 /* TestPDFStrategyProtocol.swift */; };
 		673EDCD82F433F8F00A03A47 /* PDFLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCD72F433F8F00A03A47 /* PDFLayout.swift */; };
 		673EDCDC2F43496900A03A47 /* BergPDFStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673EDCDB2F43496900A03A47 /* BergPDFStrategy.swift */; };
@@ -124,6 +125,7 @@
 		67256D0A2EE1916400D568EF /* PatientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewModel.swift; sourceTree = "<group>"; };
 		67256D522EE1A07D00D568EF /* Environment+Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Repositories.swift"; sourceTree = "<group>"; };
 		673778712F45E3FD00224CE9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		673D774E2F4C7A3D004480C9 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		673EDCD52F3E456C00A03A47 /* TestPDFStrategyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPDFStrategyProtocol.swift; sourceTree = "<group>"; };
 		673EDCD72F433F8F00A03A47 /* PDFLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFLayout.swift; sourceTree = "<group>"; };
 		673EDCDB2F43496900A03A47 /* BergPDFStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergPDFStrategy.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				67256CF92EE0BC5B00D568EF /* HomeView.swift */,
+				673D774E2F4C7A3D004480C9 /* ContactView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				673EDCE12F447C2B00A03A47 /* MotricityIndexItemPDF.swift in Sources */,
 				67256D092EE1908700D568EF /* BergTestView.swift in Sources */,
 				67AC811A2F3602590063E2D9 /* MotorIndexInfo.swift in Sources */,
+				673D774F2F4C7A3D004480C9 /* ContactView.swift in Sources */,
 				67DF220C2F224ABC0024A130 /* ScaleResultViewModel.swift in Sources */,
 				67E221822EE3009600079E52 /* CreatePatientUseCase.swift in Sources */,
 				674727302F350184007E2FFB /* TrunkControlTestRepository.swift in Sources */,
@@ -921,6 +925,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -980,6 +985,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;

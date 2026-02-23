@@ -62,6 +62,91 @@
     "Finalizar" : {
 
     },
+    "home.contact.body" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I’d love to hear your thoughts. If you have suggestions, found something that isn’t working, would like to add a scale or just want to share your experience, write to me. "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Me encantaría saber tu opinión. Si tienes sugerencias, encontraste algo que no funciona bien, te gustaría que añadiera una escala o simplemente quieres contarme tu experiencia, escríbeme."
+          }
+        }
+      }
+    },
+    "home.contact.noMail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No mail account configured"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay cuenta de correo configurada"
+          }
+        }
+      }
+    },
+    "home.contact.sendFeedback" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send feedback"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar feedback"
+          }
+        }
+      }
+    },
+    "home.contact.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Is this app useful for you?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Te está siendo útil esta app?"
+          }
+        }
+      }
+    },
+    "home.menu.contact" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacto"
+          }
+        }
+      }
+    },
     "home.menu.patients" : {
       "localizations" : {
         "en" : {
@@ -238,6 +323,9 @@
 
     },
     "No se pudo inicializar el test correctamente" : {
+
+    },
+    "OK" : {
 
     },
     "paciente" : {

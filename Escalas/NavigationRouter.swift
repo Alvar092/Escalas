@@ -13,6 +13,7 @@ enum AppRoute: Hashable {
     case test(testType: TestType)
     case scaleResult(testType:TestType)
     case patients(mode: PatientSelectionMode)
+    case contact
 }
 
 @Observable
