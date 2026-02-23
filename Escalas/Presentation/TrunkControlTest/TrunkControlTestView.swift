@@ -90,7 +90,6 @@ private struct TrunkControlTestContentView: View {
             bottomBar
         }
         .background(Color.backg)
-        
     }
     
     @ViewBuilder

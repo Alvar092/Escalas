@@ -86,23 +86,20 @@ private struct BergTestContentView: View {
                             Button {
                                 viewModel.selectScore(option.score)
                             } label: {
-                                HStack(alignment: .top) {
-                                    Text(option.description)
-                                        .foregroundStyle(fontColorForOption(option))
-                                        .font(.m)
-                                        .multilineTextAlignment(.leading)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                    
-                                    Spacer()
-                                }
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 16)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(backgroundColorForOption(option))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(strokeColorForOption(option))
-                                )
+                                Text(option.description)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundStyle(fontColorForOption(option))
+                                    .font(.m)
+                                    .multilineTextAlignment(.leading)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 16)
+                                    .background(backgroundColorForOption(option))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 0)
+                                            .stroke(strokeColorForOption(option))
+                                    )
+                                    .contentShape(Rectangle())
                             }
                         }
                         .buttonStyle(.plain)

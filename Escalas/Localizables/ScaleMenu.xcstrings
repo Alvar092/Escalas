@@ -2,15 +2,17 @@
   "sourceLanguage" : "es",
   "strings" : {
     "paciente" : {
-
-    },
-    "Paciente" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Patient"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paciente"
           }
         }
       }
