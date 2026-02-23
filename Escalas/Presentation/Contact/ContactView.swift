@@ -69,6 +69,7 @@ struct MailComposerView: UIViewControllerRepresentable {
     let subject: String
     @Environment(\.dismiss) var dismiss
 
+    //Fill subject and destinatary
     func makeUIViewController(context: Context) -> MFMailComposeViewController {
         let vc = MFMailComposeViewController()
         vc.setToRecipients([recipient])
@@ -76,13 +77,16 @@ struct MailComposerView: UIViewControllerRepresentable {
         vc.mailComposeDelegate = context.coordinator
         return vc
     }
-
+    
+    // Required by protocol
     func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
 
+    // Create coordinator, acts between UIKit and SwiftUI
     func makeCoordinator() -> Coordinator {
         Coordinator(dismiss: dismiss)
     }
 
+    //Pattern used to manage delegates from UIKit
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         let dismiss: DismissAction
 

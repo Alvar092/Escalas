@@ -22,6 +22,11 @@ struct TestDetailView: View {
         .background(Color(.backg))
         .navigationTitle(viewModel.test.testType.rawValue)
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $viewModel.showShare) {
+            if let url = viewModel.pdfURL {
+                ShareSheet(items: [url])
+            }
+        }
     }
     
     // MARK: - Header
@@ -49,7 +54,7 @@ struct TestDetailView: View {
             Spacer()
             
             Button {
-                //exportPDF()
+                viewModel.exportPDF()
             } label: {
                 Label(String(localized: "testDetail.exportPDF"), systemImage: "square.and.arrow.up")
                     .padding(.vertical, 12)
@@ -252,6 +257,16 @@ struct TestDetailView: View {
                 }
             }
         }
+    }
+    
+    struct ShareSheet: UIViewControllerRepresentable {
+        let items: [Any]
+        
+        func makeUIViewController(context: Context) -> UIActivityViewController {
+            UIActivityViewController(activityItems: items, applicationActivities: nil)
+        }
+        
+        func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
     }
 }
 

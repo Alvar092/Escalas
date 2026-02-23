@@ -36,7 +36,7 @@ struct PatientsView: View {
                 )
             )
         } else {
-            // Teoricamente esto nunca pasará
+            // Will never happen
             ProgressView("patients.loading")
         }
     }
@@ -173,10 +173,10 @@ private struct PatientsContentView: View {
 }
 
 #Preview {
-    // Repositorios de prueba
+    // Repository for preview
     let repositories = Repositories.preview
     
-    // Llamada a la vista con modo .browse
+    // Calling view in browse mode
     PatientsView(
         mode: .select,
         onPatientSelected: nil

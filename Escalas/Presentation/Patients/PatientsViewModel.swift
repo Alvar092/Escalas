@@ -6,9 +6,6 @@
 //
 
 import Foundation
-//import Combine
- 
-// Init VM empty and configure after recive environment in view 
 
 @Observable
 final class PatientViewModel {

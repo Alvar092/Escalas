@@ -19,7 +19,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack(path: $router.path) {
             VStack(alignment: .center, spacing: 32) {
-                // Sección superior: mensaje de bienvenida + icono de perfil
+                // Welcome message
                 VStack(alignment: .center, spacing: 16) {
                     VStack(alignment: .center, spacing: 4) {
                         Text("home.welcome")
@@ -40,7 +40,7 @@ struct HomeView: View {
                             .background(Color(.prim))
                             .frame(width: 32, height: 32)
                     } // ZStack
-                } // VStack Bienvenida
+                } // VStack Welcome
                 VStack(alignment: .center, spacing: 20) {
                     Text("home.select.scale")
                         .font(.m)
@@ -86,7 +86,7 @@ struct HomeView: View {
                         }
                         
                         Button {
-                            /* router.navigate(to: .scaleMenu(testType: .10mwt)) */
+                            
                         } label: {
                             Text("Próximamente")
                                 .frame(maxWidth: .infinity)
@@ -99,8 +99,8 @@ struct HomeView: View {
                         .disabled(true)
                         
                         
-                    } //VStack Escalas
-                } // VStack Elige escalas
+                    } //VStack Scales
+                } // VStack Choose Scales
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Menu {

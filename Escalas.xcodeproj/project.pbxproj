@@ -251,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				67256CF92EE0BC5B00D568EF /* HomeView.swift */,
-				673D774E2F4C7A3D004480C9 /* ContactView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -386,6 +385,7 @@
 			children = (
 				67256CFB2EE0C1FD00D568EF /* Home */,
 				67256D012EE0CB5A00D568EF /* Patients */,
+				6783AC142F4C8626006BC65B /* Contact */,
 				67256CFC2EE0C20400D568EF /* ScaleMenu */,
 				67256D032EE0CB6B00D568EF /* BergTest */,
 				67AC81112F3601870063E2D9 /* MotricityIndex */,
@@ -512,6 +512,14 @@
 				676B9B672F3CE6B900DB8725 /* MotricityScoreOption.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6783AC142F4C8626006BC65B /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				673D774E2F4C7A3D004480C9 /* ContactView.swift */,
+			);
+			path = Contact;
 			sourceTree = "<group>";
 		};
 		678A224B2EF41412004A6F41 /* ScalesInfo */ = {
