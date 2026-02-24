@@ -77,6 +77,8 @@ final class TestDetailViewModel {
         let tempURL = FileManager.default.temporaryDirectory
             .appendingPathComponent("test_\(patient.name)_\(Date().timeIntervalSince1970).pdf")
         
+        AnalyticsManager.log(.pdfExported(test: test.testType))
+         
         do {
             try pdfData.write(to: tempURL)
             self.pdfURL = tempURL

@@ -106,7 +106,10 @@ private struct PatientsContentView: View {
                             newDate = Date()
                         }
                     }
-                    .buttonStyle(.borderedProminent)
+                    .padding()
+                    .background(Color.prim)
+                    .foregroundStyle(.textOnPrim)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             } // isAdding
             

@@ -41,7 +41,7 @@ final class ScaleResultViewModel {
             showError = true
             return
         }
-        
+       
         let pdfData = pdfGenerator.generatePDF(
             test: test,
             patient: patient,
@@ -49,6 +49,8 @@ final class ScaleResultViewModel {
         
         let tempURL = FileManager.default.temporaryDirectory
             .appendingPathComponent("test_\(patient.name)_\(Date().timeIntervalSince1970).pdf")
+        
+        AnalyticsManager.log(.pdfExported(test: test.testType))
         
         do {
             try pdfData.write(to: tempURL)

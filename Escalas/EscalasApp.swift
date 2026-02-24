@@ -5,11 +5,13 @@
 //  Created by Álvaro Entrena Casas on 30/11/25.
 //
 
+import FirebaseCore
 import SwiftUI
 import SwiftData
 
 @main
 struct EscalasApp: App {
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             PatientEntity.self,
@@ -26,6 +28,11 @@ struct EscalasApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
+    init() {
+        FirebaseApp.configure()
+        AnalyticsManager.log(.appOpened)
+    }
     
     var body: some Scene {
         WindowGroup {

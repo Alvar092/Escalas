@@ -19,6 +19,9 @@ struct BergTestView: View {
                 repositories: repositories,
                 viewModel: viewModel
             )
+            .onAppear{
+                AnalyticsManager.log(.testOpened(test: .berg))
+            }
         } else {
             ContentUnavailableView(
                 "Error de configuración",
@@ -31,6 +34,9 @@ struct BergTestView: View {
             repositories: repositories,
             viewModel: viewModel
         )
+        .onAppear{
+            AnalyticsManager.log(.testOpened(test: .berg))
+        }
         #endif
     }
 }

@@ -50,6 +50,9 @@
     "Atras" : {
 
     },
+    "Crash" : {
+
+    },
     "Derecho" : {
 
     },
@@ -438,13 +441,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Create patient"
+            "value" : "Create"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crear paciente"
+            "value" : "Crear"
           }
         }
       }

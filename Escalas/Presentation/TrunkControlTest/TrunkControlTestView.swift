@@ -18,6 +18,9 @@ struct TrunkControlTestView: View {
 #if DEBUG
         if let repositories {
             TrunkControlTestContentView(repositories: repositories, viewModel: viewModel)
+                .onAppear{
+                    AnalyticsManager.log(.testOpened(test: .berg))
+                }
                 .sheet(isPresented: $showingSideSelection) {
                     SideSelectionView { selectedSide in
                         viewModel.test.side = selectedSide
@@ -45,6 +48,9 @@ struct TrunkControlTestView: View {
             repositories: repositories,
             viewModel: viewModel
         )
+        .onAppear{
+            AnalyticsManager.log(.testOpened(test: .berg))
+        }
 #endif
     }
 }
