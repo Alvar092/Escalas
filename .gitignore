@@ -3,6 +3,7 @@ xcuserdata/
 *.xcuserstate
 *.xcworkspace
 *.xcproj
+*/GoogleService-Info.plist
 
 # Derived data
 DerivedData/
@@ -16,3 +17,4 @@ DerivedData/
 
 # Cocoapods
 Pods/
+
