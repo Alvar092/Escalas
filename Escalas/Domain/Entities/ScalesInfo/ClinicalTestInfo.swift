@@ -24,8 +24,6 @@ struct ClinicalTestInfo: Equatable {
             return String(localized: "Motricity Index", table: "ScalesInfo")
         case .trunkControlTest:
             return String(localized: "Trunk Control Test", table: "ScalesInfo")
-        default:
-            return "Scale name"
         }
     }
 }
