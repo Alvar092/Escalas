@@ -33,6 +33,9 @@ struct PatientsView: View {
                     ),
                     createPatientUseCase: CreatePatientUseCase(
                         patientRepository: repositories.patientRepository
+                    ),
+                    deletePatientUseCase: DeletePatientUseCase(
+                        patientsRepository: repositories.patientRepository
                     )
                 )
             )
@@ -156,6 +159,15 @@ private struct PatientsContentView: View {
                         patientRow(patient: patient)
                     }
                     .listRowBackground(Color.clear)
+                    .swipeActions(edge: .trailing) {
+                        Button(role: .destructive) {
+                            Task {
+                                try? await viewModel.deletePatient(id: patient.id)
+                            }
+                        } label: {
+                            Label("Eliminar", systemImage: "trash")
+                        }
+                    }
                 }
             }
         } // List
