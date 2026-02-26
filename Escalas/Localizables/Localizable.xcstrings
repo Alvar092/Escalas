@@ -345,6 +345,23 @@
         }
       }
     },
+    "patientDetail.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Patient"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paciente"
+          }
+        }
+      }
+    },
     "patientDetail.years" : {
       "extractionState" : "manual",
       "localizations" : {

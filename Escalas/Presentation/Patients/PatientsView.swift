@@ -21,7 +21,7 @@ struct PatientsView: View {
     @Environment(\.repositories) private var repositories
     
     var body: some View {
-        #if DEBUG
+#if DEBUG
         if let repositories {
             PatientsContentView(
                 mode: mode,
@@ -43,7 +43,7 @@ struct PatientsView: View {
             // Will never happen
             ProgressView("patients.loading")
         }
-        #else
+#else
         PatientsContentView(
             mode: mode,
             onPatientSelected: onPatientSelected,
@@ -54,10 +54,13 @@ struct PatientsView: View {
                 ),
                 createPatientUseCase: CreatePatientUseCase(
                     patientRepository: repositories.patientRepository
+                ),
+                deletePatientUseCase: DeletePatientUseCase(
+                    patientsRepository: repositories.patientRepository
                 )
             )
         )
-        #endif
+#endif
     }
 }
 
