@@ -132,6 +132,7 @@ struct HomeView: View {
     
     @ViewBuilder
     private func routeView(for route: AppRoute) -> some View {
+        #if DEBUG
         if let repositories {
             
             switch route {
@@ -158,6 +159,24 @@ struct HomeView: View {
                        description: Text("Los repositorios no están disponibles")
                    )
         }
+        #else
+        switch route {
+        case .scaleMenu(let testType):
+            ScaleMenuView(testType: testType)
+            
+        case .test(let testType):
+            router.makeTestView(for: testType, repositories: repositories)
+            
+        case .scaleResult(let testType):
+            router.makeResultView(for: testType, repositories: repositories)
+            
+        case .patients:
+            PatientsView(mode: .browse)
+            
+        case .contact:
+            ContactView()
+        }
+        #endif
     }
 }
 

@@ -21,6 +21,7 @@ struct PatientsView: View {
     @Environment(\.repositories) private var repositories
     
     var body: some View {
+        #if DEBUG
         if let repositories {
             PatientsContentView(
                 mode: mode,
@@ -39,6 +40,21 @@ struct PatientsView: View {
             // Will never happen
             ProgressView("patients.loading")
         }
+        #else
+        PatientsContentView(
+            mode: mode,
+            onPatientSelected: onPatientSelected,
+            repositories: repositories,
+            viewModel: PatientViewModel(
+                getPatientsUseCase: GetPatientsUseCase(
+                    patientRepository: repositories.patientRepository
+                ),
+                createPatientUseCase: CreatePatientUseCase(
+                    patientRepository: repositories.patientRepository
+                )
+            )
+        )
+        #endif
     }
 }
 

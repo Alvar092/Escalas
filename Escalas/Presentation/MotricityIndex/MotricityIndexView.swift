@@ -45,13 +45,30 @@ struct MotricityIndexView: View {
             )
         }
         #else
-        BergTestContentView(
+        MotricityIndexContentView(
             repositories: repositories,
             viewModel: viewModel
         )
         .onAppear{
             AnalyticsManager.log(.testOpened(test: .berg))
         }
+        .sheet(isPresented: $showingSideSelection) {
+            SideSelectionView { selectedSide in
+                viewModel.test.side = selectedSide
+                viewModel.isSideSelected = true
+                showingSideSelection = false
+            }
+            .interactiveDismissDisabled(true)
+            .presentationDetents([.fraction(0.5)])
+            .presentationDragIndicator(.visible)
+        }
+    
+        .onAppear {
+            if viewModel.test.side == nil || !viewModel.isSideSelected {
+                showingSideSelection = true
+            }
+        }
+
         #endif
     }
 }

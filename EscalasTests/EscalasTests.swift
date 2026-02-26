@@ -291,8 +291,10 @@ struct EscalasTests {
                 
                 let bergTest = BergTest.patient1
                 let bergRepo = mockBergRepo
+                let motricityRepo = MockMotricityIndexRepository()
+                let trunkRepo = MockTrunkControlTestRepository()
                 
-                let useCase = GetPatientTestsUseCase(patientRepository: patientsRepo, bergTestRepository: bergRepo)
+                let useCase = GetPatientTestsUseCase(patientRepository: patientsRepo, bergTestRepository: bergRepo, motricityIndexRepository: motricityRepo , trunkControlTestRepository: trunkRepo)
                 
                 // WHEN
                 let history = try await useCase.getPatientHistory(patientID: patient.id)
