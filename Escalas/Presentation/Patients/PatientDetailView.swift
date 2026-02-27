@@ -66,7 +66,7 @@ struct PatientDetailView: View {
         } // VStack
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.backg)
-        .navigationTitle("paciente")
+        .navigationTitle("patientDetail.title")
         .navigationBarTitleDisplayMode(.inline)
         
         .task {
