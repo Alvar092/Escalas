@@ -86,6 +86,9 @@
         }
       }
     },
+    "Editar" : {
+
+    },
     "Eliminar" : {
       "localizations" : {
         "en" : {
@@ -539,6 +542,9 @@
         }
       }
     },
+    "patients.edit.title" : {
+
+    },
     "patients.loading" : {
       "localizations" : {
         "en" : {
@@ -570,6 +576,9 @@
           }
         }
       }
+    },
+    "patients.save.button" : {
+
     },
     "patients.select.title" : {
       "localizations" : {

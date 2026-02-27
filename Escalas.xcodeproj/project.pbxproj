@@ -72,6 +72,7 @@
 		678A224F2EF45FA0004A6F41 /* ScaleMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */; };
 		6793FEAC2F508BA4003D5464 /* DeletePatientUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793FEAB2F508BA4003D5464 /* DeletePatientUseCase.swift */; };
 		679D9DAB2F240804007CC799 /* BergItemPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679D9DAA2F240804007CC799 /* BergItemPDF.swift */; };
+		67A794542F51C3E500A8E3C4 /* EditPatientUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A794532F51C3E500A8E3C4 /* EditPatientUseCase.swift */; };
 		67AC81142F3601B00063E2D9 /* TrunkControlTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC81132F3601B00063E2D9 /* TrunkControlTestView.swift */; };
 		67AC81162F3601BB0063E2D9 /* MotricityIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC81152F3601BB0063E2D9 /* MotricityIndexView.swift */; };
 		67AC81182F3602530063E2D9 /* TrunkControlTestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC81172F3602530063E2D9 /* TrunkControlTestInfo.swift */; };
@@ -189,6 +190,7 @@
 		678A224E2EF45FA0004A6F41 /* ScaleMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMenuViewModel.swift; sourceTree = "<group>"; };
 		6793FEAB2F508BA4003D5464 /* DeletePatientUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePatientUseCase.swift; sourceTree = "<group>"; };
 		679D9DAA2F240804007CC799 /* BergItemPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergItemPDF.swift; sourceTree = "<group>"; };
+		67A794532F51C3E500A8E3C4 /* EditPatientUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPatientUseCase.swift; sourceTree = "<group>"; };
 		67AC81132F3601B00063E2D9 /* TrunkControlTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlTestView.swift; sourceTree = "<group>"; };
 		67AC81152F3601BB0063E2D9 /* MotricityIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotricityIndexView.swift; sourceTree = "<group>"; };
 		67AC81172F3602530063E2D9 /* TrunkControlTestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkControlTestInfo.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				67CB908E2EF1D1E80067952C /* GetPatientTestsUseCase.swift */,
 				67DF220D2F224E3B0024A130 /* GetPatientByIdUseCase.swift */,
 				6793FEAB2F508BA4003D5464 /* DeletePatientUseCase.swift */,
+				67A794532F51C3E500A8E3C4 /* EditPatientUseCase.swift */,
 			);
 			path = Patients;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				67CB90912EF1DB530067952C /* PatientDetailViewModel.swift in Sources */,
 				67CB908F2EF1D1E80067952C /* GetPatientTestsUseCase.swift in Sources */,
 				67CB90D52EF1F3A30067952C /* Models+Mock.swift in Sources */,
+				67A794542F51C3E500A8E3C4 /* EditPatientUseCase.swift in Sources */,
 				673EDCEF2F44E82600A03A47 /* SideTestProtocol.swift in Sources */,
 				67256CFE2EE0C21400D568EF /* ScaleMenuView.swift in Sources */,
 				673EDCD62F3E456C00A03A47 /* TestPDFStrategyProtocol.swift in Sources */,

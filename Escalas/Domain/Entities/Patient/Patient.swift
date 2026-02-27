@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Patient: Hashable {
+struct Patient: Hashable, Identifiable {
     var id: UUID
     var name: String
     var dateOfBirth: Date

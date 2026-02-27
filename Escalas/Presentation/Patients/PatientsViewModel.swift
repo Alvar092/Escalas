@@ -16,15 +16,18 @@ final class PatientViewModel {
     private var getPatientsUseCase: GetPatientsUseCaseProtocol
     private var createPatientUseCase: CreatePatientUseCaseProtocol
     private var deletePatientUseCase: DeletePatientUseCaseProtocol
+    private var editPatientUseCase: EditPatientUseCaseProtocol
     
     
     init(getPatientsUseCase: GetPatientsUseCaseProtocol,
          createPatientUseCase: CreatePatientUseCaseProtocol,
-         deletePatientUseCase: DeletePatientUseCaseProtocol
+         deletePatientUseCase: DeletePatientUseCaseProtocol,
+         editPatientUseCase: EditPatientUseCaseProtocol
     ) {
         self.getPatientsUseCase = getPatientsUseCase
         self.createPatientUseCase = createPatientUseCase
         self.deletePatientUseCase = deletePatientUseCase
+        self.editPatientUseCase = editPatientUseCase
     }
   
     @MainActor
@@ -40,6 +43,11 @@ final class PatientViewModel {
     
     func deletePatient(id: UUID) async throws {
         try await deletePatientUseCase.deletePatient(by: id)
+        try await loadPatients()
+    }
+    
+    func updatePatient(patient: Patient) async throws {
+        try await editPatientUseCase.updatePatient(patient: patient)
         try await loadPatients()
     }
 }

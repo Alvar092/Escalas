@@ -17,6 +17,7 @@ struct PatientsView: View {
     let mode: PatientSelectionMode
     var onPatientSelected: ((Patient) -> Void)? = nil
     
+    
     @Environment(\.dismiss) private var dismiss
     @Environment(\.repositories) private var repositories
     
@@ -35,6 +36,9 @@ struct PatientsView: View {
                         patientRepository: repositories.patientRepository
                     ),
                     deletePatientUseCase: DeletePatientUseCase(
+                        patientsRepository: repositories.patientRepository
+                    ),
+                    editPatientUseCase: EditPatientUseCase(
                         patientsRepository: repositories.patientRepository
                     )
                 )
@@ -56,6 +60,9 @@ struct PatientsView: View {
                     patientRepository: repositories.patientRepository
                 ),
                 deletePatientUseCase: DeletePatientUseCase(
+                    patientsRepository: repositories.patientRepository
+                ),
+                editPatientUseCase: EditPatientUseCase(
                     patientsRepository: repositories.patientRepository
                 )
             )
@@ -80,6 +87,7 @@ private struct PatientsContentView: View {
     @State private var newName = ""
     @State private var newDate = Date()
     @State private var isAdding = false
+    @State private var patientToEdit: Patient? = nil
     
     var body: some View {
         patientList(viewModel: viewModel)
@@ -171,6 +179,24 @@ private struct PatientsContentView: View {
                             Label("Eliminar", systemImage: "trash")
                         }
                     }
+                    .swipeActions(edge: .leading) {
+                        Button {
+                            patientToEdit = patient
+                        } label: {
+                            Label("Editar", systemImage: "pencil")
+                                .tint(.orange)
+                        }
+                    }
+                    .sheet(item: $patientToEdit) { patient in
+                        // Aquí reutilizas el mismo formulario inline que tienes para crear
+                        // pero precargando los valores del paciente
+                        EditPatientSheetView(patient: patient) { updatedPatient in
+                            Task {
+                                try? await viewModel.updatePatient(patient: patient)
+                            }
+                        }
+                    }
+
                 }
             }
         } // List
@@ -216,4 +242,60 @@ private struct PatientsContentView: View {
         onPatientSelected: nil
     )
     .environment(\.repositories, repositories)
+}
+
+struct EditPatientSheetView: View {
+    
+    let patient: Patient
+    let onSave: (Patient) -> Void
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    @State private var name: String
+    @State private var dateOfBirth: Date
+    
+    init(patient: Patient, onSave: @escaping (Patient) -> Void) {
+        self.patient = patient
+        self.onSave = onSave
+        _name = State(initialValue: patient.name)
+        _dateOfBirth = State(initialValue: patient.dateOfBirth)
+    }
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    TextField("patients.name.placeholder", text: $name)
+                    
+                    DatePicker("patients.birthdate.label",
+                               selection: $dateOfBirth,
+                               displayedComponents: .date)
+                    
+                    Button("patients.save.button") {
+                        let updated = Patient(
+                            id: patient.id,
+                            name: name,
+                            dateOfBirth: dateOfBirth
+                        )
+                        onSave(updated)
+                        dismiss()
+                    }
+                    .padding()
+                    .background(Color.prim)
+                    .foregroundStyle(.textOnPrim)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+            }
+            .scrollContentBackground(.hidden)
+            .background(Color(.backg))
+            .navigationTitle("patients.edit.title")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("patients.cancel") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+    }
 }
