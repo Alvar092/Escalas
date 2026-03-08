@@ -376,8 +376,42 @@ struct EscalasTests {
                 #expect(vm.patient == Patient.patient1)
             }
         }
+    } // ScaleMenuVM
+    
+    @Suite("MotricityIndex") struct MotricityIndexViewModelTests {
+        @MainActor
+        func dontAskForSide() async throws {
+            let repo = MockMotricityIndexRepository()
+            
+            let viewModel = MotricityIndexViewModel(useCase: SaveMotricityIndexUseCase(repository: repo), test: MotricityIndex.patient1)
+            
+            viewModel.test.side = .left
+            viewModel.navigateToResultView = true
+            
+            viewModel.navigateToResultView = false
+            
+            #expect(viewModel.test.side == .left)
+            #expect(viewModel.test.side != nil)
+        }
     }
-}
+    
+    @Suite("TrunkControlTest") struct TrunkControlViewModelTests {
+        @MainActor
+        func dontAskForSide() async throws {
+            let repo = MockTrunkControlTestRepository()
+            
+            let viewModel = TrunkControlTestViewModel(useCase: SaveTrunkControlTestUseCase(repository: repo), test: TrunkControlTest.patient1)
+            
+            viewModel.test.side = .left
+            viewModel.navigateToResultView = true
+            
+            viewModel.navigateToResultView = false
+            
+            #expect(viewModel.test.side == .left)
+            #expect(viewModel.test.side != nil)
+        }
+    }
+} // Presentation
 
 
 // GIVEN

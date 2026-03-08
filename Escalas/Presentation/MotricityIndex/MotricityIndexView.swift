@@ -24,7 +24,6 @@ struct MotricityIndexView: View {
                 .sheet(isPresented: $showingSideSelection) {
                     SideSelectionView { selectedSide in
                         viewModel.test.side = selectedSide
-                        viewModel.isSideSelected = true
                         showingSideSelection = false
                     }
                     .interactiveDismissDisabled(true)
@@ -33,7 +32,7 @@ struct MotricityIndexView: View {
                 }
             
                 .onAppear {
-                    if viewModel.test.side == nil || !viewModel.isSideSelected {
+                    if viewModel.test.side == nil  {
                         showingSideSelection = true
                     }
                 }
@@ -55,7 +54,6 @@ struct MotricityIndexView: View {
         .sheet(isPresented: $showingSideSelection) {
             SideSelectionView { selectedSide in
                 viewModel.test.side = selectedSide
-                viewModel.isSideSelected = true
                 showingSideSelection = false
             }
             .interactiveDismissDisabled(true)
@@ -64,7 +62,7 @@ struct MotricityIndexView: View {
         }
     
         .onAppear {
-            if viewModel.test.side == nil || !viewModel.isSideSelected {
+            if viewModel.test.side == nil {
                 showingSideSelection = true
             }
         }
@@ -77,7 +75,7 @@ private struct MotricityIndexContentView: View {
     let repositories: Repositories
     
     @Environment(\.navigationRouter) private var router
-    @State var viewModel: MotricityIndexViewModel
+    @Bindable var viewModel: MotricityIndexViewModel
     
     
     
