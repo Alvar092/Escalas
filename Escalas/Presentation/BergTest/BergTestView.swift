@@ -72,7 +72,7 @@ private struct BergTestContentView: View {
                             
                             Button(viewModel.isTimerRunning ? "Pausar" : "Iniciar") {
                                 if viewModel.isTimerRunning {
-                                    viewModel.stopTimer()
+                                    viewModel.saveAndStop()
                                 } else {
                                     viewModel.startTimer()
                                 }

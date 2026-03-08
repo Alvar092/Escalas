@@ -112,6 +112,9 @@ final class BergTestViewModel {
     func resetTimer() {
         stopTimer()
         elapsedTime = 0
+        items[currentItemIndex].timeRecorded = nil 
+        items[currentItemIndex].score = nil
+        selectedScore = nil
     }
     
     // Actualiza la UI para indicar que respuesta se ha seleccionado
