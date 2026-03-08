@@ -81,10 +81,6 @@ final class BergTestViewModel {
         "\(currentItemIndex + 1) / \(items.count)"
     }
     
-//    var canGoNext: Bool {
-//        currentItem.score != nil
-//    }
-    
     var isLastItem: Bool {
         currentItemIndex == items.count - 1
     }
@@ -93,20 +89,23 @@ final class BergTestViewModel {
         guard !isTimerRunning else { return }
         isTimerRunning = true
         
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+        let newTimer = Timer(timeInterval: 0.1, repeats: true) { [weak self] _ in
             self?.elapsedTime += 0.1
         }
+        RunLoop.main.add(newTimer, forMode: .common)
+        timer = newTimer
     }
     
     func stopTimer() {
         timer?.invalidate()
         timer = nil
         isTimerRunning = false
-        
-        // Guardar el tiempo en el item
+    }
+    
+    func saveAndStop() {
+        stopTimer()
         items[currentItemIndex].timeRecorded = elapsedTime
         items[currentItemIndex].timeScoring()
-        
         selectedScore = items[currentItemIndex].score
     }
     
