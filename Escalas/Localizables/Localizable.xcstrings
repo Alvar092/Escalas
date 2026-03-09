@@ -386,6 +386,9 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "Los repositorios no están disponibles" : {
 
     },
@@ -544,6 +547,38 @@
     },
     "patients.edit.title" : {
 
+    },
+    "patients.empty.subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please, create a patient to start"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, crea un paciente para comenzar"
+          }
+        }
+      }
+    },
+    "patients.empty.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are no patients created"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay pacientes creados"
+          }
+        }
+      }
     },
     "patients.loading" : {
       "localizations" : {

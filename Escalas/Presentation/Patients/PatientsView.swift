@@ -143,6 +143,27 @@ private struct PatientsContentView: View {
                 }
             } // isAdding
             
+            if viewModel.patients.isEmpty && !isAdding {
+                Section {
+                    VStack(spacing: 12) {
+                        Image(systemName: "person.crop.circle.badge.plus")
+                            .font(.system(size: 48))
+                            .foregroundStyle(Color(.prim))
+                        Text("patients.empty.title")
+                            .font(.m)
+                            .foregroundStyle(.primary)
+                        Text("patients.empty.subtitle")
+                            .font(.s)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 40)
+                }
+                .listRowBackground(Color.clear)
+            }
+            
+            
             ForEach(viewModel.patients, id: \.id) { patient in
                 if mode == .select {
                     Button(action: {
@@ -196,7 +217,7 @@ private struct PatientsContentView: View {
                             }
                         }
                     }
-
+                    
                 }
             }
         } // List
@@ -234,11 +255,10 @@ private struct PatientsContentView: View {
 
 #Preview {
     // Repository for preview
-    let repositories = Repositories.preview
+    let repositories =  Repositories.preview
     
-    // Calling view in browse mode
     PatientsView(
-        mode: .select,
+        mode: .browse,
         onPatientSelected: nil
     )
     .environment(\.repositories, repositories)
