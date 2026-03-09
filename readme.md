@@ -1,3 +1,17 @@
+# ¿Que es EscalasRhb? 
+En el día a día clínico, cada minuto cuenta. Escalas digitaliza la valoración en rehabilitacoón y permite exportar resultados en segundos.
+
+Es una aplicación diseñada para profesionales de la rehabilitación que necesitan acceder de forma rápida, clara y estructurada a herramientas de valoración clínica en su práctica diaria. 
+
+## ¿Que ofrece escalas?
+
+- Acceso rápido a escalas de valoración clínica.
+- Cálculo automático de resultados.
+- Registro estructurado y claro de cada evaluación. 
+- Exportación sencilla de los resultados para integrarlos en informes y documentación clínica. 
+- Interfaz limpia y profesional, pensada para el uso diario en consulta. 
+
+
 # Documentación técnica
 
 ## Funcionalidades principales
@@ -87,3 +101,6 @@ Este enfoque moderno, utilizando **SwiftUI**, **SwiftData** y patrones de arquit
 - **Modular**
 - **Escalable**
 - **Fácil de mantener**
+
+
+Para ver la política de privacidad, accede a la pagina https://alvar092.github.io/escalas/
