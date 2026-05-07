@@ -61,20 +61,20 @@ enum MotricityIndexCatalog {
     // MARK: - Standard Scoring (Motricity Index Official Scale)
 
     private static let standardScoring: [MotricityScoreOption] = [
-        .init(score: 0,  description: String(localized: "motricity.standard.score.0",  table: "Motricity")),
-        .init(score: 9,  description: String(localized: "motricity.standard.score.9",  table: "Motricity")),
-        .init(score: 14, description: String(localized: "motricity.standard.score.14", table: "Motricity")),
+        .init(score: 33,  description: String(localized: "motricity.standard.score.33",  table: "Motricity")),
+        .init(score: 25,  description: String(localized: "motricity.standard.score.25",  table: "Motricity")),
         .init(score: 19, description: String(localized: "motricity.standard.score.19", table: "Motricity")),
-        .init(score: 25, description: String(localized: "motricity.standard.score.25", table: "Motricity")),
-        .init(score: 33, description: String(localized: "motricity.standard.score.33", table: "Motricity"))
+        .init(score: 14, description: String(localized: "motricity.standard.score.14", table: "Motricity")),
+        .init(score: 9, description: String(localized: "motricity.standard.score.9", table: "Motricity")),
+        .init(score: 0, description: String(localized: "motricity.standard.score.0", table: "Motricity"))
     ]
 
     private static let pinchGripScoring: [MotricityScoreOption] = [
-        .init(score: 0,  description: String(localized: "motricity.pinchGrip.score.0",  table: "Motricity")),
-        .init(score: 11, description: String(localized: "motricity.pinchGrip.score.11", table: "Motricity")),
-        .init(score: 19, description: String(localized: "motricity.pinchGrip.score.19", table: "Motricity")),
-        .init(score: 22, description: String(localized: "motricity.pinchGrip.score.22", table: "Motricity")),
+        .init(score: 33,  description: String(localized: "motricity.pinchGrip.score.33",  table: "Motricity")),
         .init(score: 26, description: String(localized: "motricity.pinchGrip.score.26", table: "Motricity")),
-        .init(score: 33, description: String(localized: "motricity.pinchGrip.score.33", table: "Motricity"))
+        .init(score: 22, description: String(localized: "motricity.pinchGrip.score.22", table: "Motricity")),
+        .init(score: 19, description: String(localized: "motricity.pinchGrip.score.19", table: "Motricity")),
+        .init(score: 11, description: String(localized: "motricity.pinchGrip.score.11", table: "Motricity")),
+        .init(score: 0, description: String(localized: "motricity.pinchGrip.score.33", table: "Motricity"))
     ]
 }
