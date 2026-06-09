@@ -103,4 +103,4 @@ Este enfoque moderno, utilizando **SwiftUI**, **SwiftData** y patrones de arquit
 - **Fácil de mantener**
 
 
-Para ver la política de privacidad, accede a la pagina https://alvar092.github.io/escalas/
+Para ver la política de privacidad, accede a la pagina https://alvar092.github.io/Escalas/
