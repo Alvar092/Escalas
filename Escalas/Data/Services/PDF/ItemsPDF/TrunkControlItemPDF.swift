@@ -15,7 +15,8 @@ struct TrunkControlItemPDF {
     let score: Int
     let scoreDescription: String
     let maxScore: Int
-    
+    let note: String?
+
     init(number: Int, definition: TrunkControlItemDefinition, item: TrunkControlTestItem, scoreDescription: String) {
         self.number = number
         self.title = definition.title
@@ -24,5 +25,6 @@ struct TrunkControlItemPDF {
         self.score = item.score ?? 0
         self.scoreDescription = scoreDescription
         self.maxScore = 33 // Puntuación máxima de cada ítem del Motricity Index
+        self.note = item.note
     }
 }

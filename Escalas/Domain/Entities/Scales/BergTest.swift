@@ -25,6 +25,7 @@ struct BergItem: Codable {
     let itemType: BergItemType
     var score: Int? = nil
     var timeRecorded: TimeInterval?
+    var note: String? = nil
     
     mutating func setScore(_ value: Int?) {
         score = value.map {max(0,min(4,$0)) }

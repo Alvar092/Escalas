@@ -41,6 +41,7 @@ struct MotricityIndexItem: Codable {
     let id: UUID
     let itemType: MotricityIndexItemType
     var score: Int?
+    var note: String?
 }
 
 enum MotricityIndexItemType: Int, Codable, CaseIterable {

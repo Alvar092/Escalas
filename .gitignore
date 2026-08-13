@@ -15,6 +15,9 @@ DerivedData/
 # macOS
 .DS_Store
 
+# Devlog personal
+DEVLOG.md
+
 # Cocoapods
 Pods/
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BEE6A1E41F5E416EB7E9E790 /* ItemNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EF6D60214EC0BB237431 /* ItemNoteView.swift */; };
 		67256CFA2EE0BC5B00D568EF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256CF92EE0BC5B00D568EF /* HomeView.swift */; };
 		67256CFE2EE0C21400D568EF /* ScaleMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256CFD2EE0C21400D568EF /* ScaleMenuView.swift */; };
 		67256D002EE0CB4F00D568EF /* PatientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67256CFF2EE0CB4F00D568EF /* PatientsView.swift */; };
@@ -218,6 +219,7 @@
 		67D827F32F16ACCE0037BB35 /* BergTestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BergTestInfo.swift; sourceTree = "<group>"; };
 		67DF22092F223D930024A130 /* ScaleResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleResultView.swift; sourceTree = "<group>"; };
 		67DF220B2F224ABC0024A130 /* ScaleResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleResultViewModel.swift; sourceTree = "<group>"; };
+		C5C4EF6D60214EC0BB237431 /* ItemNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNoteView.swift; sourceTree = "<group>"; };
 		67DF220D2F224E3B0024A130 /* GetPatientByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPatientByIdUseCase.swift; sourceTree = "<group>"; };
 		67DF22102F2291A50024A130 /* PDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
 		67E221812EE3009600079E52 /* CreatePatientUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePatientUseCase.swift; sourceTree = "<group>"; };
@@ -412,8 +414,17 @@
 				67256D032EE0CB6B00D568EF /* BergTest */,
 				67AC81112F3601870063E2D9 /* MotricityIndex */,
 				67AC81122F36018F0063E2D9 /* TrunkControlTest */,
+				05FE434B9EB34B3B9D549954 /* Shared */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		05FE434B9EB34B3B9D549954 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C5C4EF6D60214EC0BB237431 /* ItemNoteView.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		674EF3402EDDC415000CF54C /* Domain */ = {
@@ -907,6 +918,7 @@
 				674727362F351545007E2FFB /* TrunkControlEntity.swift in Sources */,
 				67DF22112F2291A50024A130 /* PDFGenerator.swift in Sources */,
 				674EF2FC2EDDC3D6000CF54C /* Item.swift in Sources */,
+				BEE6A1E41F5E416EB7E9E790 /* ItemNoteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

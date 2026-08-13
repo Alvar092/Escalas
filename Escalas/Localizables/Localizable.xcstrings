@@ -60,6 +60,9 @@
         }
       }
     },
+    "Añadir nota" : {
+
+    },
     "Atras" : {
       "localizations" : {
         "en" : {
@@ -87,6 +90,9 @@
       }
     },
     "Editar" : {
+
+    },
+    "Editar nota" : {
 
     },
     "Eliminar" : {

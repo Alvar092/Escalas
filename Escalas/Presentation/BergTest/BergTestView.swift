@@ -110,6 +110,9 @@ private struct BergTestContentView: View {
                         }
                         .buttonStyle(.plain)
                     }
+
+                    ItemNoteView(note: $viewModel.currentItemNote)
+                        .id(viewModel.currentItemIndex)
                 }
                 .padding()
                 .padding(.bottom, 100)

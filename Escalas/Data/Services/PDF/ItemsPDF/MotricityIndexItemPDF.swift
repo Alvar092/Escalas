@@ -13,9 +13,10 @@ struct MotricityIndexItemPDF {
     let description: String
     let scoringOptions: [MotricityScoreOption]
     let score: Int
-    let scoreDescription: String 
+    let scoreDescription: String
     let maxScore: Int
-    
+    let note: String?
+
     init(number: Int, definition: MotricityItemDefinition, item: MotricityIndexItem, scoreDescription: String) {
         self.number = number
         self.title = definition.title
@@ -24,5 +25,6 @@ struct MotricityIndexItemPDF {
         self.score = item.score ?? 0
         self.scoreDescription = scoreDescription
         self.maxScore = 33 // Puntuación máxima de cada ítem del Motricity Index
+        self.note = item.note
     }
 }

@@ -213,8 +213,10 @@ final class TrunkControlPDFStrategy: TestPDFStrategyProtocol {
     }
     
     private func drawItem(item: TrunkControlItemPDF, y: CGFloat, layout: PDFLayout) -> CGFloat {
-        let itemHeight: CGFloat = 120
-        
+        let baseHeight: CGFloat = 120
+        let (noteText, noteBlockHeight) = noteLayout(for: item.note, layout: layout)
+        let itemHeight = baseHeight + noteBlockHeight
+
         if item.number % 2 == 0 {
             UIColor(white: 0.97, alpha: 1.0).setFill()
             UIBezierPath(rect: CGRect(
@@ -259,10 +261,53 @@ final class TrunkControlPDFStrategy: TestPDFStrategyProtocol {
             )
             currentOptionY += 14
         }
-        
+
+        // Nota (pie de página del ítem)
+        if let noteText {
+            let dividerY = y + baseHeight - 12
+            let linePath = UIBezierPath()
+            linePath.move(to: CGPoint(x: layout.margin + 45, y: dividerY))
+            linePath.addLine(to: CGPoint(x: layout.pageSize.width - layout.margin - 15, y: dividerY))
+            UIColor.lightGray.setStroke()
+            linePath.lineWidth = 0.5
+            linePath.stroke()
+
+            noteText.draw(
+                in: CGRect(
+                    x: layout.margin + 45,
+                    y: dividerY + 6,
+                    width: layout.contentWidth - 60,
+                    height: noteBlockHeight
+                ),
+                withAttributes: noteAttributes
+            )
+        }
+
         return y + itemHeight
     }
-    
+
+    private var noteAttributes: [NSAttributedString.Key: Any] {
+        [
+            .font: UIFont.italicSystemFont(ofSize: 10),
+            .foregroundColor: UIColor.darkGray
+        ]
+    }
+
+    private func noteLayout(for note: String?, layout: PDFLayout) -> (text: String?, height: CGFloat) {
+        guard let note, !note.isEmpty else { return (nil, 0) }
+
+        let text = "Nota: \(note)"
+        let width = layout.contentWidth - 60
+        let bounding = (text as NSString).boundingRect(
+            with: CGSize(width: width, height: .greatestFiniteMagnitude),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            attributes: noteAttributes,
+            context: nil
+        )
+
+        return (text, ceil(bounding.height) + 16)
+    }
+
     private func drawPageNumber(number: Int, layout: PDFLayout, context: UIGraphicsPDFRendererContext) {
         let attrs: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 9),

@@ -25,6 +25,7 @@ struct TrunkControlTestItem: Codable {
     let id: UUID
     let itemType: TrunkControlItemType
     var score: Int?
+    var note: String?
 }
 
 enum TrunkControlItemType: Int, Codable, CaseIterable {

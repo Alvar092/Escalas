@@ -108,6 +108,9 @@ private struct MotricityIndexContentView: View {
                             )
                         )
                     }
+
+                    ItemNoteView(note: $viewModel.currentItemNote)
+                        .id(viewModel.currentItemIndex)
                 } // VStack gen.
                 .padding(.horizontal, 24)
             } //SrollView

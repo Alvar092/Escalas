@@ -102,7 +102,10 @@ private struct TrunkControlTestContentView: View {
                                                                        )
                         )
                     }
-                    
+
+                    ItemNoteView(note: $viewModel.currentItemNote)
+                        .id(viewModel.currentItemIndex)
+
                 }//VStack gen
                 .padding(.horizontal, 24)
             }

@@ -46,7 +46,13 @@ final class MotricityIndexViewModel {
     var currentItemScore: Int? {
         currentItem.score
     }
-    
+
+    // Nota del item actual
+    var currentItemNote: String? {
+        get { items[currentItemIndex].note }
+        set { items[currentItemIndex].note = newValue }
+    }
+
     var hasSelectedScore: Bool {
         selectedScore != nil
     }
